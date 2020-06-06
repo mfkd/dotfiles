@@ -8,12 +8,6 @@ _has() {
   return $( command -v $1 >/dev/null 2>&1 )
 }
 
-# Use neovim for vim if present.
-#_has nvim && alias vim="nvim" vimdiff="nvim -d"
-
-# ---------------------------------------------------------------------------------------------------
-# FZF
-# ---------------------------------------------------------------------------------------------------
 if _has fd; then
     export FZF_DEFAULT_COMMAND='fd --color=always --type f --hidden --follow --exclude .git'
     export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
@@ -56,10 +50,6 @@ man-find() {
 # ---------------------------------------------------------------------------------------------------
 #  ALIASES
 # ---------------------------------------------------------------------------------------------------
-alias asc='ssh asc@146.231.123.155'
-alias dee='ssh dee@192.168.1.106'
-
-alias sss='sudo systemctl'
 alias xc="tr -d '\n' |  xclip -selection clipboard"
 alias ..="cd .."
 alias ...="cd ../.."
@@ -69,46 +59,19 @@ alias zpac="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 
 alias za="zathura --fork"
 alias llfs='_f(){ find . -type f -size "$1" -exec ls --color --classify --human-readable -l {} \; ; }; _f'
 alias ls="ls -hN --color=auto --group-directories-first"
-#alias ls="ls -hN --color=auto --group-directories-first --classify"
 alias la='ls -A'
 alias ll='ls -alF'
 alias lh='ls -hl'
 alias l='ls -CF'
 alias grep="grep --color=auto"
-alias exa='exa --group-directories-first'
-alias x='exa -l'
-alias xs='exa'
-alias xl='exa -lg'
-alias xa='exa -a'
-alias xla='exa -lag'
-alias xx='exa -lag'
-alias xxl='exa --color=always -lag | less'
 alias diff='diff --color=auto'
-alias ccat='highlight --out-format=ansi'
-#alias c='cd'
 alias xc='xclip -selection clipboard'
-#alias v='$EDITOR'
-alias gt='gotop'
-alias sx='startx'
-alias qute='cd $HOME/.config/qutebrowser/'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias dots='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias t='task'
-alias ytv='youtube-viewer -C'
-alias ma='clear; mpv --no-video --term-osd-bar'
+alias ma='clear; mpv --no-video'
 alias vol='amixer -M get Master'
 alias tsm='transmission-remote'
 alias yt="youtube-dl --verbose --add-metadata -i -o '%(upload_date)s-%(uploader)s_%(title)s.%(ext)s'"
 alias yta="yt -x -f bestaudio/best"
-alias weather="curl -Ss 'https://wttr.in'"
-alias lock="slock"
-alias slck="slock"
-alias lck="slock"
-#alias p="mpc toggle"
-alias libr="cd ~/honours/lib && lf"
-alias cless="ccat $1 | less"
-alias nb="newsboat -r"
-#alias b="watch -n 300 bat"
 alias b="bat"
 alias d="docker"
 
@@ -138,14 +101,14 @@ cd () {
         [ ! -e "$path" ] && return 1
         printf '\e[32m%-6s\n\e[m' "$1 -> $path"
         builtin cd "$path"
-    else 
+    else
         builtin cd "$@"
     fi
 }
 
 c () { [ $# -eq 1 ] && [ -f "$1" ] && ccat --force "$1" || builtin cd "$1" ; }
 
-mkcd() { mkdir -p "$1" && builtin cd "$1" ; } 
+mkcd() { mkdir -p "$1" && builtin cd "$1" ; }
 
 mp () {
     if ! pgrep -x mpd > /dev/null
@@ -168,9 +131,9 @@ flac2mp3() {
 
 setvol() {
     if [ "$1" -lt "30" ]
-    then    
+    then
         amixer -M sset 'Master' $1% #&& pkill -RTMIN+1 i3blocks
-    else 
+    else
         echo 'y | n'
         read uinput
         if [ "$uinput" == 'y' ] || [ "$input" == '' ]
@@ -182,38 +145,16 @@ setvol() {
 
 vf() { fzf | xargs -r -I % $EDITOR % ;}
 
-note () {
-  local notes_dir="$HOME/notes"
-  case "$1" in
-    c)
-      builtin cd "$notes_dir"
-      ;;
-    l)
-      ls "$notes_dir"
-      ;;
-    p)
-      pushd "$notes_dir"
-      msg="Regenerated at $(date -u '+%Y-%m-%d %H:%M:%S')"
-      git add .
-      git commit -m "$msg"
-      git push origin master
-      popd
-      ;;
-    *)
-      vim "$notes_dir/$1"
-  esac
-}
-
-unzipown() { 
+unzipown() {
     if [ $# == 0 ]
-    then 
+    then
         for i in *.zip
-        do 
+        do
             unzip "$i" -d "${i%%.zip}"
         done
     else
-        for i in $@ 
-        do 
+        for i in $@
+        do
             unzip "$i" -d "${i%%.zip}"
         done
     fi
