@@ -1,0 +1,44 @@
+#!/bin/bash
+
+shopt -s nullglob
+
+: "${SLEEP_PERC:=11}"
+: "${WARN_PERC:=22}"
+: "${UNSAFE_PERC:=32}"
+: "${SAFE_PERC:=41}"
+: "${ALMOST_PERC:=43}"
+: "${HALF_PERC:=50}"
+
+sum() { cat "$@" | awk '{ sum += $0 } END { print sum }'; }
+any_is_charging() {
+    cat /sys/class/power_supply/BAT*/status | grep -q -e Charging -e Full
+}
+any_battery_exists() {
+    batteries=(/sys/class/power_supply/BAT*)
+    (( "${#batteries[@]}" ))
+}
+
+if ! any_battery_exists || any_is_charging; then
+    exit 0
+fi
+
+full=$(sum /sys/class/power_supply/BAT*/{charge,energy}_full)
+now=$(sum /sys/class/power_supply/BAT*/{charge,energy}_now)
+perc=$(( now * 100 / full ))
+
+if (( perc <= SLEEP_PERC )); then
+    notify-send -u critical 'SEND TO SLEEP. CRITICAL'
+    sleep 5
+    sudo sh -c 'printf mem > /sys/power/state'
+elif (( perc <= WARN_PERC )); then
+    notify-send -u critical 'Reaching CRITICAL battery threshold'
+elif (( perc <= UNSAFE_PERC )); then
+    notify-send -u critical 'Reached UNSAFE battery threshold!'
+elif (( perc <= SAFE_PERC )); then
+    notify-send -u normal 'Reached SAFE battery threshold'
+elif (( perc <= HALF_PERC )); then
+    #notify-send -u low 'Reached HALF battery threshold'
+    notify-send -u low "$perc"
+else
+    :
+fi
