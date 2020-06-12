@@ -1,4 +1,2 @@
 #!/bin/bash
 sudo netctl start abyss5
-sleep 5
-sudo systemctl start cloudflared.service
