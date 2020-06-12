@@ -30,6 +30,8 @@ nnoremap <Leader>n :bn<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>/ :!date && mpc<CR>
 
+let g:netrw_banner = 0
+
 " markdown file linewidth rule
 augroup filetype_settings
   " Clear this autocmd group so that the settings won't get loaded over and
