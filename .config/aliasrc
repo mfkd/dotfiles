@@ -41,7 +41,6 @@ pfzf() {
                       cat {}) 2> /dev/null | head -500'
 }
 
-
 export MANPATH=/usr/share/man
 man-find() {
     f=$(fd . $MANPATH/man${1:-1} -t f -x echo {/.} | fzf) && man $f
@@ -93,21 +92,6 @@ dlpac () {
     cd "$@"
 }
 
-cd () {
-    if [ $# -eq 1 ] && [ -f "$1" ] ; then
-        path=$(dirname "$1")
-        [ ! -e "$path" ] && return 1
-        printf '\e[32m%-6s\n\e[m' "$1 -> $path"
-        builtin cd "$path"
-    else
-        builtin cd "$@"
-    fi
-}
-
-c () { [ $# -eq 1 ] && [ -f "$1" ] && ccat --force "$1" || builtin cd "$1" ; }
-
-mkcd() { mkdir -p "$1" && builtin cd "$1" ; }
-
 mp () {
     if ! pgrep -x mpd > /dev/null
     then
@@ -156,8 +140,4 @@ unzipown() {
             unzip "$i" -d "${i%%.zip}"
         done
     fi
-}
-
-transfer() {
-    curl --upload-file "$1" "https://transfer.sh/$1"
 }
