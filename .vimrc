@@ -138,7 +138,6 @@ let s:plugins = exists('*minpac#init')
 if !s:plugins "{{{
   fun! InstallPlug() " Bootstrap plugin manager on new systems.
     exe '!git clone https://github.com/k-takata/minpac.git ~/.vim/pack/minpac/opt/minpac'
-    " call minpac#update()
   endfun
 else
 call minpac#init({'verbose': 3})
@@ -151,8 +150,6 @@ call minpac#add('tpope/vim-surround')
 call minpac#add('tpope/vim-endwise')
 call minpac#add('tpope/vim-fugitive')
 call minpac#add('gruvbox-community/gruvbox')
-
-"call minpac#add('neoclide/coc.nvim', { 'rev': '*', 'do': { -> pack#coc_install() } })
 call minpac#add('fatih/vim-go')
 
 " minpac utility commands
