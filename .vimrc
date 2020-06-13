@@ -14,21 +14,12 @@ let mapleader = ","
 nmap <SPACE> ,
 
 noremap <C-q> :confirm qall<CR>
-nnoremap <leader>x :!chmod +x %:p<CR>
 nnoremap <leader>s :!%:p
 nnoremap <leader>S :!%:p<CR>
-nnoremap <leader>R :!/home/eets/.cargo/bin/rustlings watch<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>f :FZF<CR>
-nnoremap <leader>; @:
-nnoremap <leader>m :!make<CR>
-nnoremap <leader>g :!go run %:p<CR>
-nnoremap <leader>t :!go test<CR>
 nnoremap <leader>r :Rg<CR>
-nnoremap <Leader>p :bp<CR>
-nnoremap <Leader>n :bn<CR>
 nnoremap <Leader>w :w<CR>
-nnoremap <Leader>/ :!date && mpc<CR>
 
 let g:netrw_banner = 0
 
