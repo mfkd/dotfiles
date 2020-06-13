@@ -56,7 +56,6 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias zpac="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
-alias za="zathura --fork"
 alias llfs='_f(){ find . -type f -size "$1" -exec ls --color --classify --human-readable -l {} \; ; }; _f'
 alias ls="ls -hN --color=auto --group-directories-first"
 alias la='ls -A'
@@ -67,12 +66,10 @@ alias grep="grep --color=auto"
 alias diff='diff --color=auto'
 alias xc='xclip -selection clipboard'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias ma='clear; mpv --no-video'
 alias vol='amixer -M get Master'
 alias tsm='transmission-remote'
 alias yt="youtube-dl --verbose --add-metadata -i -o '%(upload_date)s-%(uploader)s_%(title)s.%(ext)s'"
 alias yta="yt -x -f bestaudio/best"
-alias b="bat"
 alias d="docker"
 alias k="kubectl"
 
