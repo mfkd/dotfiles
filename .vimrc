@@ -114,7 +114,7 @@ set cursorline
 set pastetoggle=<F2>
 set shortmess=I
 set backspace=indent,eol,start
-set scrolloff=15 "defaults.vim is 5
+set scrolloff=10
 set hlsearch
 set ttimeout		" time out for key codes
 set ttimeoutlen=100	" wait up to 100ms after Esc for special key
