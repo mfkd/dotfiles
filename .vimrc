@@ -9,8 +9,6 @@ set bg=dark
 
 let mapleader = ","
 
-"map <SPACE> <Nop>
-"let mapleader = " "
 nmap <SPACE> ,
 
 noremap <C-q> :confirm qall<CR>
@@ -156,7 +154,6 @@ call minpac#add('gruvbox-community/gruvbox')
 
 "call minpac#add('neoclide/coc.nvim', { 'rev': '*', 'do': { -> pack#coc_install() } })
 call minpac#add('fatih/vim-go')
-"let g:fzf_command_prefix = 'Fz'
 
 " minpac utility commands
 command! PackUpdate call minpac#update()
