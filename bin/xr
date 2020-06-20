@@ -16,4 +16,12 @@ done < <(
         '$1 != main && $2 == "connected" { print $1 }'
 )
 
-xrandr --auto --output HDMI-1 --primary --mode 3840x2160
+case $1 in
+    auto)
+        xrandr --auto
+    ;;
+    *)
+        printf 'Unknown profile: %s\n' "$1"
+        exit 1
+    ;;
+esac
