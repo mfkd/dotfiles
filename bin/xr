@@ -25,6 +25,10 @@ case $1 in
     auto)
         xrandr --auto
     ;;
+    external)
+        xrandr --output "$main_display" --off
+        xrandr --output "${external_displays[0]}" --primary --auto
+    ;;
     *)
         printf 'Unknown profile: %s\n' "$1"
         exit 1
