@@ -29,6 +29,12 @@ case $1 in
         xrandr --output "$main_display" --off
         xrandr --output "${external_displays[0]}" --primary --auto
     ;;
+    x1)
+        for display in "${external_displays[@]}"; do
+            xrandr --output "$display" --off
+        done
+        xrandr --output "$main_display" --primary --auto
+    ;;
     *)
         printf 'Unknown profile: %s\n' "$1"
         exit 1
