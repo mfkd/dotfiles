@@ -5,4 +5,15 @@ if ! [[ $1 ]]; then
     exit 1
 fi
 
+main_display=eDP-1  # backup
+
+external_displays=()
+
+while read -r display; do
+    external_displays+=( "$display" )
+done < <(
+    xrandr | awk -v main="$main_display" \
+        '$1 != main && $2 == "connected" { print $1 }'
+)
+
 xrandr --auto --output HDMI-1 --primary --mode 3840x2160
