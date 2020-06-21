@@ -18,6 +18,7 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>f :FZF<CR>
 nnoremap <leader>r :Rg<CR>
 nnoremap <Leader>w :w<CR>
+nnoremap <C-p> :Files<CR>
 
 let g:netrw_banner = 0
 
