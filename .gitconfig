@@ -1,0 +1,8 @@
+[user]
+	email = mfkd@protonmail.com
+	name = mfkd
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
