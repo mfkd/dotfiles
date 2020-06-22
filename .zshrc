@@ -32,9 +32,6 @@ vcs_info_wrapper() {
 export PS1='%F{red}%(?..%? )%f%40<...<%~%<< $(vcs_info_wrapper)%F{blue}%%%f '
 #export PS1='%F{red}%(?..%? )%f%40<...<%~%<< $(vcs_info_wrapper)%F{cyan}%%%f '
 
-#colors / completion
-zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
-
 #history
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=50000
@@ -116,6 +113,9 @@ bindkey '^xe' edit-command-line
 if [[ "${terminfo[kcbt]}" != "" ]]; then
   bindkey "${terminfo[kcbt]}" reverse-menu-complete   # [Shift-Tab] - move through the completion menu backwards
 fi
+
+#colors / completion
+zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
 
 if [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
     . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
