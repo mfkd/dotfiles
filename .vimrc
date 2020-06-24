@@ -119,6 +119,8 @@ set scrolloff=10
 set hlsearch
 set ttimeout		" time out for key codes
 set ttimeoutlen=100	" wait up to 100ms after Esc for special key
+set textwidth=79
+set colorcolumn=+1
 
 " Quickly move around (and into) command mode
 imap jk <Esc>
