@@ -1,9 +1,4 @@
-#             _
-#     _______| |__  _ __ ___
-#    |_  / __| '_ \| '__/ __|
-#     / /\__ \ | | | | | (__
-#    /___|___/_| |_|_|  \___|
-#
+#!/bin/zsh
 
 # Emacs mode
 bindkey -e
@@ -29,8 +24,8 @@ vcs_info_wrapper() {
     echo "%{$fg[grey]%}${vcs_info_msg_0_}%{$reset_color%}$del"
   fi
 }
+
 export PS1='%F{red}%(?..%? )%f%40<...<%~%<< $(vcs_info_wrapper)%F{blue}%%%f '
-#export PS1='%F{red}%(?..%? )%f%40<...<%~%<< $(vcs_info_wrapper)%F{cyan}%%%f '
 
 #history
 HISTFILE=$HOME/.zsh_history
