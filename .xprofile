@@ -1,5 +1,5 @@
 #!/bin/sh
-setxkbmap -option caps:escape
+setxkbmap -option caps:ctrl_modifier
 command -v unclutter >/dev/null 2>&1 && unclutter &
 #command -v mpd >/dev/null 2>&1 && mpd >/dev/null 2>&1 &
 command -v st >/dev/null 2>&1 && command -v tmux >/dev/null 2>&1 &&
