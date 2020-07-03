@@ -13,6 +13,7 @@ nnoremap <leader>f :FZF<CR>
 nnoremap <leader>r :Rg<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <C-p> :Files<CR>
+nnoremap <C-n> :Rg<CR>
 
 let g:netrw_banner = 0
 
