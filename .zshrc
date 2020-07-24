@@ -90,7 +90,7 @@ stty -ixon
 # .
 # ---------------------------------------------------------------------------------------------------
 
-[ -e /usr/share/fzf ] && . /usr/share/fzf/completion.zsh && . /usr/share/fzf/key-bindings.zsh
+[ -e "$HOME/.config/fzf" ] && . "$HOME/.config/fzf/completion.zsh" && . "$HOME/.config/fzf/key-bindings.zsh"
 
 [ -r "/usr/share/z/z.sh" ] && . /usr/share/z/z.sh 
 
