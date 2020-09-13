@@ -12,6 +12,7 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>f :FZF<CR>
 nnoremap <leader>r :Rg<CR>
 nnoremap <Leader>w :w<CR>
+nnoremap <Leader>t :!cargo test<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-n> :Rg<CR>
 
