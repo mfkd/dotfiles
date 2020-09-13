@@ -9,6 +9,7 @@ export BROWSER="firefox"
 export READER="zathura"
 export FILE="lf"
 export PAGER="less"
+export FONTCONFIG_PATH=/etc/fonts
 
 # less/man colors
 export LESS=-R
