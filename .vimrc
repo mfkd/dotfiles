@@ -30,6 +30,7 @@ augroup filetype_settings
   autocmd BufNewFile,BufReadPost spec setlocal filetype=yaml
   autocmd FileType make setlocal noexpandtab
   autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
+  autocmd BufNewFile,BufReadPost *.md,README setlocal filetype=markdown
   "autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet
   "--start-dir=" . expand('%:p:h') . "&" | redraw!
 
