@@ -151,6 +151,8 @@ call minpac#add('tpope/vim-endwise')
 call minpac#add('tpope/vim-fugitive')
 call minpac#add('gruvbox-community/gruvbox')
 call minpac#add('fatih/vim-go')
+call minpac#add('rust-lang/rust.vim')
+call minpac#add('dense-analysis/ale')
 
 " minpac utility commands
 command! PackUpdate call minpac#update()
