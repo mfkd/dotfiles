@@ -1,3 +1,23 @@
+" vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'gruvbox-community/gruvbox'
+Plug 'fatih/vim-go'
+Plug 'rust-lang/rust.vim'
+Plug 'dense-analysis/ale'
+
+call plug#end()
+
 colo gruvbox
 set bg=dark
 
@@ -131,32 +151,3 @@ nnoremap <C-l> <C-l>zz
 
 highlight TrailingWhitespace ctermbg=red
 call matchadd('TrailingWhitespace', '\s\+$')
-
-" minpac
-packadd minpac
-let s:plugins = exists('*minpac#init')
-if !s:plugins "{{{
-  fun! InstallPlug() " Bootstrap plugin manager on new systems.
-    exe '!git clone https://github.com/k-takata/minpac.git ~/.vim/pack/minpac/opt/minpac'
-  endfun
-else
-call minpac#init({'verbose': 3})
-" minpac must have {'type': 'opt'} so that it can be loaded with `packadd`.
-call minpac#add('k-takata/minpac', {'type': 'opt'})
-
-" Additional plugins here.
-call minpac#add('junegunn/fzf.vim')
-call minpac#add('tpope/vim-surround')
-call minpac#add('tpope/vim-endwise')
-call minpac#add('tpope/vim-fugitive')
-call minpac#add('gruvbox-community/gruvbox')
-call minpac#add('fatih/vim-go')
-call minpac#add('rust-lang/rust.vim')
-call minpac#add('dense-analysis/ale')
-
-" minpac utility commands
-command! PackUpdate call minpac#update()
-command! PackClean call minpac#clean()
-command! PackStatus call minpac#status()
-
-endif
