@@ -3,10 +3,10 @@
 shopt -s nullglob
 
 : "${SLEEP_PERC:=11}"
-: "${WARN_PERC:=22}"
-: "${UNSAFE_PERC:=32}"
-: "${SAFE_PERC:=41}"
-: "${ALMOST_PERC:=43}"
+: "${WARN_PERC:=15}"
+: "${UNSAFE_PERC:=20}"
+: "${SAFE_PERC:=25}"
+: "${ALMOST_PERC:=32}"
 : "${HALF_PERC:=50}"
 
 sum() { cat "$@" | awk '{ sum += $0 } END { print sum }'; }
