@@ -22,7 +22,6 @@ colo gruvbox
 set bg=dark
 
 let mapleader = ","
-
 nmap <SPACE> ,
 
 noremap <C-q> :confirm qall<CR>
