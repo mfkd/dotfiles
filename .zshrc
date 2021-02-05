@@ -96,7 +96,7 @@ stty -ixon
 
 # ---------------------------------------------------------------------------------------------------
 
-# Edit line in vim 
+# Edit line in vim
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
@@ -113,3 +113,5 @@ zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
 if [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
     . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
+
+eval "$(zoxide init zsh)"
