@@ -61,6 +61,10 @@ augroup filetype_settings
     exe 'autocmd FileType ' . filetype . ' setlocal sw=2 sts=2 ts=2'
   endfor
 
+  for filetype in ['go']
+    exe 'autocmd FileType ' . filetype . ' setlocal textwidth=99'
+  endfor
+
 augroup END
 
 augroup modechange_settings
