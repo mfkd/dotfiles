@@ -5,7 +5,7 @@ export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/.scripts
 export PATH=$PATH:$HOME/bin/
 
-export EDITOR="vim"
+export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="google-chrome-stable"
 export PAGER=less
