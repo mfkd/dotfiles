@@ -9,6 +9,7 @@ export EDITOR="vim"
 export TERMINAL="st"
 export BROWSER="google-chrome-stable"
 export PAGER=less
+export VISUAL=vim
 export READER="zathura"
 export FILE="lf"
 
