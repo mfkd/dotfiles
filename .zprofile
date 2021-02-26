@@ -8,6 +8,7 @@ export PATH=$PATH:$HOME/bin/
 export EDITOR="vim"
 export TERMINAL="st"
 export BROWSER="google-chrome-stable"
+export PAGER=less
 export READER="zathura"
 export FILE="lf"
 
