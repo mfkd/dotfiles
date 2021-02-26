@@ -7,7 +7,7 @@ export PATH=$PATH:$HOME/bin/
 
 export EDITOR="vim"
 export TERMINAL="st"
-export BROWSER="firefox"
+export BROWSER="google-chrome-stable"
 export READER="zathura"
 export FILE="lf"
 
