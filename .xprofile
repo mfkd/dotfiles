@@ -12,6 +12,7 @@ systemctl --user import-environment "${to_export[@]}"
 
 services_to_start=(
     battery-monitor.timer
+    clipmenud
 )
 
 for service in "${services_to_start[@]}"; do
