@@ -7,7 +7,7 @@ shopt -s nullglob
 : "${UNSAFE_PERC:=20}"
 : "${SAFE_PERC:=25}"
 : "${ALMOST_PERC:=32}"
-: "${HALF_PERC:=50}"
+: "${BELLOW_HALF_PERC:=40}"
 
 sum() { cat "$@" | awk '{ sum += $0 } END { print sum }'; }
 any_is_charging() {
@@ -36,7 +36,7 @@ elif (( perc <= UNSAFE_PERC )); then
     notify-send -u critical 'Reached UNSAFE battery threshold!'
 elif (( perc <= SAFE_PERC )); then
     notify-send -u normal 'Reached SAFE battery threshold'
-elif (( perc <= HALF_PERC )); then
+elif (( perc <= BELLOW_HALF_PERC )); then
     #notify-send -u low 'Reached HALF battery threshold'
     notify-send -u low "$perc"
 else
