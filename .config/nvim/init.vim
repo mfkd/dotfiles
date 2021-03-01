@@ -17,6 +17,7 @@ Plug 'dense-analysis/ale'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
 call plug#end()
 
@@ -124,6 +125,8 @@ set spell
 
 " centre cursor on screen
 nnoremap <C-l> <C-l>zz
+
+lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 
 highlight TrailingWhitespace ctermbg=red
 call matchadd('TrailingWhitespace', '\s\+$')
