@@ -18,6 +18,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
 
 call plug#end()
 
@@ -131,4 +132,23 @@ lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 highlight TrailingWhitespace ctermbg=red
 call matchadd('TrailingWhitespace', '\s\+$')
 
-lua require'lspconfig'.gopls.setup{}
+lua require'lspconfig'.gopls.setup{on_attach=require'completion'.on_attach}
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+" Avoid showing message extra message when using completion
+set shortmess+=c
+
+nnoremap <leader>vd :lua vim.lsp.buf.definition()<CR>
+nnoremap <leader>vi :lua vim.lsp.buf.implementation()<CR>
+nnoremap <leader>vsh :lua vim.lsp.buf.signature_help()<CR>
+nnoremap <leader>vrr :lua vim.lsp.buf.references()<CR>
+nnoremap <leader>vrn :lua vim.lsp.buf.rename()<CR>
+nnoremap <leader>vh :lua vim.lsp.buf.hover()<CR>
+nnoremap <leader>vca :lua vim.lsp.buf.code_action()<CR>
+nnoremap <leader>vsd :lua vim.lsp.util.show_line_diagnostics(); vim.lsp.util.show_line_diagnostics()<CR>
+nnoremap <leader>vn :lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <leader>vll :lua vim.lsp.diagnostic.set_loclist()<CR>
