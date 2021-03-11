@@ -11,14 +11,13 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'gruvbox-community/gruvbox'
-Plug 'fatih/vim-go'
 Plug 'rust-lang/rust.vim'
-Plug 'dense-analysis/ale'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'neovim/nvim-lspconfig'
 
 call plug#end()
 
@@ -131,3 +130,5 @@ lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 
 highlight TrailingWhitespace ctermbg=red
 call matchadd('TrailingWhitespace', '\s\+$')
+
+lua require'lspconfig'.gopls.setup{}
