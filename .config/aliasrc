@@ -66,6 +66,7 @@ alias yta="yt -x -f bestaudio/best"
 alias d="docker"
 alias k="kubectl"
 alias vim="nvim"
+alias check="checkupdates && yay -Qua"
 
 # GIT
 alias g='git'
