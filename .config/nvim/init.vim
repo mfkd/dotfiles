@@ -85,10 +85,7 @@ augroup modechange_settings
   autocmd InsertLeave * setlocal nopaste
 
   " Jump to last position in file
-  autocmd BufReadPost *
-    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-    \ |   exe "normal! g`\""
-    \ | endif
+  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
   " Balance splits on window resize
   autocmd VimResized * wincmd =
