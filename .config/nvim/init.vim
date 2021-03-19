@@ -118,11 +118,6 @@ set colorcolumn=+1
 set spell
 set synmaxcol=1000
 
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
-set undodir=~/.vim/undo//
-set undofile
-
 " centre cursor on screen
 nnoremap <C-l> <C-l>zz
 
