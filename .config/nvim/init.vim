@@ -53,7 +53,6 @@ augroup filetype_settings
   "au BufRead,BufNewFile *.tex setlocal spell spelllang=en_us complete+=kspell
   autocmd BufNewFile,BufReadPost aliasrc,ctl* setlocal filetype=sh
   autocmd BufNewFile,BufReadPost spec setlocal filetype=yaml
-  autocmd FileType make setlocal noexpandtab
   autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
   autocmd BufNewFile,BufReadPost *.md,README setlocal filetype=markdown
   "autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet
@@ -97,14 +96,8 @@ augroup END
 filetype plugin indent on
 syntax on
 
-set display=truncate
-set showcmd		" display incomplete commands
-set wildmenu		" display completion matches in a status line
-set history=200		" keep 200 lines of command line history
-set clipboard=unnamed
-set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+set shiftwidth=4
 set undofile
-set splitright
 set number
 set autoindent
 set relativenumber
@@ -112,18 +105,22 @@ set incsearch
 set ignorecase
 set linebreak
 set smartcase
+set nowrap
 set cursorcolumn
 set cursorline
-set pastetoggle=<F2>
 set shortmess=I
 set backspace=indent,eol,start
 set scrolloff=10
 set hlsearch
-set ttimeout		" time out for key codes
-set ttimeoutlen=100	" wait up to 100ms after Esc for special key
 set textwidth=79
 set colorcolumn=+1
 set spell
+set synmaxcol=1000
+
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+set undofile
 
 " centre cursor on screen
 nnoremap <C-l> <C-l>zz
