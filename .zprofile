@@ -2,16 +2,14 @@
 export GOPATH=$HOME/go
 export PATH=$PATH:$(go env GOPATH)/bin
 export PATH=$PATH:$HOME/.cargo/bin
-export PATH=$PATH:$HOME/.scripts
 export PATH=$PATH:$HOME/bin/
 
 export EDITOR="nvim"
-export TERMINAL="st"
+export VISUAL="nvim"
+export TERMINAL="alacritty"
 export BROWSER="google-chrome-stable"
-export PAGER=less
-export VISUAL=vim
-export READER="zathura"
-export FILE="lf"
+export PAGER="less"
+export READER="mupdf"
 
 export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src/
 
@@ -43,13 +41,3 @@ export EXA_COLORS="da=38;5;252:sb=38;5;204:sn=38;5;43:\
 uu=38;5;245:un=38;5;241:ur=38;5;223:uw=38;5;223:ux=38;5;223:ue=38;5;223:\
 gr=38;5;153:gw=38;5;153:gx=38;5;153:tr=38;5;175:tw=38;5;175:tx=38;5;175:\
 gm=38;5;203:ga=38;5;111:xa=38;5;239:*.ts=00"
-#mpd >/dev/null 2>&1 &
-#[ ! -f ~/.config/shortcutrc ] && shortcuts >/dev/null 2>&1
-
-#echo "$0" | grep "bash$" >/dev/null && [ -f ~/.bashrc ] && source "$HOME/.bashrc"
-
-# Start graphical server if i3 not already running.
-#[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx
-
-# Switch escape and caps if tty:
-#sudo -n loadkeys ~/.local/bin/ttymaps.kmap 2>/dev/null
