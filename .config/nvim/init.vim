@@ -56,25 +56,15 @@ nnoremap <leader>vll :lua vim.lsp.diagnostic.set_loclist()<CR>
 
 let g:netrw_banner = 0
 
-" markdown file linewidth rule
 augroup filetype_settings
   " Clear this autocmd group so that the settings won't get loaded over and
   " over again
   autocmd!
 
-  au BufRead,BufNewFile *.md setlocal textwidth=80 spell spelllang=en_us complete+=kspell
-  "au BufRead,BufNewFile *.tex setlocal spell spelllang=en_us complete+=kspell
   autocmd BufNewFile,BufReadPost aliasrc,ctl* setlocal filetype=sh
   autocmd BufNewFile,BufReadPost spec setlocal filetype=yaml
-  autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
   autocmd BufNewFile,BufReadPost *.md,README setlocal filetype=markdown
   autocmd BufRead,BufNewFile ~/.local/share/nota/* setlocal filetype=markdown
-  "autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet
-  "--start-dir=" . expand('%:p:h') . "&" | redraw!
-
-  for filetype in ['tex', 'plaintex', 'mail']
-    exe 'autocmd FileType ' . filetype . ' setlocal spell'
-  endfo
 
   for filetype in ['yaml', 'sql', 'ruby', 'html', 'css', 'xml', 'php', 'vim']
     exe 'autocmd FileType ' . filetype . ' setlocal sw=2 sts=2 ts=2'
