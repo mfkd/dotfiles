@@ -71,7 +71,7 @@ augroup filetype_settings
   endfor
 
   for filetype in ['go']
-    exe 'autocmd FileType ' . filetype . ' setlocal textwidth=99'
+    exe 'autocmd FileType ' . filetype . ' setlocal textwidth=99 shiftwidth=8'
   endfor
 
 augroup END
