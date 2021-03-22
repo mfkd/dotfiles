@@ -25,7 +25,7 @@ case $1 in
     auto)
         xrandr --auto
     ;;
-    external)
+    lg)
         xrandr --output "$main_display" --off
         xrandr --output "${external_displays[0]}" --primary --auto
     ;;
