@@ -10,6 +10,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'gruvbox-community/gruvbox'
 Plug 'rust-lang/rust.vim'
 Plug 'nvim-lua/popup.nvim'
