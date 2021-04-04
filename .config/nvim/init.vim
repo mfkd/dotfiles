@@ -131,6 +131,7 @@ call matchadd('TrailingWhitespace', '\s\+$')
 lua require('telescope').load_extension('fzy_native')
 
 lua require'lspconfig'.gopls.setup{on_attach=require'completion'.on_attach}
+lua require'lspconfig'.rust_analyzer.setup({})
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
