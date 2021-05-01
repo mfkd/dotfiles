@@ -1,3 +1,0 @@
-#!/bin/bash
-sudo netctl stop-all
-sudo systemctl stop cloudflared.service
