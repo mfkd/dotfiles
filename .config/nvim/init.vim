@@ -1,10 +1,3 @@
-" vim-plug
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-surround'
@@ -21,8 +14,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend upda
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'sbdchd/neoformat'
-"Plug 'chrisbra/csv.vim'
-"Plug 'ledger/vim-ledger'
+Plug 'chrisbra/csv.vim'
+Plug 'ledger/vim-ledger'
 
 call plug#end()
 
