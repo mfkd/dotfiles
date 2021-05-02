@@ -16,6 +16,7 @@ Plug 'hrsh7th/nvim-compe'
 Plug 'sbdchd/neoformat'
 Plug 'chrisbra/csv.vim'
 Plug 'ledger/vim-ledger'
+Plug 'ntpeters/vim-better-whitespace'
 
 call plug#end()
 
@@ -120,9 +121,6 @@ set synmaxcol=1000
 nnoremap <C-l> <C-l>zz
 
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
-
-highlight TrailingWhitespace ctermbg=red
-call matchadd('TrailingWhitespace', '\s\+$')
 
 lua require('telescope').load_extension('fzy_native')
 
