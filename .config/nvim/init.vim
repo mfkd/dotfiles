@@ -17,6 +17,7 @@ Plug 'sbdchd/neoformat'
 Plug 'chrisbra/csv.vim'
 Plug 'ledger/vim-ledger'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'glepnir/lspsaga.nvim'
 
 call plug#end()
 
