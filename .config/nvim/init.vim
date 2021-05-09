@@ -111,7 +111,7 @@ set cursorcolumn
 set cursorline
 set shortmess=I
 set backspace=indent,eol,start
-set scrolloff=10
+set scrolloff=15
 set hlsearch
 set textwidth=79
 set colorcolumn=+1
