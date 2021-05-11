@@ -65,12 +65,10 @@ alias yt="youtube-dl --verbose --add-metadata -i -o '%(upload_date)s-%(uploader)
 alias yta="yt -x -f bestaudio/best"
 alias d="docker"
 alias k="kubectl"
+alias g='git'
 alias vim="nvim"
 alias check="checkupdates && paru -Qua"
 alias btm="\btm --color gruvbox -b"
-
-# GIT
-alias g='git'
 
 # ---------------------------------------------------------------------------------------------------
 #  FUNCTIONS
