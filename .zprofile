@@ -6,10 +6,11 @@ export PATH=$PATH:$HOME/bin/
 
 export EDITOR="nvim"
 export VISUAL="nvim"
-export TERMINAL="alacritty"
+export TERMINAL="kitty"
 export BROWSER="google-chrome-stable"
 export PAGER="less"
 export READER="mupdf"
+export TERM="xterm-kitty"
 
 export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src/
 
