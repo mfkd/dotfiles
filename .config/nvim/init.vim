@@ -73,6 +73,10 @@ augroup filetype_settings
     exe 'autocmd FileType ' . filetype . ' setlocal textwidth=99 shiftwidth=8'
   endfor
 
+  for filetype in ['rs']
+    exe 'autocmd FileType ' . filetype . ' setlocal textwidth=99 shiftwidth=4 tabstop=4 expandtab'
+  endfor
+
 augroup END
 
 augroup modechange_settings
