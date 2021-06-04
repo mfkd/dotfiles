@@ -15,8 +15,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend upda
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'sbdchd/neoformat'
-Plug 'chrisbra/csv.vim'
-Plug 'ledger/vim-ledger'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'glepnir/lspsaga.nvim'
 
