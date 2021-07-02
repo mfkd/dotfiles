@@ -76,6 +76,9 @@ augroup filetype_settings
     exe 'autocmd FileType ' . filetype . ' setlocal textwidth=99 shiftwidth=4 tabstop=4 expandtab'
   endfor
 
+	" Don't restore last file position for git buffers
+	autocmd BufWinEnter */.git/* normal! gg0
+
 augroup END
 
 augroup modechange_settings
