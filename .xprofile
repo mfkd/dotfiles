@@ -11,7 +11,6 @@ services_to_start=(
     #battery-monitor.timer
     clipmenud
     redshift-auto
-    picom
 )
 
 for service in "${services_to_start[@]}"; do
