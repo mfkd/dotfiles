@@ -1,5 +1,4 @@
 #!/bin/sh
-setxkbmap -option caps:ctrl_modifier
 command -v unclutter >/dev/null 2>&1 && unclutter &
 xrdb -merge ~/.Xresources
 
