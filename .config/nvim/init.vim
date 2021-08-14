@@ -28,6 +28,7 @@ nmap <SPACE> ,
 
 noremap <C-q> :confirm qall<CR>
 nnoremap <Leader>w :w<CR>
+nnoremap <Leader>s :set spell!<CR>
 
 nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <C-n> <cmd>Telescope live_grep<cr>
@@ -121,7 +122,7 @@ set scrolloff=15
 set hlsearch
 set textwidth=79
 set colorcolumn=+1
-set spell
+"set spell
 set synmaxcol=1000
 
 " centre cursor on screen
