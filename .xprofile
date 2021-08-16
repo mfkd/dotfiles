@@ -10,7 +10,6 @@ services_to_start=(
     #battery-monitor.timer
     clipmenud
     redshift-auto
-    wallpaper
 )
 
 for service in "${services_to_start[@]}"; do
