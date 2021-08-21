@@ -63,8 +63,7 @@ augroup filetype_settings
 
   autocmd BufNewFile,BufReadPost aliasrc,ctl* setlocal filetype=sh
   autocmd BufNewFile,BufReadPost spec setlocal filetype=yaml
-  autocmd BufNewFile,BufReadPost *.md,README setlocal filetype=markdown
-  autocmd BufRead,BufNewFile ~/.local/share/nota/* setlocal filetype=markdown
+  autocmd BufNewFile,BufReadPost *.md,README,~/.local/share/nota/* setlocal spell filetype=markdown
 
   for filetype in ['yaml', 'sql', 'ruby', 'html', 'css', 'xml', 'php', 'vim']
     exe 'autocmd FileType ' . filetype . ' setlocal sw=2 sts=2 ts=2'
