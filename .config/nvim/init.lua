@@ -276,48 +276,51 @@ cmp.setup {
   },
 }
 
- vim.api.nvim_command([[
-augroup filetype_settings
-  " Clear this autocmd group so that the settings won't get loaded over and
-  " over again
-  autocmd!
+vim.api.nvim_exec(
+  [[
+	augroup filetype_settings
+	  " Clear this autocmd group so that the settings won't get loaded over and
+	  " over again
+	  autocmd!
 
-  autocmd BufNewFile,BufReadPost aliasrc,ctl* setlocal filetype=sh
-  autocmd BufNewFile,BufReadPost spec setlocal filetype=yaml
-  autocmd BufNewFile,BufReadPost *.md,README,~/.local/share/nota/* setlocal spell filetype=markdown
+	  autocmd BufNewFile,BufReadPost aliasrc,ctl* setlocal filetype=sh
+	  autocmd BufNewFile,BufReadPost spec setlocal filetype=yaml
+	  autocmd BufNewFile,BufReadPost *.md,README,~/.local/share/nota/* setlocal spell filetype=markdown
 
-  for filetype in ['yaml', 'sql', 'ruby', 'html', 'css', 'xml', 'php', 'vim', 'lua']
-    exe 'autocmd FileType ' . filetype . ' setlocal sw=2 sts=2 ts=2'
-  endfor
+	  for filetype in ['yaml', 'sql', 'ruby', 'html', 'css', 'xml', 'php', 'vim', 'lua']
+	    exe 'autocmd FileType ' . filetype . ' setlocal sw=2 sts=2 ts=2'
+	  endfor
 
-  for filetype in ['go']
-    exe 'autocmd FileType ' . filetype . ' setlocal textwidth=99 shiftwidth=8'
-  endfor
+	  for filetype in ['go']
+	    exe 'autocmd FileType ' . filetype . ' setlocal textwidth=99 shiftwidth=8'
+	  endfor
 
-  for filetype in ['rs']
-    exe 'autocmd FileType ' . filetype . ' setlocal textwidth=99 shiftwidth=4 tabstop=4 expandtab'
-  endfor
+	  for filetype in ['rs']
+	    exe 'autocmd FileType ' . filetype . ' setlocal textwidth=99 shiftwidth=4 tabstop=4 expandtab'
+	  endfor
 
-	" Don't restore last file position for git buffers
-	autocmd BufWinEnter */.git/* normal! gg0
+		" Don't restore last file position for git buffers
+		autocmd BufWinEnter */.git/* normal! gg0
 
-augroup END
+	augroup END
 
-augroup modechange_settings
-  autocmd!
+	augroup modechange_settings
+	  autocmd!
 
-  " Clear search context when entering insert mode, which implicitly stops the
-  " highlighting of whatever was searched for with hlsearch on. It should also
-  " not be persisted between sessions.
-  autocmd InsertEnter * let @/ = ''
-  autocmd BufReadPre,FileReadPre * let @/ = ''
+	  " Clear search context when entering insert mode, which implicitly stops the
+	  " highlighting of whatever was searched for with hlsearch on. It should also
+	  " not be persisted between sessions.
+	  autocmd InsertEnter * let @/ = ''
+	  autocmd BufReadPre,FileReadPre * let @/ = ''
 
-  autocmd InsertLeave * setlocal nopaste
+	  autocmd InsertLeave * setlocal nopaste
 
-  " Jump to last position in file
-  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+	  " Jump to last position in file
+	  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-  " Balance splits on window resize
-  autocmd VimResized * wincmd =
-augroup END
-]])
+	  " Balance splits on window resize
+	  autocmd VimResized * wincmd =
+	augroup END
+]],
+  false
+)
