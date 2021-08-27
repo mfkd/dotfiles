@@ -33,7 +33,7 @@ require('packer').startup(function()
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
   --Colorscheme
   use 'gruvbox-community/gruvbox'
-
+  use 'ntpeters/vim-better-whitespace'
 end)
 
 --Quit shortcut
