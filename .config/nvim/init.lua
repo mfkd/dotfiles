@@ -45,6 +45,9 @@ vim.api.nvim_set_keymap('n', '<C-l>', 'zz', { noremap = true, silent = true })
 --Quicksave
 vim.api.nvim_set_keymap('n', '<Leader>w', ':w<CR>', { noremap = true, silent = true })
 
+-- Disable netrw banner
+vim.g.netrw_banner = 0
+
 --Set highlight on search
 vim.o.hlsearch = true
 
