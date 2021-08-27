@@ -41,6 +41,11 @@ vim.o.hlsearch = true
 
 --Make line numbers default
 vim.wo.number = true
+vim.wo.relativenumber = true
+
+--Lines
+vim.o.cursorline = true
+vim.o.cursorcolumn = true
 
 --Do not save when switching buffers (note: this is now a default on master)
 vim.o.hidden = true
