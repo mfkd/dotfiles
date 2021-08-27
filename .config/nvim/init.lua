@@ -36,15 +36,6 @@ require('packer').startup(function()
   use 'ntpeters/vim-better-whitespace'
 end)
 
---Quit shortcut
-vim.api.nvim_set_keymap('', '<C-q>', ':confirm qall<CR>', { noremap = true, silent = true })
-
---Centre cursor on screen
-vim.api.nvim_set_keymap('n', '<C-l>', 'zz', { noremap = true, silent = true })
-
---Quicksave
-vim.api.nvim_set_keymap('n', '<Leader>w', ':w<CR>', { noremap = true, silent = true })
-
 -- Disable netrw banner
 vim.g.netrw_banner = 0
 
@@ -87,6 +78,15 @@ vim.g.maplocalleader = ' '
 -- vim.api.nvim_set_keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
 -- vim.api.nvim_set_keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
 
+--Quit shortcut
+vim.api.nvim_set_keymap('', '<C-q>', ':confirm qall<CR>', { noremap = true, silent = true })
+
+--Centre cursor on screen
+vim.api.nvim_set_keymap('n', '<C-l>', 'zz', { noremap = true, silent = true })
+
+--Quicksave
+vim.api.nvim_set_keymap('n', '<Leader>w', ':w<CR>', { noremap = true, silent = true })
+
 -- Highlight on yank
 vim.api.nvim_exec(
   [[
@@ -119,7 +119,7 @@ require('telescope').setup {
     },
   },
 }
---Add leader shortcuts
+--Add leader shortcuts for telescope
 vim.api.nvim_set_keymap('n', '<leader><space>', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>sf', [[<cmd>lua require('telescope.builtin').find_files({previewer = false})<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>sb', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], { noremap = true, silent = true })
