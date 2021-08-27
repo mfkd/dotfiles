@@ -36,6 +36,9 @@ require('packer').startup(function()
 
 end)
 
+--Centre cursor on screen
+vim.api.nvim_set_keymap('n', '<C-l>', 'zz', { noremap = true, silent = true })
+
 --Set highlight on search
 vim.o.hlsearch = true
 
