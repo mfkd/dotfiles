@@ -42,6 +42,9 @@ vim.api.nvim_set_keymap('', '<C-q>', ':confirm qall<CR>', { noremap = true, sile
 --Centre cursor on screen
 vim.api.nvim_set_keymap('n', '<C-l>', 'zz', { noremap = true, silent = true })
 
+--Quicksave
+vim.api.nvim_set_keymap('n', '<Leader>w', ':w<CR>', { noremap = true, silent = true })
+
 --Set highlight on search
 vim.o.hlsearch = true
 
