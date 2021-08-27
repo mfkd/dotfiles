@@ -36,6 +36,9 @@ require('packer').startup(function()
 
 end)
 
+--Quit shortcut
+vim.api.nvim_set_keymap('', '<C-q>', ':confirm qall<CR>', { noremap = true, silent = true })
+
 --Centre cursor on screen
 vim.api.nvim_set_keymap('n', '<C-l>', 'zz', { noremap = true, silent = true })
 
