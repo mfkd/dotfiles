@@ -48,6 +48,9 @@ vim.api.nvim_set_keymap('n', '<Leader>w', ':w<CR>', { noremap = true, silent = t
 -- Disable netrw banner
 vim.g.netrw_banner = 0
 
+-- Disable intro message
+vim.o.shortmess = 'I'
+
 --Set highlight on search
 vim.o.hlsearch = true
 
