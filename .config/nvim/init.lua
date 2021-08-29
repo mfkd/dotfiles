@@ -58,6 +58,7 @@ vim.wo.relativenumber = true
 --Lines
 vim.o.cursorline = true
 vim.o.cursorcolumn = true
+vim.o.colorcolumn = "+1"
 
 --Do not save when switching buffers (note: this is now a default on master)
 vim.o.hidden = true
