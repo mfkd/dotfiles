@@ -285,7 +285,7 @@ vim.api.nvim_exec(
 
 	  autocmd BufNewFile,BufReadPost aliasrc,ctl* setlocal filetype=sh
 	  autocmd BufNewFile,BufReadPost spec setlocal filetype=yaml
-	  autocmd BufNewFile,BufReadPost *.md,README,~/.local/share/nota/* setlocal spell filetype=markdown
+	  autocmd BufNewFile,BufReadPost *.md,README,~/.local/share/nota/* setlocal filetype=markdown
 
 	  for filetype in ['yaml', 'sql', 'ruby', 'html', 'css', 'xml', 'php', 'vim', 'lua']
 	    exe 'autocmd FileType ' . filetype . ' setlocal sw=2 sts=2 ts=2'
@@ -297,6 +297,10 @@ vim.api.nvim_exec(
 
 	  for filetype in ['rs']
 	    exe 'autocmd FileType ' . filetype . ' setlocal textwidth=99 shiftwidth=4 tabstop=4 expandtab'
+	  endfor
+
+	  for filetype in ['markdown']
+	    exe 'autocmd FileType ' . filetype . ' setlocal spell textwidth=79 shiftwidth=4 tabstop=4 softtabstop=4 expandtab'
 	  endfor
 
 		" Don't restore last file position for git buffers
