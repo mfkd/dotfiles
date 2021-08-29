@@ -48,6 +48,9 @@ vim.o.shortmess = 'I'
 --Set highlight on search
 vim.o.hlsearch = true
 
+--Set scrolloff
+vim.o.scrolloff = 10
+
 --Make line numbers default
 vim.wo.number = true
 vim.wo.relativenumber = true
