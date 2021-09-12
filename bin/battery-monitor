@@ -2,7 +2,7 @@
 
 shopt -s nullglob
 
-: "${SLEEP_PERC:=11}"
+: "${SLEEP_PERC:=5}"
 : "${WARN_PERC:=15}"
 : "${UNSAFE_PERC:=20}"
 : "${SAFE_PERC:=25}"
