@@ -7,7 +7,6 @@ to_export=(DISPLAY)
 systemctl --user import-environment "${to_export[@]}"
 
 services_to_start=(
-    battery-monitor.timer
     clipmenud
     redshift-auto
 )
