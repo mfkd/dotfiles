@@ -1,5 +1,4 @@
 #!/bin/sh
-command -v unclutter >/dev/null 2>&1 && unclutter &
 xrdb -merge ~/.Xresources
 
 to_export=(DISPLAY)
