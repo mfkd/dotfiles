@@ -94,6 +94,9 @@ vim.api.nvim_set_keymap('n', '<C-l>', 'zz', { noremap = true, silent = true })
 --Quicksave
 vim.api.nvim_set_keymap('n', '<Leader>w', ':w<CR>', { noremap = true, silent = true })
 
+--Toggle spell check
+vim.api.nvim_set_keymap('n', '<Leader>p', ':set spell!<CR>', { noremap = true, silent = true })
+
 -- Highlight on yank
 vim.api.nvim_exec(
   [[
