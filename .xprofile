@@ -8,6 +8,7 @@ systemctl --user import-environment "${to_export[@]}"
 services_to_start=(
     clipmenud
     redshift-auto
+    psi-notify
 )
 
 for service in "${services_to_start[@]}"; do
