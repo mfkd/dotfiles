@@ -9,8 +9,11 @@ services_to_start=(
     clipmenud
     redshift-auto
     psi-notify
+    battery-monitor.timer
 )
 
 for service in "${services_to_start[@]}"; do
     systemctl --user start "$service"
 done
+
+xrandr --dpi 163
