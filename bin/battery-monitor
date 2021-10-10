@@ -3,11 +3,7 @@
 shopt -s nullglob
 
 : "${SLEEP_PERC:=5}"
-: "${WARN_PERC:=15}"
-: "${UNSAFE_PERC:=20}"
-: "${SAFE_PERC:=25}"
-: "${ALMOST_PERC:=32}"
-: "${BELLOW_HALF_PERC:=40}"
+: "${WARN_PERC:=20}"
 
 sum() { cat "$@" | awk '{ sum += $0 } END { print sum }'; }
 any_is_charging() {
@@ -30,15 +26,8 @@ if (( perc <= SLEEP_PERC )); then
     notify-send -u critical 'SEND TO SLEEP. CRITICAL'
     sleep 5
     sudo sh -c 'printf mem > /sys/power/state'
-elif (( perc <= WARN_PERC )); then
+fi
+
+if (( perc <= WARN_PERC )); then
     notify-send -u critical 'Reaching CRITICAL battery threshold'
-elif (( perc <= UNSAFE_PERC )); then
-    notify-send -u critical 'Reached UNSAFE battery threshold!'
-elif (( perc <= SAFE_PERC )); then
-    notify-send -u normal 'Reached SAFE battery threshold'
-elif (( perc <= BELLOW_HALF_PERC )); then
-    #notify-send -u low 'Reached HALF battery threshold'
-    notify-send -u low "$perc"
-else
-    :
 fi
