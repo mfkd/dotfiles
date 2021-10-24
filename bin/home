@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo netctl start abyss5
+sudo netctl start MagicKittyLand
