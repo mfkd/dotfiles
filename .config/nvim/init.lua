@@ -37,6 +37,7 @@ require('packer').startup(function()
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
   --Colorscheme
   use 'gruvbox-community/gruvbox'
+	use "onsails/lspkind-nvim"
 end)
 
 -- Disable netrw banner
@@ -239,6 +240,10 @@ vim.o.completeopt = 'menuone,noselect'
 -- luasnip setup
 local luasnip = require 'luasnip'
 
+-- lspkind setup
+local lspkind = require 'lspkind'
+lspkind.init()
+
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
@@ -280,6 +285,10 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+  },
+
+	formatting = {
+    format = lspkind.cmp_format({with_text = true, maxwidth = 50})
   },
 }
 
