@@ -39,6 +39,9 @@ require('packer').startup(function()
   --Colorscheme
   use 'gruvbox-community/gruvbox'
 	use "onsails/lspkind-nvim"
+
+  --statusline
+  use 'nvim-lualine/lualine.nvim' -- Fancier statusline
 end)
 
 -- Disable netrw banner
@@ -74,6 +77,29 @@ vim.o.smartcase = true
 
 --Set colorscheme (order is important here)
 vim.cmd [[colorscheme gruvbox]]
+
+--Set statusbar
+local gruvbox = require('lualine.themes.gruvbox')
+for _, mode in pairs(gruvbox) do
+  mode.a.gui = nil
+end
+
+require('lualine').setup {
+  options = {
+    icons_enabled = false,
+    theme = gruvbox,
+    component_separators = '|',
+    section_separators = '',
+  },
+  sections = {
+    lualine_a = { 'mode' },
+    lualine_b = { 'filename' },
+    lualine_c = { 'lsp_progress' },
+    lualine_x = { 'filetype' },
+    lualine_y = { 'progress' },
+    lualine_z = { 'location' },
+  },
+}
 
 --Remap space as leader key
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
