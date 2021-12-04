@@ -16,6 +16,7 @@ local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager
   use 'tpope/vim-fugitive' -- Git commands in nvim
+  use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
   use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
   use 'ntpeters/vim-better-whitespace' -- Warn on whitespace
   -- UI to select things (files, grep results, open buffers...)
