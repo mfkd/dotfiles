@@ -58,9 +58,6 @@ vim.o.cursorline = true
 vim.o.cursorcolumn = true
 vim.o.colorcolumn = "+1"
 
---Do not save when switching buffers (note: this is now a default on master)
-vim.o.hidden = true
-
 --Enable break indent
 vim.o.breakindent = true
 
@@ -105,9 +102,6 @@ vim.api.nvim_exec(
 ]],
   false
 )
-
--- Y yank until the end of line  (note: this is now a default on master)
-vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true })
 
 --Map blankline
 vim.g.indent_blankline_char = '┊'
