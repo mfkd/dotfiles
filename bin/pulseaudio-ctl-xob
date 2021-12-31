@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [[ ${1?} != noop ]]; then
+    pulseaudio-ctl "$@"
+fi
+
+read -r vol mute _ < <(pulseaudio-ctl full-status)
+
+extra=''
+[[ $mute == yes ]] && extra=!
+
+printf '%d%s\n' "$vol" "$extra" > "${XDG_RUNTIME_DIR?}"/xobpipe

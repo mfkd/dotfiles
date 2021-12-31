@@ -10,6 +10,7 @@ services_to_start=(
     redshift-auto
     psi-notify
     battery-monitor.timer
+    xob
 )
 
 for service in "${services_to_start[@]}"; do
