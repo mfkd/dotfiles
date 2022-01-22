@@ -327,6 +327,7 @@ cmp.setup {
     format = lspkind.cmp_format({with_text = true, maxwidth = 50})
   },
 }
+-- vim: ts=2 sts=2 sw=2 et
 
 vim.api.nvim_exec(
   [[
