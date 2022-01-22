@@ -16,7 +16,7 @@ local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager
   use 'tpope/vim-fugitive' -- Git commands in nvim
-  use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
+  use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
   use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
   use 'ntpeters/vim-better-whitespace' -- Warn on whitespace
   -- UI to select things (files, grep results, open buffers...)
@@ -105,6 +105,9 @@ require('lualine').setup {
     lualine_z = { 'location' },
   },
 }
+
+--Enable Comment.nvim
+require('Comment').setup()
 
 --Remap space as leader key
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
