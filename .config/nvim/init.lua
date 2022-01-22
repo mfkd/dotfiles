@@ -79,6 +79,9 @@ vim.o.smartcase = true
 --Set colorscheme (order is important here)
 vim.cmd [[colorscheme gruvbox]]
 
+-- Set completeopt to have a better completion experience
+vim.o.completeopt = 'menuone,noselect'
+
 --Set statusbar
 local gruvbox = require('lualine.themes.gruvbox')
 for _, mode in pairs(gruvbox) do
@@ -269,9 +272,6 @@ vim.g.indent_blankline_filetype_exclude = { 'help', 'packer' }
 vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
 vim.g.indent_blankline_char_highlight = 'LineNr'
 vim.g.indent_blankline_show_trailing_blankline_indent = false
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
 
 -- luasnip setup
 local luasnip = require 'luasnip'
