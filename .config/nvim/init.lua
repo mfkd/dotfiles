@@ -21,6 +21,7 @@ require('packer').startup(function()
   use 'ntpeters/vim-better-whitespace' -- Warn on whitespace
   -- UI to select things (files, grep results, open buffers...)
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   -- Highlight, edit, and navigate code using a fast incremental parsing library
   use {
       'nvim-treesitter/nvim-treesitter',
@@ -169,6 +170,10 @@ require('telescope').setup {
     },
   },
 }
+
+-- Enable telescope fzf native
+require('telescope').load_extension 'fzf'
+
 --Add leader shortcuts for telescope
 vim.api.nvim_set_keymap('n', '<leader><space>', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>sf', [[<cmd>lua require('telescope.builtin').find_files({previewer = false})<CR>]], { noremap = true, silent = true })
