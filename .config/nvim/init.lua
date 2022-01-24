@@ -132,15 +132,12 @@ vim.api.nvim_set_keymap('n', '<Leader>w', ':w<CR>', { noremap = true, silent = t
 vim.api.nvim_set_keymap('n', '<Leader>p', ':set spell!<CR>', { noremap = true, silent = true })
 
 -- Highlight on yank
-vim.api.nvim_exec(
-  [[
+vim.cmd [[
   augroup YankHighlight
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
-]],
-  false
-)
+]]
 
 --Map blankline
 vim.g.indent_blankline_char = '┊'
@@ -340,8 +337,7 @@ cmp.setup {
 }
 -- vim: ts=2 sts=2 sw=2 et
 
-vim.api.nvim_exec(
-  [[
+vim.cmd [[
 	augroup filetype_settings
 	  " Clear this autocmd group so that the settings won't get loaded over and
 	  " over again
@@ -389,6 +385,4 @@ vim.api.nvim_exec(
 	  " Balance splits on window resize
 	  autocmd VimResized * wincmd =
 	augroup END
-]],
-  false
-)
+]]
