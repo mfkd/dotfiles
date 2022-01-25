@@ -368,21 +368,23 @@ vim.cmd [[
 
 	augroup END
 
-	augroup modechange_settings
-	  autocmd!
+  augroup modechange_settings
+    autocmd!
 
-	  " Clear search context when entering insert mode, which implicitly stops the
-	  " highlighting of whatever was searched for with hlsearch on. It should also
-	  " not be persisted between sessions.
-	  autocmd InsertEnter * let @/ = ''
-	  autocmd BufReadPre,FileReadPre * let @/ = ''
+    autocmd TermOpen * setlocal nonumber norelativenumber
 
-	  autocmd InsertLeave * setlocal nopaste
+    " Clear search context when entering insert mode, which implicitly stops the
+    " highlighting of whatever was searched for with hlsearch on. It should also
+    " not be persisted between sessions.
+    autocmd InsertEnter * let @/ = ''
+    autocmd BufReadPre,FileReadPre * let @/ = ''
 
-	  " Jump to last position in file
-	  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    autocmd InsertLeave * setlocal nopaste
 
-	  " Balance splits on window resize
-	  autocmd VimResized * wincmd =
-	augroup END
+    " Jump to last position in file
+    autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+    " Balance splits on window resize
+    autocmd VimResized * wincmd =
+  augroup END
 ]]
