@@ -44,6 +44,7 @@ require('packer').startup(function()
 
   --statusline
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
+	use 'arkav/lualine-lsp-progress' -- Integration with progress notifications
 end)
 
 -- Disable netrw banner
@@ -164,6 +165,14 @@ require('telescope').setup {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
       },
+    },
+  },
+  extensions = {
+    fzf = {
+      override_generic_sorter = true, -- override the generic sorter
+      override_file_sorter = true, -- override the file sorter
+      case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
+      -- the default case_mode is "smart_case"
     },
   },
 }
@@ -368,23 +377,23 @@ vim.cmd [[
 
 	augroup END
 
-  augroup modechange_settings
-    autocmd!
+	augroup modechange_settings
+	  autocmd!
 
-    autocmd TermOpen * setlocal nonumber norelativenumber
+		autocmd TermOpen * setlocal nonumber norelativenumber
 
-    " Clear search context when entering insert mode, which implicitly stops the
-    " highlighting of whatever was searched for with hlsearch on. It should also
-    " not be persisted between sessions.
-    autocmd InsertEnter * let @/ = ''
-    autocmd BufReadPre,FileReadPre * let @/ = ''
+	  " Clear search context when entering insert mode, which implicitly stops the
+	  " highlighting of whatever was searched for with hlsearch on. It should also
+	  " not be persisted between sessions.
+	  autocmd InsertEnter * let @/ = ''
+	  autocmd BufReadPre,FileReadPre * let @/ = ''
 
-    autocmd InsertLeave * setlocal nopaste
+	  autocmd InsertLeave * setlocal nopaste
 
-    " Jump to last position in file
-    autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+	  " Jump to last position in file
+	  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-    " Balance splits on window resize
-    autocmd VimResized * wincmd =
-  augroup END
+	  " Balance splits on window resize
+	  autocmd VimResized * wincmd =
+	augroup END
 ]]
