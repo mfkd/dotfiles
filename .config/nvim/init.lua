@@ -27,9 +27,9 @@ require('packer').startup(function()
       'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdate'
   }
-	  -- Add git related info in the signs columns and popups
+    -- Add git related info in the signs columns and popups
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
-	-- Add indentation guides even on blank lines
+  -- Add indentation guides even on blank lines
   use 'lukas-reineke/indent-blankline.nvim'
   -- Additional textobjects for treesitter
   use 'nvim-treesitter/nvim-treesitter-textobjects'
@@ -40,11 +40,11 @@ require('packer').startup(function()
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
   --Colorscheme
   use 'gruvbox-community/gruvbox'
-	use "onsails/lspkind-nvim"
+  use "onsails/lspkind-nvim"
 
   --statusline
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
-	use 'arkav/lualine-lsp-progress' -- Integration with progress notifications
+  use 'arkav/lualine-lsp-progress' -- Integration with progress notifications
 end)
 
 -- Disable netrw banner
@@ -320,7 +320,7 @@ cmp.setup {
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
+        luasnip.expand_or_jump()
       else
         fallback()
       end
@@ -329,7 +329,7 @@ cmp.setup {
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
-				luasnip.jump(-1)
+        luasnip.jump(-1)
       else
         fallback()
       end
@@ -340,60 +340,60 @@ cmp.setup {
     { name = 'luasnip' },
   },
 
-	formatting = {
+  formatting = {
     format = lspkind.cmp_format({with_text = true, maxwidth = 50})
   },
 }
 -- vim: ts=2 sts=2 sw=2 et
 
 vim.cmd [[
-	augroup filetype_settings
-	  " Clear this autocmd group so that the settings won't get loaded over and
-	  " over again
-	  autocmd!
+  augroup filetype_settings
+    " Clear this autocmd group so that the settings won't get loaded over and
+    " over again
+    autocmd!
 
-	  autocmd BufNewFile,BufReadPost aliasrc,ctl* setlocal filetype=sh
-	  autocmd BufNewFile,BufReadPost spec setlocal filetype=yaml
-	  autocmd BufNewFile,BufReadPost *.md,README,~/.local/share/nota/* setlocal filetype=markdown
+    autocmd BufNewFile,BufReadPost aliasrc,ctl* setlocal filetype=sh
+    autocmd BufNewFile,BufReadPost spec setlocal filetype=yaml
+    autocmd BufNewFile,BufReadPost *.md,README,~/.local/share/nota/* setlocal filetype=markdown
 
-	  for filetype in ['yaml', 'sql', 'ruby', 'html', 'css', 'xml', 'php', 'vim', 'lua']
-	    exe 'autocmd FileType ' . filetype . ' setlocal sw=2 sts=2 ts=2'
-	  endfor
+    for filetype in ['yaml', 'sql', 'ruby', 'html', 'css', 'xml', 'php', 'vim', 'lua']
+      exe 'autocmd FileType ' . filetype . ' setlocal sw=2 sts=2 ts=2'
+    endfor
 
-	  for filetype in ['go']
-	    exe 'autocmd FileType ' . filetype . ' setlocal textwidth=99 shiftwidth=8'
-	  endfor
+    for filetype in ['go']
+      exe 'autocmd FileType ' . filetype . ' setlocal textwidth=99 shiftwidth=8'
+    endfor
 
-	  for filetype in ['rs']
-	    exe 'autocmd FileType ' . filetype . ' setlocal textwidth=99 shiftwidth=4 tabstop=4 expandtab'
-	  endfor
+    for filetype in ['rs']
+      exe 'autocmd FileType ' . filetype . ' setlocal textwidth=99 shiftwidth=4 tabstop=4 expandtab'
+    endfor
 
-	  for filetype in ['markdown']
-	    exe 'autocmd FileType ' . filetype . ' setlocal spell textwidth=79 shiftwidth=4 tabstop=4 softtabstop=4 expandtab'
-	  endfor
+    for filetype in ['markdown']
+      exe 'autocmd FileType ' . filetype . ' setlocal spell textwidth=79 shiftwidth=4 tabstop=4 softtabstop=4 expandtab'
+    endfor
 
-		" Don't restore last file position for git buffers
-		autocmd BufWinEnter */.git/* normal! gg0
+    " Don't restore last file position for git buffers
+    autocmd BufWinEnter */.git/* normal! gg0
 
-	augroup END
+  augroup END
 
-	augroup modechange_settings
-	  autocmd!
+  augroup modechange_settings
+    autocmd!
 
-		autocmd TermOpen * setlocal nonumber norelativenumber
+    autocmd TermOpen * setlocal nonumber norelativenumber
 
-	  " Clear search context when entering insert mode, which implicitly stops the
-	  " highlighting of whatever was searched for with hlsearch on. It should also
-	  " not be persisted between sessions.
-	  autocmd InsertEnter * let @/ = ''
-	  autocmd BufReadPre,FileReadPre * let @/ = ''
+    " Clear search context when entering insert mode, which implicitly stops the
+    " highlighting of whatever was searched for with hlsearch on. It should also
+    " not be persisted between sessions.
+    autocmd InsertEnter * let @/ = ''
+    autocmd BufReadPre,FileReadPre * let @/ = ''
 
-	  autocmd InsertLeave * setlocal nopaste
+    autocmd InsertLeave * setlocal nopaste
 
-	  " Jump to last position in file
-	  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    " Jump to last position in file
+    autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-	  " Balance splits on window resize
-	  autocmd VimResized * wincmd =
-	augroup END
+    " Balance splits on window resize
+    autocmd VimResized * wincmd =
+  augroup END
 ]]
