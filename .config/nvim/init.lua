@@ -295,7 +295,7 @@ local luasnip = require 'luasnip'
 
 -- lspkind setup
 local lspkind = require 'lspkind'
-lspkind.init()
+lspkind.init({ mode = "symbol_text" })
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
