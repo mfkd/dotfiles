@@ -68,6 +68,8 @@ alias k="kubectl"
 alias g='git'
 alias vim="nvim"
 alias vi="nvim"
+alias vy="nvim -c 'set filetype=yaml' -"
+alias by="bat -l yaml"
 alias check="checkupdates && paru -Qua"
 alias btm="\btm --color gruvbox -b"
 
