@@ -45,6 +45,9 @@ require('packer').startup(function()
   --statusline
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'arkav/lualine-lsp-progress' -- Integration with progress notifications
+
+  --Language specific
+  use 'darrikonn/vim-gofmt'
 end)
 
 -- Disable netrw banner
