@@ -11,6 +11,11 @@ export BROWSER="google-chrome-stable"
 export PAGER="less"
 export READER="mupdf"
 export TERM="xterm-kitty"
+# Enable nota GPG support
+export GPG=1
+export PGP_EDITOR="nvim"
+GPG_TTY=`tty`
+export GPG_TTY
 
 export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src/
 
