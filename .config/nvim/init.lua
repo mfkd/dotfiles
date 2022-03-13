@@ -47,6 +47,9 @@ require('packer').startup(function(use)
 
   --Language specific
   use 'darrikonn/vim-gofmt'
+
+  --GPG
+  use 'jamessan/vim-gnupg'
 end)
 
 -- Disable netrw banner
