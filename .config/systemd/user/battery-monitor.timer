@@ -1,2 +1,2 @@
 [Timer]
-OnCalendar=*:0/10
+OnCalendar=minutely
