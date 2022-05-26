@@ -2,32 +2,64 @@
 
 shopt -s nullglob
 
+: "${WARN_PERC:=10}"
 : "${SLEEP_PERC:=5}"
-: "${WARN_PERC:=20}"
+: "${XDG_RUNTIME_DIR:=/run/user/"$(id -u)"}"
+: "${CACHE_DIR:="$XDG_RUNTIME_DIR"/battmon}"
 
 sum() { cat "$@" | awk '{ sum += $0 } END { print sum }'; }
 any_is_charging() {
     cat /sys/class/power_supply/BAT*/status | grep -q -e Charging -e Full
 }
+all_are_unknown() {
+    # On ThinkPads, both batteries go to "unknown" when at charging threshold
+    # On more recent kernels, it may go to "Not charging"
+    ! cat /sys/class/power_supply/BAT*/status | grep -q -v -e Unknown -e Not
+}
 any_battery_exists() {
     batteries=(/sys/class/power_supply/BAT*)
     (( "${#batteries[@]}" ))
 }
+write_last() {
+    mkdir -p "$CACHE_DIR"
+    printf '%s' "${1?}" > "$CACHE_DIR/last_global_state"
+}
+read_last() {
+    cat "$CACHE_DIR/last_global_state" 2>/dev/null
+}
+check_and_update_last() {
+    local last
+    local current
 
-if ! any_battery_exists || any_is_charging; then
-    exit 0
+    last=$(read_last)
+    current=${1?}
+
+    [[ $last == "$current" ]] || notify-send "Battery now $current"
+    write_last "$current"
+}
+
+any_battery_exists || exit 0
+
+last=$(read_last)
+
+if any_is_charging; then
+    check_and_update_last charging
+elif all_are_unknown; then
+    check_and_update_last 'at threshold'
+else
+    check_and_update_last discharging
 fi
+
+any_is_charging && exit 0
 
 full=$(sum /sys/class/power_supply/BAT*/{charge,energy}_full)
 now=$(sum /sys/class/power_supply/BAT*/{charge,energy}_now)
 perc=$(( now * 100 / full ))
 
-if (( perc <= SLEEP_PERC )); then
-    notify-send -u critical 'SEND TO SLEEP. CRITICAL'
-    sleep 5
-    sudo sh -c 'printf mem > /sys/power/state'
+if (( perc <= WARN_PERC )); then
+    notify-send -u critical 'Reaching critical battery threshold'
 fi
 
-if (( perc <= WARN_PERC )); then
-    notify-send -u critical 'Reaching CRITICAL battery threshold'
+if (( perc <= SLEEP_PERC )); then
+    lock-sleep
 fi
