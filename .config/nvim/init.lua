@@ -34,8 +34,7 @@ require('packer').startup(function(use)
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
   --Colorscheme
-  -- use 'gruvbox-community/gruvbox'
-  use 'mjlbach/onedark.nvim'
+  use 'sainnhe/gruvbox-material'
   use "onsails/lspkind-nvim"
 
   --statusline
@@ -82,21 +81,21 @@ vim.o.smartcase = true
 
 --Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme onedark]]
+vim.cmd [[colorscheme gruvbox-material]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
 --Set statusbar
-local onedark = require('lualine.themes.onedark')
-for _, mode in pairs(onedark) do
+local gruvbox_material = require('lualine.themes.gruvbox-material')
+for _, mode in pairs(gruvbox_material) do
   mode.a.gui = nil
 end
 
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    theme = onedark,
+    theme = gruvbox_material,
     component_separators = '|',
     section_separators = '',
   },
