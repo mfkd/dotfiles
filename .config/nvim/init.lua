@@ -34,8 +34,7 @@ require('packer').startup(function(use)
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
   --Colorscheme
-  use 'sainnhe/gruvbox-material'
-  use 'navarasu/onedark.nvim'
+  use 'ful1e5/onedark.nvim'
   use "onsails/lspkind-nvim"
 
   --statusline
