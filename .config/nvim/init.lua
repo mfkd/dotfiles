@@ -34,6 +34,7 @@ require('packer').startup(function(use)
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
   --Colorscheme
+  use "projekt0n/github-nvim-theme"
   use 'ful1e5/onedark.nvim'
   use "onsails/lspkind-nvim"
 
@@ -81,21 +82,22 @@ vim.o.smartcase = true
 
 --Set colorscheme
 vim.o.termguicolors = true
-require('onedark').setup()
+--require('onedark').setup()
+require('github-theme').setup()
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
 --Set statusbar
-local onedark = require('lualine.themes.onedark-nvim')
-for _, mode in pairs(onedark) do
+local github = require('lualine.themes.github_dark')
+for _, mode in pairs(github) do
   mode.a.gui = nil
 end
 
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    theme = onedark,
+    theme = github,
     component_separators = '|',
     section_separators = '',
   },
