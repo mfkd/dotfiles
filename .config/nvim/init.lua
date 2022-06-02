@@ -81,7 +81,7 @@ vim.o.smartcase = true
 
 --Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme onedark]]
+require('onedark').setup()
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
