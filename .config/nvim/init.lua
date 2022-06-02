@@ -87,7 +87,7 @@ require('onedark').setup()
 vim.o.completeopt = 'menuone,noselect'
 
 --Set statusbar
-local onedark = require('lualine.themes.onedark')
+local onedark = require('lualine.themes.onedark-nvim')
 for _, mode in pairs(onedark) do
   mode.a.gui = nil
 end
