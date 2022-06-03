@@ -10,8 +10,8 @@
     padding = 8
     horizontal_padding = 8
     frame_width = 3
-    frame_color = "#abb2bf"
-    separator_color = "#abb2bf"
+    frame_color = "#c5c8c6"
+    separator_color = "#c5c8c6"
     sort = yes
     idle_threshold = 120
     font = JetBrainsMono Nerd Font 10
@@ -55,18 +55,18 @@
 
 [urgency_low]
     msg_urgency = low
-    background = "#353b45"
-    foreground = "#545862"
+    background = "#282a2e"
+    foreground = "#969896"
     timeout = 5
 
 [urgency_normal]
     msg_urgency = normal
-    background = "#3e4451"
-    foreground = "#abb2bf"
+    background = "#373b41"
+    foreground = "#c5c8c6"
     timeout = 20
 
 [urgency_critical]
     msg_urgency = critical
-    background = "#e06c75"
-    foreground = "#b6bdca"
+    background = "#CC342B"
+    foreground = "#e0e0e0"
     timeout = 0
