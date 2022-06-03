@@ -83,13 +83,15 @@ vim.o.smartcase = true
 --Set colorscheme
 vim.o.termguicolors = true
 --require('onedark').setup()
-require('github-theme').setup()
+require('github-theme').setup({
+	theme_style = "dark_default",
+})
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
 --Set statusbar
-local github = require('lualine.themes.github_dark')
+local github = require('lualine.themes.github_dark_default')
 for _, mode in pairs(github) do
   mode.a.gui = nil
 end
