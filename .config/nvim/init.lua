@@ -35,7 +35,6 @@ require('packer').startup(function(use)
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
   --Colorscheme
   use "projekt0n/github-nvim-theme"
-  use 'ful1e5/onedark.nvim'
   use "onsails/lspkind-nvim"
 
   --statusline
@@ -82,7 +81,6 @@ vim.o.smartcase = true
 
 --Set colorscheme
 vim.o.termguicolors = true
---require('onedark').setup()
 require('github-theme').setup({
 	theme_style = "dark_default",
 })
