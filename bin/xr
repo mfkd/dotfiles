@@ -5,9 +5,9 @@ if ! [[ $1 ]]; then
     exit 1
 fi
 
-main_display=eDP1  # backup
+main_display=eDP-1  # backup
 
-external_displays=()
+external_displays=(DP-2)
 
 while read -r display; do
     external_displays+=( "$display" )
