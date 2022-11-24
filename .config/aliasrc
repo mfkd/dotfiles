@@ -72,6 +72,8 @@ alias vy="nvim -c 'set filetype=yaml' -"
 alias by="bat -l yaml"
 alias check="checkupdates && paru -Qua"
 alias btm="\btm --color gruvbox -b"
+alias dark='kitty +kitten themes --reload-in=all GitHub\ Dark'
+alias light='kitty +kitten themes --reload-in=all GitHub\ Light'
 
 # ---------------------------------------------------------------------------------------------------
 #  FUNCTIONS
