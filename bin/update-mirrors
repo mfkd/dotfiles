@@ -1,5 +1,0 @@
-#!/bin/bash
-
-sudo reflector "$@" --verbose \
-    -c 'Germany' -c 'United Kingdom' -c 'Netherlands' -c 'United States' -c 'Canada' -c 'Australia' -c 'Ireland' \
-    -a 6 -f 6 --protocol http --sort rate --save /etc/pacman.d/mirrorlist
