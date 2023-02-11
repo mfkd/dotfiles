@@ -1,3 +1,6 @@
+# Homebrew prefix
+HOMEBREW_PREFIX=/opt/homebrew
+
 # PATH
 export PATH=$PATH:$HOME/bin/
 export PATH=$PATH:$(go env GOPATH)/bin
@@ -6,6 +9,9 @@ export PATH=$PATH:$(go env GOPATH)/bin
 export EDITOR="vim"
 export VISUAL="vim"
 export PAGER="less"
+
+# zsh-syntax-highlighting
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/highlighters
 
 # less/man colors
 export LESS=-R

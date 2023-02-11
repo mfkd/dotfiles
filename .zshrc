@@ -94,8 +94,9 @@ fi
 #colors / completion
 zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
 
-if [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
-    . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+HOMEBREW_PREFIX=/opt/homebrew
+if [[ -f ${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+  source ${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
 eval "$(zoxide init zsh)"
