@@ -1,8 +1,11 @@
 [user]
-	email = mattkfd@gmail.com
 	name = mfkd
+	email = mattkfd@gmail.com
 [alias]
-	co = checkout
-	br = branch
-	ci = commit
-	st = status
+        co = checkout
+        br = branch
+        ci = commit
+        st = status
+
+[url "ssh://git@github.com/"]
+        insteadOf = https://github.com/

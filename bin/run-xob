@@ -1,7 +1,0 @@
-#!/bin/sh -e
-
-fifo="${XDG_RUNTIME_DIR?}"/xobpipe
-
-rm -f "$fifo"
-mkfifo -- "$fifo"
-tail -f "$fifo" | xob
