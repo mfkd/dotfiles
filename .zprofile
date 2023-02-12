@@ -3,7 +3,6 @@ HOMEBREW_PREFIX=/opt/homebrew
 
 # PATH
 export PATH=$PATH:$HOME/bin/
-export PATH=$PATH:$(go env GOPATH)/bin
 
 # Tool defaults
 export EDITOR="vim"
