@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# Add go environment information to path
+export PATH=$PATH:$(go env GOPATH)/bin
+
 # Emacs mode
 bindkey -e
 
