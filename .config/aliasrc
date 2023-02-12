@@ -27,6 +27,7 @@ alias .....="cd ../../../.."
 alias ls='exa --group-directories-first'
 alias ll='ls -laF'
 alias la='ls -a'
+alias l='ls -F'
 
 alias d="docker"
 alias k="kubectl"
