@@ -6,18 +6,6 @@ export PATH=$PATH:$(go env GOPATH)/bin
 # Emacs mode
 bindkey -e
 
-# Prompt
-autoload -U promptinit
-promptinit
-
-#setopt prompt_subst
-autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-zstyle ':vcs_info:git:*' formats '%b '
-
-export PS1='%F{red}%(?..%? )%f%40<...<%~%<< %F{blue}${vcs_info_msg_0_}%f%F{cyan}%%%f '
-
 #history
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=50000
@@ -103,3 +91,4 @@ if [[ -f ${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlightin
 fi
 
 eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
