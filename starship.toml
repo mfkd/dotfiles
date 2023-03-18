@@ -1,0 +1,30 @@
+[aws]
+disabled = true
+symbol = "  "
+
+[kubernetes]
+disabled = true
+
+[golang]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[git_branch]
+symbol = " "
+
+[python]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[package]
+symbol = " "
+
+[ruby]
+symbol = " "
+
+[c]
+symbol = " "
