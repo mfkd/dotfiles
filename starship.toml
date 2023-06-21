@@ -3,7 +3,7 @@ disabled = true
 symbol = "  "
 
 [kubernetes]
-disabled = true
+disabled = false
 
 [golang]
 symbol = " "
