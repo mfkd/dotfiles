@@ -1,15 +1,20 @@
+# (Github Light Colorblind) Colors for kitty
+
 [colors]
 background = '#ffffff'
-cursor_bg = '#0969da'
-cursor_border = '#0969da'
+foreground = '#1b1f24'
+
+cursor_bg = '#24292f'
+cursor_border = '#24292f'
 cursor_fg = '#ffffff'
-foreground = '#0E1116'
-selection_bg = '#dbe9f9'
-selection_fg = '#0E1116'
+
+selection_bg = '#bbdfff'
+selection_fg = '#1b1f24'
+
 ansi = [
     '#24292f',
-    '#cf222e',
-    '#116329',
+    '#b35900',
+    '#0550ae',
     '#4d2d00',
     '#0969da',
     '#8250df',
@@ -18,15 +23,11 @@ ansi = [
 ]
 brights = [
     '#57606a',
-    '#a40e26',
-    '#1a7f37',
+    '#8a4600',
+    '#0969da',
     '#633c01',
     '#218bff',
     '#a475f9',
     '#3192aa',
     '#8c959f',
 ]
-
-[colors.indexed]
-16 = '#633c01'
-17 = '#a40e26'

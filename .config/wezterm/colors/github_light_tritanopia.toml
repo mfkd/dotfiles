@@ -1,20 +1,20 @@
-# (Github Light) Colors for kitty
+# (Github Light Tritanopia) Colors for kitty
 
 [colors]
 background = '#ffffff'
-foreground = '#1F2328'
+foreground = '#1b1f24'
 
-cursor_bg = '#1F2328'
-cursor_border = '#1F2328'
+cursor_bg = '#24292f'
+cursor_border = '#24292f'
 cursor_fg = '#ffffff'
 
 selection_bg = '#bbdfff'
-selection_fg = '#1F2328'
+selection_fg = '#1b1f24'
 
 ansi = [
     '#24292f',
     '#cf222e',
-    '#116329',
+    '#0550ae',
     '#4d2d00',
     '#0969da',
     '#8250df',
@@ -24,7 +24,7 @@ ansi = [
 brights = [
     '#57606a',
     '#a40e26',
-    '#1a7f37',
+    '#0969da',
     '#633c01',
     '#218bff',
     '#a475f9',
