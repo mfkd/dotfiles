@@ -10,31 +10,6 @@ if _has fd; then
     export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 fi
 
-unalias z 2> /dev/null
-z() {
-  [ $# -gt 0 ] && _z "$*" && return
-  builtin cd "$(_z -l 2>&1 | fzf --height 40% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"
-}
-
-# fzf mpc
-fmpc() {
-    local song_position
-    song_position=$(mpc -f "%position%) %artist% - %title%" playlist | \
-        fzf-tmux --query="$1" --reverse --select-1 --exit-0 | \
-        sed -n 's/^\([0-9]\+\)).*/\1/p') || return 1
-    [ -n "$song_position" ] && mpc -q play $song_position
-}
-
-pfzf() {
-    fzf --preview '[[ $(file --mime {}) =~ binary ]] &&
-                     echo {} is a binary file ||
-                     (bat --style=numbers --color=always {} ||
-                      highlight -O ansi -l {} ||
-                      coderay {} ||
-                      rougify {} ||
-                      cat {}) 2> /dev/null | head -500'
-}
-
 export MANPATH=/usr/share/man
 man-find() {
     f=$(fd . $MANPATH/man${1:-1} -t f -x echo {/.} | fzf) && man $f
@@ -43,101 +18,32 @@ man-find() {
 # ---------------------------------------------------------------------------------------------------
 #  ALIASES
 # ---------------------------------------------------------------------------------------------------
-alias xc="tr -d '\n' |  xclip -selection clipboard"
+
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias zpac="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
-alias llfs='_f(){ find . -type f -size "$1" -exec ls --color --classify --human-readable -l {} \; ; }; _f'
-alias ls="ls -hN --color=auto --group-directories-first"
-alias la='ls -A'
-alias ll='ls -alF'
-alias lh='ls -hl'
-alias l='ls -CF'
-alias grep="grep --color=auto"
-alias diff='diff --color=auto'
-alias xc='xclip -selection clipboard'
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias vol='amixer -M get Master'
-alias tsm='transmission-remote'
-alias yt="youtube-dl --verbose --add-metadata -i -o '%(upload_date)s-%(uploader)s_%(title)s.%(ext)s'"
-alias yta="yt -x -f bestaudio/best"
+
+if hash exa 2>/dev/null; then
+    alias ls='exa'
+    alias l='exa -l --all --group-directories-first --git'
+    alias ll='exa -l --all --all --group-directories-first --git'
+    alias lt='exa -T --git-ignore --level=2 --group-directories-first'
+    alias llt='exa -lT --git-ignore --level=2 --group-directories-first'
+    alias lT='exa -T --git-ignore --level=4 --group-directories-first'
+else
+    alias l='ls -lah'
+    alias ll='ls -alF'
+    alias la='ls -A'
+fi
+
 alias d="docker"
 alias k="kubectl"
 alias g='git'
-alias vim="nvim"
-alias vi="nvim"
-alias vy="nvim -c 'set filetype=yaml' -"
 alias by="bat -l yaml"
-alias check="checkupdates && paru -Qua"
-alias btm="\btm --color gruvbox -b"
-alias dark='kitty +kitten themes --reload-in=all GitHub\ Dark'
-alias light='kitty +kitten themes --reload-in=all GitHub\ Light'
 
 # ---------------------------------------------------------------------------------------------------
 #  FUNCTIONS
 # ---------------------------------------------------------------------------------------------------
 
-dpac () {
-    pacman -Si $@ | awk -F'[:<=>]' '/^Depends/ {print $2}' | xargs -n1 | sort -u
-}
-
-dlpac () {
-    pacman -Qi $@ | awk -F'[:<=>]' '/^Depends/ {print $2}' | xargs -n1 | sort -u
-}
-
-..cd () {
-    cd ..
-    cd "$@"
-}
-
-mp () {
-    if ! pgrep -x mpd > /dev/null
-    then
-        printf "launching mpd ...\n"
-        mpd
-    fi
-    ncmpcpp -b $HOME/.ncmpcpp/ncmpcpp.bindings
-}
-
-7zp () {
-    7z a -p -mx=9 -mhe -t7z "$1.7z" "$1"
-}
-
 calc() { awk "BEGIN {print $*}"; }
-
-flac2mp3() {
-    for i in *.flac; do ffmpeg -i "$i" -ab 320k "${i%.*}.mp3"; done
-}
-
-setvol() {
-    if [ "$1" -lt "30" ]
-    then
-        amixer -M sset 'Master' $1% #&& pkill -RTMIN+1 i3blocks
-    else
-        echo 'y | n'
-        read uinput
-        if [ "$uinput" == 'y' ] || [ "$input" == '' ]
-        then
-            amixer -M sset 'Master' $1% #&& pkill -RTMIN+1 i3blocks
-        fi
-    fi
-}
-
-vf() { fzf | xargs -r -I % $EDITOR % ;}
-
-unzipown() {
-    if [ $# == 0 ]
-    then
-        for i in *.zip
-        do
-            unzip "$i" -d "${i%%.zip}"
-        done
-    else
-        for i in $@
-        do
-            unzip "$i" -d "${i%%.zip}"
-        done
-    fi
-}

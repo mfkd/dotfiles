@@ -1,19 +1,10 @@
 #!/bin/zsh
 
+# Add go environment information to path
+export PATH=$PATH:$(go env GOPATH)/bin
+
 # Emacs mode
 bindkey -e
-
-# Prompt
-autoload -U promptinit
-promptinit
-
-#setopt prompt_subst
-autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-zstyle ':vcs_info:git:*' formats '%b '
-
-export PS1='%F{red}%(?..%? )%f%40<...<%~%<< %F{blue}${vcs_info_msg_0_}%f%F{cyan}%%%f '
 
 #history
 HISTFILE=$HOME/.zsh_history
@@ -71,15 +62,11 @@ zstyle ':completion:*' matcher-list '' \
   'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
   'r:|?=** m:{a-z\-}={A-Z\_}'
 
-# Disable ctrl-s and ctrl-q.
-stty -ixon
-
 # ---------------------------------------------------------------------------------------------------
 # .
 # ---------------------------------------------------------------------------------------------------
 
 [ -e "$HOME/.config/fzf" ] && . "$HOME/.config/fzf/completion.zsh" && . "$HOME/.config/fzf/key-bindings.zsh"
-
 [ -f "$HOME/.config/aliasrc" ] && . "$HOME/.config/aliasrc"
 
 # ---------------------------------------------------------------------------------------------------
@@ -98,8 +85,10 @@ fi
 #colors / completion
 zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
 
-if [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
-    . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+HOMEBREW_PREFIX=/opt/homebrew
+if [[ -f ${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+  source ${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
 eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
