@@ -1,23 +1,16 @@
+# Homebrew prefix
+HOMEBREW_PREFIX=/opt/homebrew
+
 # PATH
-export GOPATH=$HOME/go
-export PATH=$PATH:$(go env GOPATH)/bin
-export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/bin/
 
-export EDITOR="nvim"
-export VISUAL="nvim"
-export TERMINAL="kitty"
-export BROWSER="google-chrome-stable"
+# Tool defaults
+export EDITOR="vim"
+export VISUAL="vim"
 export PAGER="less"
-export READER="mupdf"
-export TERM="xterm-kitty"
-# Enable nota GPG support
-export GPG=1
-export PGP_EDITOR="nvim"
-GPG_TTY=`tty`
-export GPG_TTY
 
-export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src/
+# zsh-syntax-highlighting
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/highlighters
 
 # less/man colors
 export LESS=-R
@@ -29,21 +22,4 @@ export LESS_TERMCAP_se="$(printf '%b' '[0m')"; a="${a%_}"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"; a="${a%_}"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"; a="${a%_}"
 
-export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:\
-do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:\
-sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:\
-*.exe=38;5;156:*.bat=38;5;156:*.gpg=38;5;200:*.tar=38;5;204:*.tgz=38;5;205:\
-*.tbz2=38;5;205:*.zip=38;5;206:*.7z=38;5;206:*.gz=38;5;205:*.bz2=38;5;205:\
-*.rar=38;5;205:*.rpm=38;5;173:*.deb=38;5;173:*.dmg=38;5;173:*.jpg=38;5;141:\
-*.jpeg=38;5;147:*.png=38;5;147:*.mpg=38;5;151:*.avi=38;5;151:*.mov=38;5;216:\
-*.webm=38;5;215:*.wmv=38;5;216:*.mp4=38;5;217:*.mkv=38;5;216:*.flac=38;5;223:\
-*.mp3=38;5;218:*akefile=38;5;176:*.pdf=38;5;253:*.csv=38;5;255:*.ods=38;5;224:*.odt=38;5;146:\
-*.tex=38;5;225:*.doc=38;5;224:*.xls=38;5;146:*.docx=38;5;224:*.xlsx=38;5;146:\
-*.epub=38;5;152:*.mobi=38;5;105:*.m4b=38;5;222:*.conf=38;5;121:\
-*.md=38;5;224:*EADME=38;5;224:*.markdown=38;5;224:*.ico=38;5;140:*.iso=38;5;205:\
-*.pcap=38;5;37:*.yaml=35;5;178:*.go=94;5;178:*.rs=91;5;178"
-
-export EXA_COLORS="da=38;5;252:sb=38;5;204:sn=38;5;43:\
-uu=38;5;245:un=38;5;241:ur=38;5;223:uw=38;5;223:ux=38;5;223:ue=38;5;223:\
-gr=38;5;153:gw=38;5;153:gx=38;5;153:tr=38;5;175:tw=38;5;175:tx=38;5;175:\
-gm=38;5;203:ga=38;5;111:xa=38;5;239:*.ts=00"
+eval "$(/opt/homebrew/bin/brew shellenv)"
