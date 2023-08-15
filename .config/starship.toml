@@ -57,6 +57,7 @@ symbol = " "
 symbol = " "
 
 [kubernetes]
+symbol = "⎈ "
 disabled = false
 
 [lua]
