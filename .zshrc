@@ -97,3 +97,7 @@ fi
 if hash starship 2>/dev/null; then
   eval "$(starship init zsh)"
 fi
+
+if hash kubectl 2>/dev/null; then
+  source <(kubectl completion zsh)
+fi
