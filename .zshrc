@@ -90,5 +90,10 @@ if [[ -f ${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlightin
   source ${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
-eval "$(zoxide init zsh)"
-eval "$(starship init zsh)"
+if hash zoxide 2>/dev/null; then
+  eval "$(zoxide init zsh)"
+fi
+
+if hash starship 2>/dev/null; then
+  eval "$(starship init zsh)"
+fi
