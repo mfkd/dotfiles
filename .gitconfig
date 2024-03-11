@@ -6,6 +6,7 @@
         br = branch
         ci = commit
         st = status
+	fr = fetch && git rebase
 
 [url "ssh://git@github.com/"]
         insteadOf = https://github.com/
