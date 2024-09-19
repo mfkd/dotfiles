@@ -5,8 +5,8 @@ HOMEBREW_PREFIX=/opt/homebrew
 export PATH=$PATH:$HOME/bin/
 
 # Tool defaults
-export EDITOR="vim"
-export VISUAL="vim"
+export EDITOR="code -w"
+export VISUAL="code -w"
 export PAGER="less"
 
 # zsh-syntax-highlighting
