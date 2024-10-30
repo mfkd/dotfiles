@@ -73,7 +73,8 @@ zstyle ':completion:*' matcher-list '' \
 # .
 # ---------------------------------------------------------------------------------------------------
 
-[ -e "$HOME/.config/fzf" ] && . "$HOME/.config/fzf/completion.zsh" && . "$HOME/.config/fzf/key-bindings.zsh"
+source <(fzf --zsh)
+
 [ -f "$HOME/.config/aliasrc" ] && . "$HOME/.config/aliasrc"
 
 # ---------------------------------------------------------------------------------------------------
