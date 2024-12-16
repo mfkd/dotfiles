@@ -43,5 +43,3 @@ alias d="docker"
 alias k="kubectl"
 alias g='git'
 alias by="bat -l yaml"
-alias dark="kitty +kitten themes --reload-in=all 'Github Dark'"
-alias light="kitty +kitten themes --reload-in=all 'Github light'"
