@@ -11,29 +11,33 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # ------------------------------------------------
-# History Configuration (XDG Base Directory)
+# History Configuration
 # ------------------------------------------------
-HISTFILE=$HOME/.zsh_history
-HISTSIZE=10000000
-SAVEHIST=10000000
+HISTFILE=$HOME/.zsh_history         # File where Zsh saves your command history
+HISTSIZE=10000000                   # Max number of lines kept in memory
+SAVEHIST=10000000                   # Max number of lines saved to $HISTFILE
 
-setopt share_history            # Share history between all sessions
-setopt append_history           # Append history rather than overwrite
-setopt inc_append_history       # Sync history in real-time
-setopt hist_ignore_dups         # Ignore duplicates
-setopt hist_ignore_space        # Ignore commands starting with space
-setopt hist_reduce_blanks       # Remove extra blanks
-setopt hist_expire_dups_first   # Remove older duplicates first
+# Always append history, never overwrite
+setopt APPEND_HISTORY               # Append new commands at shell exit
+setopt INC_APPEND_HISTORY           # Append to history immediately after each command
+setopt SHARE_HISTORY                # Share history across all running Zsh sessions
+
+# Remove duplicates in history
+setopt HIST_IGNORE_DUPS             # Ignore a command if it's the same as previous
+setopt HIST_IGNORE_ALL_DUPS         # Remove all older occurrences if repeated
+setopt HIST_IGNORE_SPACE            # Ignore commands starting with a space
+setopt HIST_REDUCE_BLANKS           # Remove extra blank spaces
+setopt HIST_EXPIRE_DUPS_FIRST       # Expire older duplicates first when trimming
 
 # ------------------------------------------------
 # Zsh Options
 # ------------------------------------------------
-setopt autocd                 # cd automatically if input is a directory
-setopt complete_in_word       # Allow completion in the middle of words
-setopt extendedglob           # Enable extended globbing
-setopt noclobber              # Prevent overwriting files with '>'
-setopt interactivecomments    # Allow comments in interactive shell
-setopt prompt_subst           # Enable prompt substitution
+setopt AUTO_CD                      # cd automatically if command is a directory
+setopt COMPLETE_IN_WORD             # Allow completion in the middle of a word
+setopt EXTENDED_GLOB                # Enable extended globbing (regex-like patterns)
+setopt NO_CLOBBER                   # Prevent overwriting files with '>'
+setopt INTERACTIVE_COMMENTS         # Allow # comments in an interactive shell
+setopt PROMPT_SUBST                 # Enable prompt substitution (dynamic prompts)
 
 # ------------------------------------------------
 # Keybindings
