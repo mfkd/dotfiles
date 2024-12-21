@@ -1,115 +1,108 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+# ~/.zshrc
+# Runs for interactive shells. Place aliases, prompt, completions, etc. here.
+
+# ------------------------------------------
+# Powerlevel10k Instant Prompt (keep on top)
+# ------------------------------------------
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-#!/bin/zsh
+# ------------------------------------------------
+# History Configuration
+# ------------------------------------------------
+HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/history"
+HISTSIZE=50000
+SAVEHIST=50000
 
-# Add go environment information to path
-export PATH=$PATH:$(go env GOPATH)/bin
+setopt share_history            # Share history between all sessions
+setopt append_history           # Append history rather than overwrite
+setopt inc_append_history_share # Sync history in real-time
+setopt hist_ignore_dups         # Ignore duplicates
+setopt hist_ignore_space        # Ignore commands starting with space
+setopt hist_reduce_blanks       # Remove extra blanks
+setopt hist_expire_dups_first   # Remove older duplicates first
 
-# Emacs mode
+# ------------------------------------------------
+# Zsh Options
+# ------------------------------------------------
+setopt autocd                 # cd automatically if input is a directory
+setopt complete_in_word       # Allow completion in the middle of words
+setopt extendedglob           # Enable extended globbing
+setopt noclobber              # Prevent overwriting files with '>'
+setopt interactivecomments    # Allow comments in interactive shell
+setopt prompt_subst           # Enable prompt substitution
+
+# ------------------------------------------------
+# Keybindings
+# ------------------------------------------------
 bindkey -e
 
-#history
-HISTFILE=$HOME/.zsh_history
-HISTSIZE=50000
-SAVEHIST=$HISTSIZE
+# Edit current line in Vim
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
 
-setopt append_history
-setopt hist_ignore_space
+# Reverse menu completion if Shift+Tab is supported
+if [[ -n "${terminfo[kcbt]}" ]]; then
+  bindkey "${terminfo[kcbt]}" reverse-menu-complete
+fi
 
-# options
-set -o autocd
-set -o always_to_end
-set -o append_history
-set -o complete_in_word
-set -o extendedglob
-set -o histappend
-set -o histignorealldups
-set -o histignorespace
-set -o interactivecomments
-set -o ksh_glob
-set -o no_bang_hist
-set -o no_bare_glob_qual
-set -o no_extended_glob
-set -o noclobber
-set -o nullglob
-set -o prompt_subst
-set -o rmstarsilent
-set -o shwordsplit
-#set -o correctall
+# ------------------------------------------------
+# Alias Loading
+# ------------------------------------------------
+[ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
-# completion
+# ------------------------------------------------
+# External Completions (load BEFORE compinit)
+# ------------------------------------------------
+if hash kubectl 2>/dev/null; then
+  source <(kubectl completion zsh)
+fi
+
+# (Add any other external completions here, e.g. helm, gh, etc.)
+
+# ------------------------------------------------
+# Completion System
+# ------------------------------------------------
 autoload -U compinit
-compinit -i
 
-LISTMAX=0
-
-# zsh's git tab completion by default is extremely slow. This makes it use
-# local files only. See http://stackoverflow.com/a/9810485/945780.
-__git_files () {
-    _wanted files expl 'local files' _files
-}
-
-# "git" is a wrapper for git-variable-author, inherit its completions.
-compdef git-variable-author=git
-
-#compdef sshrc=ssh
-
-# Fuzzy matching
-# 0 -- vanilla completion (abc => abc)
-# 1 -- smart case completion (abc => Abc)
-# 2 -- word flex completion (abc => A-big-Car)
-# 3 -- full flex completion (abc => ABraCadabra)
+# Fuzzy matching configuration (MUST be before compinit)
 zstyle ':completion:*' matcher-list '' \
   'm:{a-z\-}={A-Z\_}' \
   'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
   'r:|?=** m:{a-z\-}={A-Z\_}'
 
-# ---------------------------------------------------------------------------------------------------
-# .
-# ---------------------------------------------------------------------------------------------------
+compinit -i
 
-source <(fzf --zsh)
-
-[ -f "$HOME/.config/aliasrc" ] && . "$HOME/.config/aliasrc"
-
-# ---------------------------------------------------------------------------------------------------
-
-# Edit line in vim
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey "^X^E" edit-command-line
-bindkey '^xe' edit-command-line
-
-#keybindings
-if [[ "${terminfo[kcbt]}" != "" ]]; then
-  bindkey "${terminfo[kcbt]}" reverse-menu-complete   # [Shift-Tab] - move through the completion menu backwards
+# ------------------------------------------------
+# Plugins and Tools
+# ------------------------------------------------
+# fzf integration
+if hash fzf 2>/dev/null; then
+  source <(fzf --zsh)
 fi
 
-#colors / completion
-zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
-
-HOMEBREW_PREFIX=/opt/homebrew
-if [[ -f ${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
-  source ${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
-
+# zoxide for directory navigation
 if hash zoxide 2>/dev/null; then
   eval "$(zoxide init zsh)"
 fi
 
-if hash kubectl 2>/dev/null; then
-  source <(kubectl completion zsh)
+# zsh-autosuggestions (AFTER compinit)
+if [[ -f "${HOMEBREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
+  source "${HOMEBREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
 
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+# zsh-syntax-highlighting (AFTER compinit)
+if [[ -f "${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
+  source "${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# ------------------------------------------------
+# Powerlevel10k Configuration
+# ------------------------------------------------
+if [[ -f "${HOMEBREW_PREFIX}/share/powerlevel10k/powerlevel10k.zsh-theme" ]]; then
+  source "${HOMEBREW_PREFIX}/share/powerlevel10k/powerlevel10k.zsh-theme"
+fi
 
-# Enable autosuggestions
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
