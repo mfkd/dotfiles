@@ -4,20 +4,22 @@
 # ------------------------------------------
 # Powerlevel10k Instant Prompt (keep on top)
 # ------------------------------------------
+# Initialization code requiring console input (password prompts, [y/n] prompts, etc.)
+# must go above this block; everything else can go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # ------------------------------------------------
-# History Configuration
+# History Configuration (XDG Base Directory)
 # ------------------------------------------------
-HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/history"
-HISTSIZE=50000
-SAVEHIST=50000
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=10000000
+SAVEHIST=10000000
 
 setopt share_history            # Share history between all sessions
 setopt append_history           # Append history rather than overwrite
-setopt inc_append_history_share # Sync history in real-time
+setopt inc_append_history       # Sync history in real-time
 setopt hist_ignore_dups         # Ignore duplicates
 setopt hist_ignore_space        # Ignore commands starting with space
 setopt hist_reduce_blanks       # Remove extra blanks
@@ -36,7 +38,7 @@ setopt prompt_subst           # Enable prompt substitution
 # ------------------------------------------------
 # Keybindings
 # ------------------------------------------------
-bindkey -e
+bindkey -e                   # Emacs keybindings
 
 # Edit current line in Vim
 autoload -U edit-command-line
@@ -54,15 +56,6 @@ fi
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
 # ------------------------------------------------
-# External Completions (load BEFORE compinit)
-# ------------------------------------------------
-if hash kubectl 2>/dev/null; then
-  source <(kubectl completion zsh)
-fi
-
-# (Add any other external completions here, e.g. helm, gh, etc.)
-
-# ------------------------------------------------
 # Completion System
 # ------------------------------------------------
 autoload -U compinit
@@ -74,6 +67,13 @@ zstyle ':completion:*' matcher-list '' \
   'r:|?=** m:{a-z\-}={A-Z\_}'
 
 compinit -i
+
+# ------------------------------------------------
+# External Completions (load AFTER compinit)
+# ------------------------------------------------
+if hash kubectl 2>/dev/null; then
+  source <(kubectl completion zsh)
+fi
 
 # ------------------------------------------------
 # Plugins and Tools
@@ -88,12 +88,12 @@ if hash zoxide 2>/dev/null; then
   eval "$(zoxide init zsh)"
 fi
 
-# zsh-autosuggestions (AFTER compinit)
+# zsh-autosuggestions
 if [[ -f "${HOMEBREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
   source "${HOMEBREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
 
-# zsh-syntax-highlighting (AFTER compinit)
+# zsh-syntax-highlighting
 if [[ -f "${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
   source "${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
