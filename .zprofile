@@ -23,12 +23,24 @@ export PAGER="less"
 # Brew’s shellenv *should* already define HOMEBREW_PREFIX, but just in case:
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR="${HOMEBREW_PREFIX:-/opt/homebrew}/share/zsh-syntax-highlighting/highlighters"
 
-# less/man colors
-export LESS=-R
-export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
-export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
-export LESS_TERMCAP_me="$(printf '%b' '[0m')"
-export LESS_TERMCAP_so="$(printf '%b' '[01;44;33m')"
-export LESS_TERMCAP_se="$(printf '%b' '[0m')"
-export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
-export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
+# Less colors
+
+# Reset and colors
+normal=$(tput sgr0)
+bold=$(tput bold)
+green=$(tput setaf 2)
+yellow=$(tput setaf 3)
+blue=$(tput setaf 4)
+
+# Headers and commands
+export LESS_TERMCAP_mb="$normal"              # Blink (not commonly used)
+export LESS_TERMCAP_md="${bold}${blue}"       # Bold blue for headers
+export LESS_TERMCAP_me="$normal"              # Reset styles
+
+# Status bar
+export LESS_TERMCAP_so="${bold}${yellow}"     # Bold yellow for status bar
+export LESS_TERMCAP_se="$normal"              # Reset status bar
+
+# Arguments
+export LESS_TERMCAP_us="${bold}${green}"      # Bold green underline
+export LESS_TERMCAP_ue="$normal"              # Reset underline
