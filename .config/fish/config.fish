@@ -1,5 +1,9 @@
 set -U fish_greeting
 
+# Environment variables
+set -gx VISUAL "code --wait"
+set -gx EDITOR "code --wait"
+
 # Aliases
 alias d="docker"
 alias k="kubectl"
