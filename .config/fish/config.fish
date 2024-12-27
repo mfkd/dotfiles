@@ -1,3 +1,4 @@
+# Suppress the default Fish greeting
 set -U fish_greeting
 
 # Environment variables
