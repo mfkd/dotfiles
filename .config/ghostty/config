@@ -1,3 +1,4 @@
 theme = dark:catppuccin-mocha,light:catppuccin-latte
 macos-option-as-alt = true
 command = /opt/homebrew/bin/fish --login --interactive
+shell-integration = "fish"
