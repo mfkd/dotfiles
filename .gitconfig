@@ -1,0 +1,15 @@
+[user]
+	name = mfkd
+	email = name@mail.com
+[alias]
+        co = checkout
+        br = branch
+        ci = commit
+        st = status
+        r = rebase
+        f = fetch
+
+[url "ssh://git@github.com/"]
+        insteadOf = https://github.com/
+[core]
+	editor = code --wait
