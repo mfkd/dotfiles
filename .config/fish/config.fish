@@ -4,6 +4,7 @@ set -U fish_greeting
 # Environment variables
 set -gx VISUAL "nvim"
 set -gx EDITOR "nvim"
+set --global hydro_symbol_start ""
 
 # Aliases
 alias d="docker"
