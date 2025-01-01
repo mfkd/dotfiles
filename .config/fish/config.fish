@@ -2,23 +2,8 @@
 set -U fish_greeting
 
 # Environment variables
-set -gx VISUAL "code --wait"
-set -gx EDITOR "code --wait"
-
-# Add directories to PATH only if they exist
-set -l paths_to_add \
-    $HOME/go/bin \
-    $HOME/.cargo/bin \
-    $HOME/bin \
-    /Library/Frameworks/Python.framework/Versions/3.12/bin \
-    /opt/homebrew/bin \
-    /opt/homebrew/sbin
-
-for path in $paths_to_add
-    if test -d $path
-        fish_add_path $path
-    end
-end
+set -gx VISUAL "nvim"
+set -gx EDITOR "nvim"
 
 # Aliases
 alias d="docker"
