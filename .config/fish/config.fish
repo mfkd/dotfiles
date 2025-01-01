@@ -26,6 +26,9 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+alias vi="nvim"
+alias vim="nvim"
+
 # Functions
 # Hack to make fish work with command-not-found on nix
 function fish_command_not_found
