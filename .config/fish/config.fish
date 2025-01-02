@@ -2,8 +2,8 @@
 set -U fish_greeting
 
 # Environment variables
-set -gx VISUAL "code --wait"
-set -gx EDITOR "code --wait"
+set -gx VISUAL "nvim"
+set -gx EDITOR "nvim"
 
 # Add directories to PATH only if they exist
 set -l paths_to_add \
@@ -38,6 +38,9 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+
+alias vi="nvim"
+alias vim="nvim"
 
 if status is-interactive
     zoxide init fish | source
