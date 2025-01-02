@@ -98,29 +98,6 @@ vim.g.have_nerd_font = false
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
--- Function to detect macOS light/dark mode and set background
-local function set_background_mode()
-  -- Run the command to check macOS appearance mode
-  local handle = io.popen 'defaults read -g AppleInterfaceStyle 2>/dev/null'
-  local result = handle and handle:read '*a' or '' -- Handle potential nil results
-  if handle then
-    handle:close()
-  end -- Ensure the handle is closed
-
-  -- Trim whitespace from the result
-  result = result:gsub('%s+', '')
-
-  -- Set Neovim background based on the result
-  if result == 'Dark' then
-    vim.opt.background = 'dark'
-  else
-    vim.opt.background = 'light'
-  end
-end
-
--- Call the function on startup
-set_background_mode()
-
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
