@@ -26,7 +26,7 @@ alias k="kubectl"
 alias g="git"
 alias by="bat --language yaml"
 
-alias ls="eza --icons --oneline --group-directories-first"
+alias ls="eza --icons --oneline --all --group-directories-first"
 alias l="eza --icons --long --all --group-directories-first"
 alias ll="eza --icons --long --all --all --group-directories-first --git"
 alias lt="eza --icons --tree --git-ignore --level=2 --group-directories-first"
