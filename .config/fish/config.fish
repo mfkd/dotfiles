@@ -4,6 +4,7 @@ set -U fish_greeting
 # Environment variables
 set -gx VISUAL "nvim"
 set -gx EDITOR "nvim"
+set -gx MANPAGER "sh -c 'col -bx | bat -l man --paging=always'"
 
 # Add directories to PATH only if they exist
 set -l paths_to_add \
