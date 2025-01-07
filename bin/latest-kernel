@@ -6,9 +6,13 @@ url="https://www.kernel.org/releases.json"
 # Use curl to fetch the JSON and jq to parse it
 stable_version=$(curl -s "$url" | jq -r '.releases[] | select(.moniker == "stable") | .version')
 
+# Define red color using ANSI escape code
+RED='\033[0;31m'
+NC='\033[0m' # No color (reset)
+
 # Check if a stable version was found
 if [[ -n "$stable_version" ]]; then
-    echo "Stable Kernel Version: $stable_version"
+    echo -e "Stable Kernel Version: ${RED}${stable_version}${NC}"
 else
     echo "Failed to fetch the stable kernel version."
 fi
