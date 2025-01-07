@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Fetch the releases.json from kernel.org
+url="https://www.kernel.org/releases.json"
+
+# Use curl to fetch the JSON and jq to parse it
+stable_version=$(curl -s "$url" | jq -r '.releases[] | select(.moniker == "stable") | .version')
+
+# Check if a stable version was found
+if [[ -n "$stable_version" ]]; then
+    echo "Stable Kernel Version: $stable_version"
+else
+    echo "Failed to fetch the stable kernel version."
+fi
