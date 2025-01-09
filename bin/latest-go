@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Fetch the releases.json from go.dev
+url="https://go.dev/dl/?mode=json"
+
+# Use curl to fetch the JSON and jq to parse it
+go_version=$(curl -s "$url" | jq -r '[.[] | select(.stable == true)][0].version')
+
+# Define red color using ANSI escape code
+RED='\033[0;31m'
+NC='\033[0m' # No color (reset)
+
+# Check if a go version was found
+if [[ -n "$go_version" ]]; then
+    echo -e "Go Version: ${RED}${go_version}${NC}"
+else
+    echo "Failed to fetch the latest go version."
+fi
