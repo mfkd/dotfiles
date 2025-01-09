@@ -11,7 +11,6 @@ set -l paths_to_add \
     $HOME/go/bin \
     $HOME/.cargo/bin \
     $HOME/bin \
-    /Library/Frameworks/Python.framework/Versions/3.12/bin \
     /opt/homebrew/bin \
     /opt/homebrew/sbin
 
