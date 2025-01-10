@@ -21,6 +21,7 @@ for path in $paths_to_add
 end
 
 # Aliases
+
 alias d="docker"
 alias k="kubectl"
 alias g="git"
