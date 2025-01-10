@@ -43,6 +43,27 @@ alias .....="cd ../../../.."
 alias vi="nvim"
 alias vim="nvim"
 
+# Functions
+
+function dark
+    echo "y" | fish_config theme save "Catppuccin Mocha"
+end
+
+function light
+    echo "y" | fish_config theme save "Catppuccin Latte"
+end
+
+function set_theme
+    set appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
+
+    if test "$appearance" = "Dark"
+        dark
+    else
+        light
+    end
+end
+
+# Set interactive configuration
 if status is-interactive
     zoxide init fish | source
 end
