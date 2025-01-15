@@ -32,6 +32,14 @@ alias .....="cd ../../../.."
 alias vi="nvim"
 alias vim="nvim"
 
+function dark
+    echo "y" | fish_config theme save "Catppuccin Mocha"
+end
+
+function light
+    echo "y" | fish_config theme save "Catppuccin Latte"
+end
+
 if status is-interactive
     zoxide init fish | source
 end
