@@ -7,6 +7,9 @@ set -gx EDITOR "nvim"
 # set --global hydro_symbol_start "nix "
 set --global hydro_symbol_prompt " "
 
+# Set MANPAGER to bat
+set -gx MANPAGER "sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
+
 # Aliases
 alias d="docker"
 alias k="kubectl"
