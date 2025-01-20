@@ -65,5 +65,5 @@ end
 
 # Set interactive configuration
 if status is-interactive
-    zoxide init fish | source
+    zoxide init --cmd cd fish | source
 end
