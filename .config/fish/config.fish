@@ -2,9 +2,9 @@
 set -U fish_greeting
 
 # Environment variables
-set -gx VISUAL "nvim"
-set -gx EDITOR "nvim"
-set -gx MANPAGER "sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
+set -x VISUAL "nvim"
+set -x EDITOR "nvim"
+set -x MANPAGER "sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
 
 # Add directories to PATH only if they exist
 set -l paths_to_add \
