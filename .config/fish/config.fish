@@ -26,6 +26,7 @@ alias d="docker"
 alias k="kubectl"
 alias g="git"
 alias by="bat --language yaml"
+alias cat="bat --style=plain --paging=never"
 
 alias ls="eza --icons --all --group-directories-first"
 alias l="eza --icons --long --all --group-directories-first"
