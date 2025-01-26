@@ -27,6 +27,7 @@ alias k="kubectl"
 alias g="git"
 alias by="bat --language yaml"
 alias cat="bat --style=plain --paging=never"
+alias bathelp="bat --plain --language=help"
 
 alias ls="eza --icons --all --group-directories-first"
 alias l="eza --icons --long --all --group-directories-first"
@@ -45,6 +46,11 @@ alias vi="nvim"
 alias vim="nvim"
 
 # Functions
+
+# Define a function to wrap help commands
+function help
+    $argv --help 2>&1 | bathelp
+end
 
 function dark
     echo "y" | fish_config theme save "Catppuccin Mocha"
