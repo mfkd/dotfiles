@@ -32,6 +32,29 @@ alias .....="cd ../../../.."
 alias vi="nvim"
 alias vim="nvim"
 
+# Functions
+
+# Hack to make fish work with command-not-found on nix
+function fish_command_not_found
+    set helper_path '/nix/store/wkpb86299p5p1nmqdk6c1mbffcphzs6w-command-not-found/bin/command-not-found'
+    set sqlite_path '/nix/var/nix/profiles/per-user/root/channels/nixos/programs.sqlite'
+
+    if test -x $helper_path -a -f $sqlite_path
+        # Run the helper program
+        $helper_path $argv
+
+        # Check if the command was installed and needs re-execution
+        if test $status -eq 126
+            eval $argv
+        else
+            return 127
+        end
+    else
+        echo "$argv[1]: command not found" >&2
+        return 127
+    end
+end
+
 function dark
     echo "y" | fish_config theme save "Catppuccin Mocha"
     set -Ux STARSHIP_CONFIG ~/.config/starship-dark.toml
