@@ -73,4 +73,6 @@ end
 # Set interactive configuration
 if status is-interactive
     zoxide init --cmd cd fish | source
+    starship init fish | source
 end
+
