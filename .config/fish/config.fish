@@ -74,5 +74,6 @@ end
 if status is-interactive
     zoxide init --cmd cd fish | source
     starship init fish | source
+    enable_transience
 end
 
