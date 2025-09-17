@@ -2,4 +2,3 @@ theme = dark:Catppuccin Mocha,light:Catppuccin Latte
 macos-option-as-alt = left
 command = /opt/homebrew/bin/fish --login --interactive
 shell-integration = "fish"
-macos-titlebar-proxy-icon = hidden
