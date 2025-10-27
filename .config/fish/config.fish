@@ -22,6 +22,7 @@ end
 
 # Aliases
 
+alias c="codex"
 alias d="docker"
 alias k="kubectl"
 alias g="git"
@@ -77,3 +78,4 @@ if status is-interactive
     enable_transience
     set_theme
 end
+
