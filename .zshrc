@@ -89,7 +89,7 @@ fi
 
 # zoxide for directory navigation
 if hash zoxide 2>/dev/null; then
-  eval "$(zoxide init zsh)"
+  eval "$(zoxide init --cmd cd zsh)"
 fi
 
 # zsh-autosuggestions
