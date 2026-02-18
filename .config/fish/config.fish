@@ -1,9 +1,13 @@
 if status is-interactive
     zoxide init --cmd cd fish | source
-    starship init fish | source
 
-    enable_transience
+    function __auto_set_theme --on-variable fish_terminal_color_theme
+        set_theme
+    end
 
-    # Auto-switch theme based on macOS appearance
+    __ensure_catppuccin_theme
     set_theme
+
+    starship init fish | source
+    enable_transience
 end

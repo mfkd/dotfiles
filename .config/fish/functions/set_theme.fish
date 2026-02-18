@@ -1,13 +1,22 @@
 function set_theme
-    # Only run this on macOS
-    if test (uname) != "Darwin"
+    set -l mode
+
+    switch "$fish_terminal_color_theme"
+        case dark light
+            set mode "$fish_terminal_color_theme"
+        case "*"
+            # If Fish cannot determine terminal color theme yet, keep current.
+            if set -q __current_theme_mode[1]
+                return
+            end
+            set mode dark
+    end
+
+    if test "$__current_theme_mode" = "$mode"
         return
     end
 
-    set appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
-    if test "$appearance" = "Dark"
-        dark
-    else
-        light
+    if __apply_theme "$mode"
+        set -g __current_theme_mode "$mode"
     end
 end
