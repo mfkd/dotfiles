@@ -16,4 +16,10 @@ function __apply_theme --argument mode
 
     set -gx EZA_CONFIG_DIR "$eza_config_dir"
     set -gx STARSHIP_CONFIG "$starship_config"
+
+    # Built-in catppuccin-mocha includes light and dark variants that follow fish_terminal_color_theme.
+    if test "$fish_theme" != "catppuccin-mocha"
+        fish_config theme choose "catppuccin-mocha" >/dev/null 2>/dev/null
+        or return 1
+    end
 end

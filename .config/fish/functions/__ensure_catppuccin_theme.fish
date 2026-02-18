@@ -1,5 +1,6 @@
 function __ensure_catppuccin_theme
-    if test "$fish_theme" != "Catppuccin Mocha"
-        fish_config theme choose "Catppuccin Mocha" >/dev/null 2>/dev/null
+    # Use Fish built-in catppuccin-mocha only; Fish auto-switches its light/dark variants.
+    if test "$fish_theme" != "catppuccin-mocha"
+        fish_config theme choose "catppuccin-mocha" >/dev/null 2>/dev/null
     end
 end
