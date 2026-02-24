@@ -1,15 +1,6 @@
 # ~/.zshrc
 # Runs for interactive shells. Place aliases, prompt, completions, etc. here.
 
-# ------------------------------------------
-# Powerlevel10k Instant Prompt (keep on top)
-# ------------------------------------------
-# Initialization code requiring console input (password prompts, [y/n] prompts, etc.)
-# must go above this block; everything else can go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # ------------------------------------------------
 # History Configuration
 # ------------------------------------------------
@@ -92,6 +83,55 @@ if hash zoxide 2>/dev/null; then
   eval "$(zoxide init --cmd cd zsh)"
 fi
 
+# Theme mode and prompt config (dark/light) for starship
+typeset -g __current_theme_mode=""
+
+__detect_theme_mode() {
+  if command -v defaults >/dev/null 2>&1; then
+    if [[ "$(defaults read -g AppleInterfaceStyle 2>/dev/null)" == "Dark" ]]; then
+      print -r -- "dark"
+      return 0
+    fi
+  fi
+
+  print -r -- "light"
+}
+
+__apply_theme() {
+  local mode="$1"
+
+  case "$mode" in
+    dark)
+      export EZA_CONFIG_DIR="$HOME/.config/eza/dark"
+      export STARSHIP_CONFIG="$HOME/.config/starship-dark.toml"
+      ;;
+    light)
+      export EZA_CONFIG_DIR="$HOME/.config/eza/light"
+      export STARSHIP_CONFIG="$HOME/.config/starship-light.toml"
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
+set_theme() {
+  local mode
+  mode="$(__detect_theme_mode)"
+
+  if [[ "$__current_theme_mode" == "$mode" ]]; then
+    return 0
+  fi
+
+  if __apply_theme "$mode"; then
+    __current_theme_mode="$mode"
+  fi
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd set_theme
+set_theme
+
 # zsh-autosuggestions
 if [[ -f "${HOMEBREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
   source "${HOMEBREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
@@ -102,11 +142,7 @@ if [[ -f "${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighti
   source "${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
 
-# ------------------------------------------------
-# Powerlevel10k Configuration
-# ------------------------------------------------
-if [[ -f "${HOMEBREW_PREFIX}/share/powerlevel10k/powerlevel10k.zsh-theme" ]]; then
-  source "${HOMEBREW_PREFIX}/share/powerlevel10k/powerlevel10k.zsh-theme"
+# starship prompt
+if hash starship 2>/dev/null; then
+  eval "$(starship init zsh)"
 fi
-
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
