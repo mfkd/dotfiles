@@ -100,14 +100,42 @@ __detect_theme_mode() {
 __apply_theme() {
   local mode="$1"
 
+  typeset -gA ZSH_HIGHLIGHT_STYLES
+
   case "$mode" in
     dark)
       export EZA_CONFIG_DIR="$HOME/.config/eza/dark"
       export STARSHIP_CONFIG="$HOME/.config/starship-dark.toml"
+      export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#6c7086'
+      ZSH_HIGHLIGHT_STYLES[comment]='fg=#6c7086'
+      ZSH_HIGHLIGHT_STYLES[command]='fg=#89b4fa'
+      ZSH_HIGHLIGHT_STYLES[alias]='fg=#89b4fa'
+      ZSH_HIGHLIGHT_STYLES[builtin]='fg=#89dceb'
+      ZSH_HIGHLIGHT_STYLES[function]='fg=#89dceb'
+      ZSH_HIGHLIGHT_STYLES[path]='fg=#f9e2af'
+      ZSH_HIGHLIGHT_STYLES[globbing]='fg=#f5c2e7'
+      ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=#94e2d5'
+      ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=#94e2d5'
+      ZSH_HIGHLIGHT_STYLES[arg0]='fg=#a6e3a1'
+      ZSH_HIGHLIGHT_STYLES[quoted-argument]='fg=#a6e3a1'
+      ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#cba6f7'
       ;;
     light)
       export EZA_CONFIG_DIR="$HOME/.config/eza/light"
       export STARSHIP_CONFIG="$HOME/.config/starship-light.toml"
+      export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#9ca0b0'
+      ZSH_HIGHLIGHT_STYLES[comment]='fg=#9ca0b0'
+      ZSH_HIGHLIGHT_STYLES[command]='fg=#1e66f5'
+      ZSH_HIGHLIGHT_STYLES[alias]='fg=#1e66f5'
+      ZSH_HIGHLIGHT_STYLES[builtin]='fg=#179299'
+      ZSH_HIGHLIGHT_STYLES[function]='fg=#179299'
+      ZSH_HIGHLIGHT_STYLES[path]='fg=#df8e1d'
+      ZSH_HIGHLIGHT_STYLES[globbing]='fg=#ea76cb'
+      ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=#04a5e5'
+      ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=#04a5e5'
+      ZSH_HIGHLIGHT_STYLES[arg0]='fg=#40a02b'
+      ZSH_HIGHLIGHT_STYLES[quoted-argument]='fg=#40a02b'
+      ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#8839ef'
       ;;
     *)
       return 1
