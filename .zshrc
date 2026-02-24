@@ -129,7 +129,6 @@ set_theme() {
 }
 
 autoload -Uz add-zsh-hook
-add-zsh-hook precmd set_theme
 set_theme
 
 # zsh-autosuggestions
