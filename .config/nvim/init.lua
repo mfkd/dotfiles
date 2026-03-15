@@ -886,8 +886,9 @@ require('lazy').setup({
     init = function()
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'latte', 'frappe', 'macchiato', or 'mocha'.
-      vim.cmd.colorscheme 'catppuccin'
+      -- any other, such as 'catppuccin-nvim-latte', 'catppuccin-nvim-frappe',
+      -- 'catppuccin-nvim-macchiato', or 'catppuccin-nvim-mocha'.
+      vim.cmd.colorscheme 'catppuccin-nvim'
 
       -- Tweak comment appearance to avoid italics for better readability.
       vim.cmd.hi 'Comment gui=none'
