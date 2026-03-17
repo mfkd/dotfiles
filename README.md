@@ -21,7 +21,6 @@ found.
 
 These files are intentionally untracked and may vary by machine:
 
-- `~/.gitconfig.local`
 - `~/.profile.local`
 - `~/.zprofile.local`
 - `~/.zshenv.local`
@@ -29,8 +28,6 @@ These files are intentionally untracked and may vary by machine:
 - `~/.config/fish/conf.d/99-local.fish`
 
 Git, Zsh, and shell profile entrypoints load these files only when present.
-`~/.gitconfig.local` is optional for machine-specific Git overrides; the shared
-Git email now lives in the tracked `.gitconfig`.
 
 ## Notes
 

@@ -1,5 +1,4 @@
 # Local overrides
-.gitconfig.local
 .profile.local
 .zprofile.local
 .zshenv.local

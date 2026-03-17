@@ -16,5 +16,3 @@
 	pager = delta
 [gpg]
 	format = ssh
-[include]
-	path = ~/.gitconfig.local
