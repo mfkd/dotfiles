@@ -29,13 +29,8 @@ These files are intentionally untracked and may vary by machine:
 - `~/.config/fish/conf.d/99-local.fish`
 
 Git, Zsh, and shell profile entrypoints load these files only when present.
-Create `~/.gitconfig.local` on each machine with your machine-specific Git
-identity, for example:
-
-```ini
-[user]
-    email = you@example.com
-```
+`~/.gitconfig.local` is optional for machine-specific Git overrides; the shared
+Git email now lives in the tracked `.gitconfig`.
 
 ## Notes
 
