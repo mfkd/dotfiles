@@ -173,3 +173,5 @@ fi
 if hash starship 2>/dev/null; then
   eval "$(starship init zsh)"
 fi
+
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"

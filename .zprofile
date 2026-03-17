@@ -53,3 +53,5 @@ export PATH
 # The original version is saved in .zprofile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.13/bin:${PATH}"
 export PATH
+
+[ -f "$HOME/.zprofile.local" ] && source "$HOME/.zprofile.local"
