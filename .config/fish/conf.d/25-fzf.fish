@@ -6,10 +6,12 @@ if not command -sq fzf
     return
 end
 
-set -gx FZF_DEFAULT_OPTS "\
+set -gx FZF_DEFAULT_OPTS_BASE "\
 --height=40% \
 --layout=reverse \
 --border"
+
+set -gx FZF_DEFAULT_OPTS "$FZF_DEFAULT_OPTS_BASE"
 
 set -gx FZF_CTRL_T_COMMAND "command fd --hidden --follow --exclude .git --exclude node_modules --exclude target . \$dir"
 set -gx FZF_CTRL_T_OPTS "\

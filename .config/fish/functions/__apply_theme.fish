@@ -20,4 +20,8 @@ function __apply_theme --argument mode
     set -gx EZA_CONFIG_DIR "$eza_config_dir"
     set -gx STARSHIP_CONFIG "$starship_config"
     set -gx BAT_THEME "$bat_theme_mode"
+
+    if set -q FZF_DEFAULT_OPTS_BASE[1]
+        __set_fzf_theme "$mode"
+    end
 end
