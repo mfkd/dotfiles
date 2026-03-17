@@ -13,3 +13,6 @@
         insteadOf = https://github.com/
 [core]
 	editor = nvim
+	pager = delta
+[gpg]
+	format = ssh
