@@ -1,0 +1,28 @@
+# Local overrides
+.gitconfig.local
+.profile.local
+.zprofile.local
+.zshenv.local
+.zshrc.local
+.config/fish/conf.d/99-local.fish
+
+# Secrets, tokens, and machine-local state
+.ssh/
+.gnupg/
+.config/gh/hosts.yml
+.config/fish/fish_variables
+.config/mole/
+.config/opencode/
+.config/uv/uv-receipt.json
+
+# Volatile shell/editor state
+.DS_Store
+.config/.DS_Store
+.lesshst
+.node_repl_history
+.python_history
+.viminfo
+.wget-hsts
+.zcompdump
+.zprofile.pysave
+.zsh_history

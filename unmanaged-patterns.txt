@@ -1,0 +1,23 @@
+# Paths that should not be captured into this repo by default.
+
+.DS_Store
+.config/.DS_Store
+.config/fish/fish_variables
+.config/gh/hosts.yml
+.config/mole
+.config/mole/*
+.config/opencode
+.config/opencode/*
+.config/uv/uv-receipt.json
+.gnupg
+.gnupg/*
+.lesshst
+.node_repl_history
+.python_history
+.ssh
+.ssh/*
+.viminfo
+.wget-hsts
+.zcompdump
+.zprofile.pysave
+.zsh_history

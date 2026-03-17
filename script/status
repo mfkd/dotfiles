@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+. "$(cd "$(dirname "$0")" && pwd)/common.sh"
+
+issues=0
+
+while IFS= read -r rel_path; do
+  repo_path=$(repo_path_for "$rel_path")
+  home_path=$(home_path_for "$rel_path")
+
+  if [ ! -e "$repo_path" ]; then
+    printf 'MISSING-REPO  %s\n' "$rel_path"
+    issues=$((issues + 1))
+    continue
+  fi
+
+  if symlink_matches "$home_path" "$repo_path"; then
+    printf 'LINKED        %s\n' "$rel_path"
+    continue
+  fi
+
+  if [ -L "$home_path" ]; then
+    if [ -e "$home_path" ]; then
+      printf 'WRONG-LINK    %s -> %s\n' "$rel_path" "$(readlink "$home_path")"
+    else
+      printf 'BROKEN-LINK   %s -> %s\n' "$rel_path" "$(readlink "$home_path")"
+    fi
+    issues=$((issues + 1))
+    continue
+  fi
+
+  if [ ! -e "$home_path" ]; then
+    printf 'MISSING       %s\n' "$rel_path"
+    issues=$((issues + 1))
+    continue
+  fi
+
+  if paths_match "$home_path" "$repo_path"; then
+    printf 'COPY-OK       %s\n' "$rel_path"
+    continue
+  fi
+
+  printf 'DRIFTED       %s\n' "$rel_path"
+  issues=$((issues + 1))
+done < <(manifest_entries)
+
+if [ "$issues" -ne 0 ]; then
+  exit 1
+fi

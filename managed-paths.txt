@@ -1,0 +1,66 @@
+# Managed home-relative paths.
+# Repo-internal files such as README.md and script/* are intentionally omitted.
+
+.config/aliasrc
+.config/bat/config
+.config/bat/themes/Catppuccin Frappe.tmTheme
+.config/bat/themes/Catppuccin Latte.tmTheme
+.config/bat/themes/Catppuccin Macchiato.tmTheme
+.config/bat/themes/Catppuccin Mocha.tmTheme
+.config/eza/dark/catppuccin-mocha-mauve.yml
+.config/eza/dark/theme.yml
+.config/eza/light/catppuccin-latte-mauve.yml
+.config/eza/light/theme.yml
+.config/fish/completions/fisher.fish
+.config/fish/conf.d/00-greeting.fish
+.config/fish/conf.d/10-env.fish
+.config/fish/conf.d/20-path.fish
+.config/fish/conf.d/25-fzf.fish
+.config/fish/conf.d/30-aliases.fish
+.config/fish/conf.d/40-abbr.fish
+.config/fish/conf.d/autopair.fish
+.config/fish/conf.d/uv.env.fish
+.config/fish/config.fish
+.config/fish/fish_plugins
+.config/fish/functions/__apply_theme.fish
+.config/fish/functions/__ensure_catppuccin_theme.fish
+.config/fish/functions/__set_fzf_theme.fish
+.config/fish/functions/_autopair_backspace.fish
+.config/fish/functions/_autopair_insert_left.fish
+.config/fish/functions/_autopair_insert_right.fish
+.config/fish/functions/_autopair_insert_same.fish
+.config/fish/functions/_autopair_tab.fish
+.config/fish/functions/fisher.fish
+.config/fish/functions/set_theme.fish
+.config/fish/functions/starship_transient_prompt_func.fish
+.config/gh/config.yml
+.config/ghostty/config
+.config/nvim/.github/ISSUE_TEMPLATE/bug_report.md
+.config/nvim/.github/pull_request_template.md
+.config/nvim/.github/workflows/stylua.yml
+.config/nvim/.gitignore
+.config/nvim/.stylua.toml
+.config/nvim/LICENSE.md
+.config/nvim/README.md
+.config/nvim/doc/kickstart.txt
+.config/nvim/init.lua
+.config/nvim/lazy-lock.json
+.config/nvim/lua/custom/plugins/init.lua
+.config/nvim/lua/kickstart/health.lua
+.config/nvim/lua/kickstart/plugins/autopairs.lua
+.config/nvim/lua/kickstart/plugins/debug.lua
+.config/nvim/lua/kickstart/plugins/gitsigns.lua
+.config/nvim/lua/kickstart/plugins/indent_line.lua
+.config/nvim/lua/kickstart/plugins/lint.lua
+.config/nvim/lua/kickstart/plugins/neo-tree.lua
+.config/starship-dark.toml
+.config/starship-light.toml
+.gitconfig
+.p10k.zsh
+.profile
+.tmux.conf
+.zprofile
+.zshenv
+.zshrc
+bin/latest-go
+bin/latest-kernel

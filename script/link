@@ -1,0 +1,99 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+. "$(cd "$(dirname "$0")" && pwd)/common.sh"
+
+timestamp=$(date '+%Y%m%d-%H%M%S')
+backup_root="$HOME/.local/state/dotfiles-backups/$timestamp"
+created_backups=0
+conflicts=0
+linked=0
+actions_file=$(mktemp)
+
+cleanup() {
+  rm -f "$actions_file"
+}
+
+trap cleanup EXIT
+
+backup_existing() {
+  local rel_path home_path backup_path
+
+  rel_path=$1
+  home_path=$(home_path_for "$rel_path")
+  backup_path="$backup_root/$rel_path"
+
+  ensure_parent_dir "$backup_path"
+  mv "$home_path" "$backup_path"
+  created_backups=1
+}
+
+while IFS= read -r rel_path; do
+  repo_path=$(repo_path_for "$rel_path")
+  home_path=$(home_path_for "$rel_path")
+
+  if [ ! -e "$repo_path" ]; then
+    printf 'MISSING-REPO  %s\n' "$rel_path" >&2
+    conflicts=$((conflicts + 1))
+    continue
+  fi
+
+  if symlink_matches "$home_path" "$repo_path"; then
+    continue
+  fi
+
+  if [ -L "$home_path" ]; then
+    printf 'WRONG-LINK    %s -> %s\n' "$rel_path" "$(readlink "$home_path")" >&2
+    conflicts=$((conflicts + 1))
+    continue
+  fi
+
+  if [ ! -e "$home_path" ]; then
+    printf 'link\t%s\n' "$rel_path" >> "$actions_file"
+    continue
+  fi
+
+  if paths_match "$home_path" "$repo_path"; then
+    printf 'replace\t%s\n' "$rel_path" >> "$actions_file"
+    continue
+  fi
+
+  printf 'DRIFTED       %s\n' "$rel_path" >&2
+  conflicts=$((conflicts + 1))
+done < <(manifest_entries)
+
+if [ "$conflicts" -ne 0 ]; then
+  printf 'Encountered %s conflict(s); no changes were applied.\n' "$conflicts" >&2
+  exit 1
+fi
+
+while IFS=$'\t' read -r action rel_path; do
+  repo_path=$(repo_path_for "$rel_path")
+  home_path=$(home_path_for "$rel_path")
+
+  case "$action" in
+    link)
+      ensure_parent_dir "$home_path"
+      ln -s "$repo_path" "$home_path"
+      printf 'LINKED        %s\n' "$rel_path"
+      linked=$((linked + 1))
+      ;;
+    replace)
+      backup_existing "$rel_path"
+      ln -s "$repo_path" "$home_path"
+      printf 'REPLACED      %s\n' "$rel_path"
+      linked=$((linked + 1))
+      ;;
+    *)
+      printf 'error: unknown action %s for %s\n' "$action" "$rel_path" >&2
+      exit 1
+      ;;
+  esac
+done < "$actions_file"
+
+if [ "$created_backups" -eq 1 ]; then
+  printf 'Backups saved under %s\n' "$backup_root"
+fi
+
+printf 'Linked %s path(s).\n' "$linked"

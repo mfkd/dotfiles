@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+. "$(cd "$(dirname "$0")" && pwd)/common.sh"
+
+if [ "$#" -ne 1 ]; then
+  die "usage: script/capture <home-relative-path>"
+fi
+
+rel_path=$(normalize_rel_path "$1")
+home_path=$(home_path_for "$rel_path")
+repo_path=$(repo_path_for "$rel_path")
+timestamp=$(date '+%Y%m%d-%H%M%S')
+backup_root="$HOME/.local/state/dotfiles-backups/$timestamp"
+backup_path="$backup_root/$rel_path"
+
+if path_is_excluded "$rel_path"; then
+  die "path is excluded by unmanaged-patterns.txt: $rel_path"
+fi
+
+if path_is_git_ignored "$rel_path"; then
+  die "path is ignored by git and must stay machine-local: $rel_path"
+fi
+
+if [ -L "$home_path" ] && symlink_matches "$home_path" "$repo_path"; then
+  append_manifest_entry "$rel_path"
+  printf 'already managed: %s\n' "$rel_path"
+  exit 0
+fi
+
+if [ ! -e "$home_path" ]; then
+  die "path does not exist in \$HOME: $rel_path"
+fi
+
+if [ -L "$home_path" ]; then
+  die "refusing to capture a symlink that points elsewhere: $rel_path"
+fi
+
+if [ -e "$repo_path" ] && ! paths_match "$home_path" "$repo_path"; then
+  die "repo already contains different content at: $rel_path"
+fi
+
+ensure_parent_dir "$repo_path"
+
+if [ ! -e "$repo_path" ]; then
+  if [ -d "$home_path" ]; then
+    cp -R "$home_path" "$repo_path"
+  else
+    cp -p "$home_path" "$repo_path"
+  fi
+fi
+
+append_manifest_entry "$rel_path"
+
+ensure_parent_dir "$backup_path"
+mv "$home_path" "$backup_path"
+ln -s "$repo_path" "$home_path"
+
+printf 'captured %s\n' "$rel_path"
+printf 'backup saved under %s\n' "$backup_root"
