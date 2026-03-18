@@ -99,12 +99,15 @@ __detect_theme_mode() {
 
 __apply_theme() {
   local mode="$1"
+  local lazygit_config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/lazygit"
 
   typeset -gA ZSH_HIGHLIGHT_STYLES
 
   case "$mode" in
     dark)
+      export DELTA_FEATURES="+catppuccin-dark"
       export EZA_CONFIG_DIR="$HOME/.config/eza/dark"
+      export LG_CONFIG_FILE="$lazygit_config_dir/config.yml,$lazygit_config_dir/dark/theme.yml"
       export STARSHIP_CONFIG="$HOME/.config/starship-dark.toml"
       export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#6c7086'
       ZSH_HIGHLIGHT_STYLES[comment]='fg=#6c7086'
@@ -121,7 +124,9 @@ __apply_theme() {
       ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#cba6f7'
       ;;
     light)
+      export DELTA_FEATURES="+catppuccin-light"
       export EZA_CONFIG_DIR="$HOME/.config/eza/light"
+      export LG_CONFIG_FILE="$lazygit_config_dir/config.yml,$lazygit_config_dir/light/theme.yml"
       export STARSHIP_CONFIG="$HOME/.config/starship-light.toml"
       export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#9ca0b0'
       ZSH_HIGHLIGHT_STYLES[comment]='fg=#9ca0b0'

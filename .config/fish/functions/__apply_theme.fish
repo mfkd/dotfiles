@@ -16,12 +16,12 @@ function __apply_theme --argument mode
 
     switch "$mode"
         case dark
-            set delta_feature catppuccin-dark
+            set delta_feature +catppuccin-dark
             set eza_config_dir "$HOME/.config/eza/dark"
             set lazygit_theme "$lazygit_config_root/dark/theme.yml"
             set starship_config "$HOME/.config/starship-dark.toml"
         case light
-            set delta_feature catppuccin-light
+            set delta_feature +catppuccin-light
             set eza_config_dir "$HOME/.config/eza/light"
             set lazygit_theme "$lazygit_config_root/light/theme.yml"
             set starship_config "$HOME/.config/starship-light.toml"

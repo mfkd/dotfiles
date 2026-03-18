@@ -1,3 +1,16 @@
+[interactive]
+    diffFilter = delta --color-only
+
+[merge]
+    conflictStyle = zdiff3
+
+[delta]
+    features = delta-base
+
+[delta "delta-base"]
+    line-numbers = true
+    navigate = true
+
 [delta "catppuccin-dark"]
     dark = true
     syntax-theme = Catppuccin Mocha
