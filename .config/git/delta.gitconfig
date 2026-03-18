@@ -1,0 +1,7 @@
+[delta "catppuccin-dark"]
+    dark = true
+    syntax-theme = Catppuccin Mocha
+
+[delta "catppuccin-light"]
+    light = true
+    syntax-theme = Catppuccin Latte
