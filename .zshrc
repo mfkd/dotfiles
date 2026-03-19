@@ -100,12 +100,14 @@ __detect_theme_mode() {
 __apply_theme() {
   local mode="$1"
   local lazygit_config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/lazygit"
+  local bat_theme
 
   typeset -gA ZSH_HIGHLIGHT_STYLES
 
   case "$mode" in
     dark)
       export DELTA_FEATURES="+catppuccin-dark"
+      bat_theme="Catppuccin Mocha"
       export EZA_CONFIG_DIR="$HOME/.config/eza/dark"
       export LG_CONFIG_FILE="$lazygit_config_dir/config.yml,$lazygit_config_dir/dark/theme.yml"
       export STARSHIP_CONFIG="$HOME/.config/starship-dark.toml"
@@ -125,6 +127,7 @@ __apply_theme() {
       ;;
     light)
       export DELTA_FEATURES="+catppuccin-light"
+      bat_theme="Catppuccin Latte"
       export EZA_CONFIG_DIR="$HOME/.config/eza/light"
       export LG_CONFIG_FILE="$lazygit_config_dir/config.yml,$lazygit_config_dir/light/theme.yml"
       export STARSHIP_CONFIG="$HOME/.config/starship-light.toml"
@@ -146,6 +149,8 @@ __apply_theme() {
       return 1
       ;;
   esac
+
+  export BAT_THEME="$bat_theme"
 }
 
 set_theme() {
