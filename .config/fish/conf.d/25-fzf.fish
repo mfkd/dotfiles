@@ -34,5 +34,5 @@ set -gx FZF_COMPLETION_OPTS "\
 
 fzf --fish | source
 
-bind ctrl-g fzf-rg-widget
-bind -M insert ctrl-g fzf-rg-widget
+bind alt-g 'command rgf; commandline -f repaint'
+bind -M insert alt-g 'command rgf; commandline -f repaint'
