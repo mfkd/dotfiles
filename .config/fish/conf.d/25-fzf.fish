@@ -33,3 +33,6 @@ set -gx FZF_COMPLETION_OPTS "\
 --info=inline"
 
 fzf --fish | source
+
+bind ctrl-g fzf-rg-widget
+bind -M insert ctrl-g fzf-rg-widget

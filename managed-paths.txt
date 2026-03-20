@@ -31,6 +31,8 @@
 .config/fish/functions/_autopair_insert_same.fish
 .config/fish/functions/_autopair_tab.fish
 .config/fish/functions/fisher.fish
+.config/fish/functions/fzf-rg-widget.fish
+.config/fish/functions/rgf.fish
 .config/fish/functions/set_theme.fish
 .config/fish/functions/starship_transient_prompt_func.fish
 .config/git/delta.gitconfig
