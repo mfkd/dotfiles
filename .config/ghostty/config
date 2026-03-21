@@ -1,6 +1,171 @@
+#   ____ _               _   _
+#  / ___| |__   ___  ___| |_| |_ _   _
+# | |  _| '_ \ / _ \/ __| __| __| | | |
+# | |_| | | | | (_) \__ \ |_| |_| |_| |
+#  \____|_| |_|\___/|___/\__|\__|\__, |
+#                                |___/
+#
+# Appearance
+
+# Custom: use Catppuccin variants based on system light/dark mode.
 theme = dark:Catppuccin Mocha,light:Catppuccin Latte
-macos-option-as-alt = left
+
+# Contextual Defaults
+#
+# Ghostty leaves these unset in `+show-config --default`. The docs describe
+# their runtime behavior, but keeping them commented avoids pinning behavior.
+#
+# Docs/runtime default: Ghostty embeds JetBrains Mono when no font family is set.
+# font-family = JetBrains Mono
+#
+# Docs/runtime default: usually inherit the launching process directory; some
+# launch paths on macOS default to home instead.
+# working-directory = inherit
+#
+# Docs/runtime default: matches the installed Ghostty release channel.
+# auto-update-channel = stable
+
+# Text And Cursor
+
+# Default: 13pt terminal font size.
+font-size = 13
+
+# Default: block cursor unless overridden by the running program or shell integration.
+cursor-style = block
+
+# Default: allow clicking within prompts to move the cursor when shell integration supports it.
+cursor-click-to-move = true
+
+# Shell And Session
+
+# Custom: start Fish as the login and interactive shell.
 command = /opt/homebrew/bin/fish --login --interactive
+
+# Custom: force Fish shell integration rather than automatic detection.
 shell-integration = "fish"
-macos-titlebar-style = tabs
+
+# Default: enable cursor, title, and PATH integration; disable sudo and SSH helpers.
+shell-integration-features = cursor,no-sudo,title,no-ssh-env,no-ssh-terminfo,path
+
+# Default: advertise Ghostty's terminal type to child processes.
+term = xterm-ghostty
+
+# Default: allocate 10,000,000 bytes of scrollback per surface.
+scrollback-limit = 10000000
+
+# Selection, Clipboard, And Links
+
+# Default: clear the active selection when typing into the terminal.
+selection-clear-on-typing = true
+
+# Default: keep the selection visible after copy operations.
+selection-clear-on-copy = false
+
+# Custom: copy selections to both the selection clipboard and system clipboard.
 copy-on-select = "clipboard"
+
+# Default: ask before programs read from the clipboard.
+clipboard-read = ask
+
+# Default: allow programs to write to the clipboard.
+clipboard-write = allow
+
+# Default: trim trailing whitespace from copied text.
+clipboard-trim-trailing-spaces = true
+
+# Default: warn before pasting text that looks unsafe.
+clipboard-paste-protection = true
+
+# Default: treat bracketed paste as safe.
+clipboard-paste-bracketed-safe = true
+
+# Default: detect clickable URLs.
+link-url = true
+
+# Default: show previews for matched URLs.
+link-previews = true
+
+# Default: show the context menu on right click.
+right-click-action = context-menu
+
+# Window Behavior
+
+# Default: add 2pt horizontal padding around terminal cells.
+window-padding-x = 2
+
+# Default: add 2pt vertical padding around terminal cells.
+window-padding-y = 2
+
+# Default: sync rendering to display refresh on macOS.
+window-vsync = true
+
+# Default: new windows inherit the focused window's working directory.
+window-inherit-working-directory = true
+
+# Default: new tabs inherit the focused tab's working directory.
+tab-inherit-working-directory = true
+
+# Default: new splits inherit the focused split's working directory.
+split-inherit-working-directory = true
+
+# Default: new windows and tabs inherit the current font size.
+window-inherit-font-size = true
+
+# Default: let Ghostty choose the most native window decoration style.
+window-decoration = auto
+
+# Default: choose the window theme automatically.
+window-theme = auto
+
+# Default: use platform-default window state restoration behavior.
+window-save-state = default
+
+# Default: resize windows freely rather than in terminal-cell increments.
+window-step-resize = false
+
+# Default: open new tabs next to the current tab.
+window-new-tab-position = current
+
+# Default: auto-hide the tab bar until multiple tabs exist.
+window-show-tab-bar = auto
+
+# Default: confirm before closing a surface when appropriate.
+confirm-close-surface = true
+
+# Default on macOS: keep Ghostty running after the last window closes.
+quit-after-last-window-closed = false
+
+# macOS Integration
+
+# Custom: use the integrated tabbed titlebar rather than the transparent default.
+macos-titlebar-style = tabs
+
+# Default: show the proxy icon in the native titlebar when applicable.
+macos-titlebar-proxy-icon = visible
+
+# Default: show the macOS traffic-light window buttons.
+macos-window-buttons = visible
+
+# Custom: treat only the left Option key as Alt.
+macos-option-as-alt = left
+
+# Default: keep the standard macOS window shadow enabled.
+macos-window-shadow = true
+
+# Default: never hide Ghostty from the Dock or app switcher.
+macos-hidden = never
+
+# Default: enable secure input automatically for detected password prompts.
+macos-auto-secure-input = true
+
+# Default: show an indicator when secure input is active.
+macos-secure-input-indication = true
+
+# Default: allow Ghostty's AppleScript dictionary on macOS.
+macos-applescript = true
+
+# Default: use the official Ghostty app icon.
+macos-icon = official
+
+# Default: ask before allowing macOS Shortcuts to control Ghostty.
+macos-shortcuts = ask
