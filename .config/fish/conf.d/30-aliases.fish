@@ -1,7 +1,7 @@
 alias by="bat --language yaml"
 alias bathelp="bat --plain --language=help"
 alias cat="bat --style=plain --paging=never"
-alias dot="git -C $HOME/src/projects/dotfiles"
+alias dotfiles="git -C $HOME/src/projects/dotfiles"
 
 alias ls="eza --icons --all --group-directories-first"
 alias l="eza --icons --long --all --group-directories-first"
