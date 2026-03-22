@@ -22,8 +22,7 @@ set -gx FZF_CTRL_T_OPTS "\
 
 set -gx FZF_CTRL_R_OPTS "\
 --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort' \
---color header:italic \
---header 'Press CTRL-Y to copy command'"
+--color header:italic"
 
 set -gx FZF_ALT_C_COMMAND "command fd --type d --hidden --follow --exclude .git --exclude node_modules --exclude target . \$dir"
 set -gx FZF_ALT_C_OPTS "\
