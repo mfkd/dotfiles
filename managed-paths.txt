@@ -21,7 +21,6 @@
 .config/fish/conf.d/autopair.fish
 .config/fish/conf.d/uv.env.fish
 .config/fish/config.fish
-.config/fish/fish_plugins
 .config/fish/functions/__apply_theme.fish
 .config/fish/functions/__ensure_catppuccin_theme.fish
 .config/fish/functions/__set_fzf_theme.fish
@@ -47,17 +46,12 @@
 .config/nvim/.stylua.toml
 .config/nvim/LICENSE.md
 .config/nvim/README.md
+.config/nvim/after/lsp/lua_ls.lua
 .config/nvim/doc/kickstart.txt
 .config/nvim/init.lua
 .config/nvim/lazy-lock.json
-.config/nvim/lua/custom/plugins/init.lua
+.config/nvim/lua/config/lsp.lua
 .config/nvim/lua/kickstart/health.lua
-.config/nvim/lua/kickstart/plugins/autopairs.lua
-.config/nvim/lua/kickstart/plugins/debug.lua
-.config/nvim/lua/kickstart/plugins/gitsigns.lua
-.config/nvim/lua/kickstart/plugins/indent_line.lua
-.config/nvim/lua/kickstart/plugins/lint.lua
-.config/nvim/lua/kickstart/plugins/neo-tree.lua
 .config/starship-dark.toml
 .config/starship-light.toml
 .gitconfig
