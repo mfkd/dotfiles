@@ -563,7 +563,7 @@ require('lazy').setup({
           end
 
           if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_codeLens, event.buf) then
-            vim.lsp.codelens.enable(true, { bufnr = event.buf, client_id = client.id })
+            vim.lsp.codelens.enable(true, { bufnr = event.buf })
           end
 
           -- The following two autocommands are used to highlight references of the
