@@ -21,8 +21,11 @@ vim.o.relativenumber = true
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
 
--- Don't show the mode, since it's already in the status line
-vim.o.showmode = false
+-- Show the mode, since the built-in statusline format doesn't include it.
+vim.o.showmode = true
+
+-- Use one global statusline across all windows.
+vim.o.laststatus = 3
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
