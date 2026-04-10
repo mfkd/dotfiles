@@ -9,7 +9,7 @@ alias ll="eza --icons --long --all --all --group-directories-first --git"
 alias lt="eza --icons --tree --git-ignore --level=2 --group-directories-first"
 alias llt="eza --icons --long --tree --git-ignore --level=2 --group-directories-first"
 alias lT="eza --icons --tree --git-ignore --level=4 --group-directories-first"
-alias tree="eza --icons --tree"
+alias tree="eza --icons --tree --all --group-directories-first"
 
 alias ..="cd .."
 alias ...="cd ../.."
