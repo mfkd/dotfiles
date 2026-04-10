@@ -246,29 +246,34 @@ require('lazy').setup({
         -- Replaces Telescope's project live grep on <leader>sg.
         '<leader>sg',
         function()
-          require('fff').live_grep()
-        end,
-        desc = '[S]earch by [G]rep',
-      },
-      {
-        -- Replaces Telescope's current-word search on <leader>sw.
-        '<leader>sw',
-        function()
-          require('fff').live_grep { query = vim.fn.expand '<cword>' }
-        end,
-        desc = '[S]earch current [W]ord',
-      },
-      {
-        -- Adds an FFF-only fuzzy grep entry point alongside the plain grep mapping.
-        '<leader>sz',
-        function()
           require('fff').live_grep {
             grep = {
               modes = { 'fuzzy', 'plain' },
             },
           }
         end,
-        desc = '[S]earch Fu[z]zy Grep',
+        desc = '[S]earch by [G]rep',
+      },
+      {
+        -- Replaces Telescope's current-word search on <leader>sw, with fuzzy/plain mode cycling.
+        '<leader>sw',
+        function()
+          require('fff').live_grep {
+            query = vim.fn.expand '<cword>',
+            grep = {
+              modes = { 'fuzzy', 'plain' },
+            },
+          }
+        end,
+        desc = '[S]earch current [W]ord',
+      },
+      {
+        -- Searches files from Vim's current working directory instead of the repo root.
+        '<leader>sn',
+        function()
+          require('fff').find_files_in_dir(vim.fn.getcwd())
+        end,
+        desc = '[S]earch Files in Cwd [N]ow',
       },
     },
   },
@@ -333,11 +338,6 @@ require('lazy').setup({
           prompt_title = 'Live Grep in Open Files',
         }
       end, { desc = '[S]earch [/] in Open Files' })
-
-      -- Shortcut for searching your Neovim configuration files
-      vim.keymap.set('n', '<leader>sn', function()
-        builtin.find_files { cwd = vim.fn.stdpath 'config' }
-      end, { desc = '[S]earch [N]eovim files' })
     end,
   },
 
