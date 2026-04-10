@@ -24,6 +24,9 @@ vim.o.mouse = 'a'
 -- Show the mode, since the built-in statusline format doesn't include it.
 vim.o.showmode = true
 
+-- Skip Neovim's built-in intro message and start on a plain empty buffer.
+vim.opt.shortmess:append 'I'
+
 -- Use one global statusline across all windows.
 vim.o.laststatus = 3
 
