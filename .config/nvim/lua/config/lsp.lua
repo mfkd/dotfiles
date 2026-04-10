@@ -7,6 +7,14 @@ M.servers = {
   'lua_ls',
 }
 
+M.mason_packages = {
+  'gopls',
+  'pyright',
+  'rust-analyzer',
+  'lua-language-server',
+  'stylua',
+}
+
 function M.setup()
   vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
@@ -83,15 +91,7 @@ function M.setup()
     },
   }
 
-  local ensure_installed = vim.deepcopy(M.servers)
-  vim.list_extend(ensure_installed, {
-    'stylua',
-  })
-
-  require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-  require('mason-lspconfig').setup {
-    automatic_enable = false,
-  }
+  require('mason-tool-installer').setup { ensure_installed = M.mason_packages }
 
   vim.lsp.enable(M.servers)
 end
