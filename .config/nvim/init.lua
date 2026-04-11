@@ -230,7 +230,7 @@ require('lazy').setup({
     },
   },
 
-  { -- Fast file search and grep with frecency/history ranking
+  { -- Use FFF for project files and grep.
     'dmtrKovalenko/fff.nvim',
     build = function()
       require('fff.download').download_or_build_binary()
@@ -238,7 +238,6 @@ require('lazy').setup({
     opts = {},
     keys = {
       {
-        -- Replaces Telescope's project file picker on <leader>sf.
         '<leader>sf',
         function()
           require('fff').find_files()
@@ -246,7 +245,6 @@ require('lazy').setup({
         desc = '[S]earch [F]iles',
       },
       {
-        -- Replaces Telescope's project live grep on <leader>sg.
         '<leader>sg',
         function()
           require('fff').live_grep {
@@ -258,7 +256,6 @@ require('lazy').setup({
         desc = '[S]earch by [G]rep',
       },
       {
-        -- Replaces Telescope's current-word search on <leader>sw, with fuzzy/plain mode cycling.
         '<leader>sw',
         function()
           require('fff').live_grep {
@@ -271,7 +268,6 @@ require('lazy').setup({
         desc = '[S]earch current [W]ord',
       },
       {
-        -- Searches files from Vim's current working directory instead of the repo root.
         '<leader>sn',
         function()
           require('fff').find_files_in_dir(vim.fn.getcwd())
@@ -281,7 +277,7 @@ require('lazy').setup({
     },
   },
 
-  { -- Fuzzy Finder (files, lsp, etc)
+  { -- Use Telescope for buffers, oldfiles, help, commands, diagnostics, and other non-file pickers.
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
     dependencies = {
@@ -318,7 +314,6 @@ require('lazy').setup({
       pcall(require('telescope').load_extension, 'ui-select')
 
       local builtin = require 'telescope.builtin'
-      -- Keep Telescope for the broader picker set that FFF does not replace in this config.
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
