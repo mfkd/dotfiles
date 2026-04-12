@@ -2,6 +2,7 @@ function __apply_theme --argument mode
     set -l delta_feature
     set -l bat_theme
     set -l eza_config_dir
+    set -l k9s_skin
     set -l lazygit_config_root "$HOME/.config/lazygit"
     set -l lazygit_base_config "$lazygit_config_root/config.yml"
     set -l lazygit_theme
@@ -20,12 +21,14 @@ function __apply_theme --argument mode
             set delta_feature +catppuccin-dark
             set bat_theme "Catppuccin Mocha"
             set eza_config_dir "$HOME/.config/eza/dark"
+            set k9s_skin "catppuccin-mocha"
             set lazygit_theme "$lazygit_config_root/dark/theme.yml"
             set starship_config "$HOME/.config/starship-dark.toml"
         case light
             set delta_feature +catppuccin-light
             set bat_theme "Catppuccin Latte"
             set eza_config_dir "$HOME/.config/eza/light"
+            set k9s_skin "catppuccin-latte"
             set lazygit_theme "$lazygit_config_root/light/theme.yml"
             set starship_config "$HOME/.config/starship-light.toml"
         case "*"
@@ -36,6 +39,7 @@ function __apply_theme --argument mode
     set -gx DELTA_FEATURES "$delta_feature"
     set -gx BAT_THEME "$bat_theme"
     set -gx EZA_CONFIG_DIR "$eza_config_dir"
+    set -gx K9S_SKIN "$k9s_skin"
     set -gx LG_CONFIG_FILE "$lazygit_base_config,$lazygit_theme"
     set -gx STARSHIP_CONFIG "$starship_config"
 

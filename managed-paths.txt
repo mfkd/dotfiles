@@ -39,6 +39,8 @@
 .config/lazygit/config.yml
 .config/lazygit/dark/theme.yml
 .config/lazygit/light/theme.yml
+.config/k9s/skins/catppuccin-latte.yaml
+.config/k9s/skins/catppuccin-mocha.yaml
 .config/nvim
 .config/starship-dark.toml
 .config/starship-light.toml
