@@ -55,7 +55,3 @@ PATH="/Library/Frameworks/Python.framework/Versions/3.13/bin:${PATH}"
 export PATH
 
 [ -f "$HOME/.zprofile.local" ] && source "$HOME/.zprofile.local"
-
-# Added by OrbStack: command-line tools and integration
-# This won't be added again if you remove it.
-source ~/.orbstack/shell/init.zsh 2>/dev/null || :

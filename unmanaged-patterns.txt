@@ -13,6 +13,7 @@
 .gnupg/*
 .lesshst
 .node_repl_history
+nvim.log
 .python_history
 .ssh
 .ssh/*

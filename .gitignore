@@ -19,6 +19,7 @@
 .config/.DS_Store
 .lesshst
 .node_repl_history
+nvim.log
 .python_history
 .viminfo
 .wget-hsts
