@@ -20,6 +20,7 @@
 .lesshst
 .node_repl_history
 nvim.log
+.nvimlog
 .python_history
 .viminfo
 .wget-hsts
