@@ -39,6 +39,34 @@ function iphone_release_countdown --description "Show the predicted next iPhone 
     end
 
     set -l days_left (math "($release_epoch - $today_epoch) / 86400")
+    set -l countdown_cursor $today_date
+    set -l months_left 0
+
+    while true
+        set -l next_month_date (env TZ=UTC date -j -v+1m -f "%Y-%m-%d" "$countdown_cursor" "+%Y-%m-%d")
+        set -l next_month_epoch (env TZ=UTC date -j -f "%Y-%m-%d %H:%M:%S" "$next_month_date 12:00:00" "+%s")
+
+        if test $next_month_epoch -gt $release_epoch
+            break
+        end
+
+        set countdown_cursor $next_month_date
+        set months_left (math "$months_left + 1")
+    end
+
+    set -l countdown_cursor_epoch (env TZ=UTC date -j -f "%Y-%m-%d %H:%M:%S" "$countdown_cursor 12:00:00" "+%s")
+    set -l breakdown_days (math "($release_epoch - $countdown_cursor_epoch) / 86400")
+    set -l months_label months
+    set -l breakdown_days_label days
+
+    if test $months_left -eq 1
+        set months_label month
+    end
+
+    if test $breakdown_days -eq 1
+        set breakdown_days_label day
+    end
+
     set -l today_pretty (date -j -f "%Y-%m-%d" "$today_date" "+%d %B %Y")
     set -l release_pretty (date -j -f "%Y-%m-%d" "$release_date" "+%A, %d %B %Y")
 
@@ -63,7 +91,7 @@ function iphone_release_countdown --description "Show the predicted next iPhone 
             if test $use_color -eq 1
                 set_color normal
             end
-            echo ' day left.'
+            printf ' day left (%s %s, %s %s).\n' "$months_left" "$months_label" "$breakdown_days" "$breakdown_days_label"
         case '*'
             if test $use_color -eq 1
                 set_color "$accent_hex"
@@ -72,6 +100,6 @@ function iphone_release_countdown --description "Show the predicted next iPhone 
             if test $use_color -eq 1
                 set_color normal
             end
-            echo ' days left.'
+            printf ' days left (%s %s, %s %s).\n' "$months_left" "$months_label" "$breakdown_days" "$breakdown_days_label"
     end
 end
