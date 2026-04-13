@@ -166,7 +166,6 @@ set_theme() {
   fi
 }
 
-autoload -Uz add-zsh-hook
 set_theme
 
 # zsh-autosuggestions
