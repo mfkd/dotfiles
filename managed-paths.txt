@@ -11,7 +11,6 @@
 .config/eza/dark/theme.yml
 .config/eza/light/catppuccin-latte-mauve.yml
 .config/eza/light/theme.yml
-.config/fish/completions/fisher.fish
 .config/fish/conf.d/00-greeting.fish
 .config/fish/conf.d/10-env.fish
 .config/fish/conf.d/20-path.fish
@@ -29,7 +28,6 @@
 .config/fish/functions/_autopair_insert_right.fish
 .config/fish/functions/_autopair_insert_same.fish
 .config/fish/functions/_autopair_tab.fish
-.config/fish/functions/fisher.fish
 .config/fish/functions/iphone_release_countdown.fish
 .config/fish/functions/set_theme.fish
 .config/fish/functions/starship_transient_prompt_func.fish
