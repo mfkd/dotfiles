@@ -43,7 +43,6 @@
 .config/starship-dark.toml
 .config/starship-light.toml
 .gitconfig
-.p10k.zsh
 .profile
 .tmux.conf
 .zprofile
