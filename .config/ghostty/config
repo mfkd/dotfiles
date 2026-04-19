@@ -150,7 +150,7 @@ macos-window-buttons = visible
 macos-option-as-alt = left
 
 # Custom: prompt to rename the current tab.
-keybind = cmd+shift+t=prompt_tab_title
+keybind = cmd+opt+t=prompt_tab_title
 
 # Default: keep the standard macOS window shadow enabled.
 macos-window-shadow = true
