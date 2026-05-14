@@ -4,14 +4,14 @@ local hyper = { "ctrl", "alt", "cmd", "shift" }
 local apps = {
 	A = "Activity Monitor",
 	C = "Google Chrome",
-	S = "Spotify",
-	G = "Ghostty",
-	O = "Obsidian",
-	V = "Visual Studio Code",
 	F = "Finder",
+	G = "Ghostty",
 	H = "ChatGPT",
-	M = "Music",
 	I = "Preview",
+	M = "Music",
+	O = "Obsidian",
+	S = "Spotify",
+	V = "Visual Studio Code",
 	W = "WhatsApp",
 }
 
