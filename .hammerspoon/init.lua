@@ -10,6 +10,7 @@ local apps = {
 	I = "Preview",
 	M = "Music",
 	O = "Obsidian",
+	R = "Reminders",
 	S = "Spotify",
 	V = "Visual Studio Code",
 	W = "WhatsApp",
