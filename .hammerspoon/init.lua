@@ -17,10 +17,32 @@ local apps = {
 	W = "WhatsApp",
 }
 
-for key, app in pairs(apps) do
+local previousAppByKey = {}
+
+local function bindAppLauncher(key, appName)
 	hs.hotkey.bind(hyper, key, function()
-		hs.application.launchOrFocus(app)
+		local frontmost = hs.application.frontmostApplication()
+
+		if frontmost and frontmost:name() == appName then
+			local previous = previousAppByKey[key]
+
+			if previous and previous:isRunning() then
+				previous:activate()
+			end
+
+			return
+		end
+
+		if frontmost then
+			previousAppByKey[key] = frontmost
+		end
+
+		hs.application.launchOrFocus(appName)
 	end)
+end
+
+for key, app in pairs(apps) do
+	bindAppLauncher(key, app)
 end
 
 -- Special actions
