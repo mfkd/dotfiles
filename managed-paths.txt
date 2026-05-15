@@ -48,6 +48,7 @@
 .zprofile
 .zshenv
 .zshrc
+bin/bundleid
 bin/latest-go
 bin/latest-kernel
 bin/rgf

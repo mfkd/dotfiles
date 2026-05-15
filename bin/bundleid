@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+if (( $# == 0 )); then
+	print -u2 "usage: ${0:t} <app name>"
+	exit 2
+fi
+
+app_name="$*"
+
+if ! bundle_id=$(osascript -e "id of application \"$app_name\"" 2>/dev/null); then
+	print -u2 "${0:t}: app not found: $app_name"
+	exit 1
+fi
+
+print -- "$bundle_id"
