@@ -8,6 +8,7 @@ local apps = {
 	G = "Ghostty",
 	H = "ChatGPT",
 	I = "Preview",
+	L = "Claude",
 	M = "Music",
 	O = "Obsidian",
 	R = "Reminders",
