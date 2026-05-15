@@ -13,6 +13,7 @@ local apps = {
 	L = { name = "Claude", bundleID = "com.anthropic.claudefordesktop" },
 	M = { name = "Music", bundleID = "com.apple.Music" },
 	O = { name = "Obsidian", bundleID = "md.obsidian" },
+	P = { name = "Photos", bundleID = "com.apple.Photos" },
 	R = { name = "Reminders", bundleID = "com.apple.reminders" },
 	S = { name = "Spotify", bundleID = "com.spotify.client" },
 	V = { name = "Visual Studio Code", bundleID = "com.microsoft.VSCode" },
