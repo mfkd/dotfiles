@@ -21,6 +21,10 @@ local apps = {
 	W = { name = "WhatsApp", bundleID = "net.whatsapp.WhatsApp" },
 }
 
+-- Tracks the last focused app before any hotkey fired, used as a fallback
+-- when previousAppByKey[key] is nil (i.e. the target app was opened manually,
+-- not via a hotkey).
+local lastApp = nil
 local previousAppByKey = {}
 
 local function bindAppLauncher(key, app)
@@ -28,7 +32,7 @@ local function bindAppLauncher(key, app)
 		local frontmost = hs.application.frontmostApplication()
 
 		if frontmost and frontmost:bundleID() == app.bundleID then
-			local previous = previousAppByKey[key]
+			local previous = previousAppByKey[key] or lastApp
 
 			if previous and previous:isRunning() then
 				previous:activate()
@@ -38,6 +42,7 @@ local function bindAppLauncher(key, app)
 		end
 
 		if frontmost then
+			lastApp = frontmost
 			previousAppByKey[key] = frontmost
 		end
 
