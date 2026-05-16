@@ -43,6 +43,7 @@
 .config/starship-dark.toml
 .config/starship-light.toml
 .gitconfig
+.hammerspoon/init.lua
 .profile
 .tmux.conf
 .zprofile
