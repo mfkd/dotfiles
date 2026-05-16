@@ -12,6 +12,7 @@ local apps = {
 	I = { name = "Preview", bundleID = "com.apple.Preview" },
 	L = { name = "Claude", bundleID = "com.anthropic.claudefordesktop" },
 	M = { name = "Music", bundleID = "com.apple.Music" },
+	N = { name = "Notes", bundleID = "com.apple.Notes" },
 	O = { name = "Obsidian", bundleID = "md.obsidian" },
 	P = { name = "Photos", bundleID = "com.apple.Photos" },
 	R = { name = "Reminders", bundleID = "com.apple.reminders" },
@@ -52,4 +53,3 @@ end
 hs.hotkey.bind(hyper, "\\", hs.reload)
 
 hs.alert.show("Hammerspoon config loaded")
-
