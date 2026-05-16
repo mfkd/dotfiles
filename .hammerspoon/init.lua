@@ -26,9 +26,22 @@ local apps = {
 -- not via a hotkey).
 local lastApp = nil
 local previousAppByKey = {}
+local startupModifiers = { "ctrl", "alt", "cmd", "shift" }
+
+local function releaseStartupModifiers()
+	local modifiers = hs.eventtap.checkKeyboardModifiers()
+
+	for _, modifier in ipairs(startupModifiers) do
+		if modifiers[modifier] then
+			hs.eventtap.event.newKeyEvent({}, modifier, false):post()
+		end
+	end
+end
 
 local function bindAppLauncher(key, app)
 	hs.hotkey.bind(hyper, key, function()
+		releaseStartupModifiers()
+
 		local frontmost = hs.application.frontmostApplication()
 
 		if frontmost and frontmost:bundleID() == app.bundleID then
