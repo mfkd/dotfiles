@@ -1,5 +1,7 @@
 local hyper = { "ctrl", "alt", "cmd", "shift" }
 
+hs.window.animationDuration = 0
+
 -- Simple app launchers
 -- Bundle IDs avoid mismatches between launch names and runtime app names,
 -- such as "Visual Studio Code.app" reporting itself as "Code".
@@ -53,6 +55,66 @@ end
 for key, app in pairs(apps) do
 	bindAppLauncher(key, app)
 end
+
+-- Window management
+local function withFocusedWindow(fn)
+	local win = hs.window.focusedWindow()
+
+	if win then
+		fn(win)
+	end
+end
+
+local function moveTo(unit)
+	return function()
+		withFocusedWindow(function(win)
+			win:moveToUnit(unit)
+		end)
+	end
+end
+
+-- Halves
+hs.hotkey.bind(hyper, "left", moveTo({ x = 0, y = 0, w = 0.5, h = 1 }))
+hs.hotkey.bind(hyper, "right", moveTo({ x = 0.5, y = 0, w = 0.5, h = 1 }))
+hs.hotkey.bind(hyper, "up", moveTo({ x = 0, y = 0, w = 1, h = 0.5 }))
+hs.hotkey.bind(hyper, "down", moveTo({ x = 0, y = 0.5, w = 1, h = 0.5 }))
+
+-- Quarters
+hs.hotkey.bind(hyper, "1", moveTo({ x = 0, y = 0, w = 0.5, h = 0.5 }))
+hs.hotkey.bind(hyper, "2", moveTo({ x = 0.5, y = 0, w = 0.5, h = 0.5 }))
+hs.hotkey.bind(hyper, "3", moveTo({ x = 0, y = 0.5, w = 0.5, h = 0.5 }))
+hs.hotkey.bind(hyper, "4", moveTo({ x = 0.5, y = 0.5, w = 0.5, h = 0.5 }))
+
+-- Maximize / center
+hs.hotkey.bind(hyper, "return", function()
+	withFocusedWindow(function(win)
+		win:maximize()
+	end)
+end)
+
+hs.hotkey.bind(hyper, "space", function()
+	withFocusedWindow(function(win)
+		win:centerOnScreen(nil, true)
+	end)
+end)
+
+-- Move between monitors
+hs.hotkey.bind(hyper, "[", function()
+	withFocusedWindow(function(win)
+		win:moveOneScreenWest(false, true)
+	end)
+end)
+
+hs.hotkey.bind(hyper, "]", function()
+	withFocusedWindow(function(win)
+		win:moveOneScreenEast(false, true)
+	end)
+end)
+
+-- Interactive grid
+hs.grid.setGrid("6x4")
+hs.grid.setMargins({ 8, 8 })
+hs.hotkey.bind(hyper, "/", hs.grid.show)
 
 -- Special actions
 hs.hotkey.bind(hyper, "\\", hs.reload)
