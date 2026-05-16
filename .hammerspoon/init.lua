@@ -49,9 +49,7 @@ for key, app in pairs(apps) do
 end
 
 -- Special actions
-hs.hotkey.bind(hyper, "\\", function()
-	hs.reload()
-end)
+hs.hotkey.bind(hyper, "\\", hs.reload)
 
 hs.alert.show("Hammerspoon config loaded")
 
