@@ -8,7 +8,7 @@ local apps = {
 	C = { name = "Google Chrome", bundleID = "com.google.Chrome" },
 	F = { name = "Finder", bundleID = "com.apple.finder" },
 	G = { name = "Ghostty", bundleID = "com.mitchellh.ghostty" },
-	H = { name = "ChatGPT", bundleID = "com.openai.chat" },
+	H = { name = "ChatGPT", bundleID = "com.openai.codex" },
 	I = { name = "Preview", bundleID = "com.apple.Preview" },
 	L = { name = "Claude", bundleID = "com.anthropic.claudefordesktop" },
 	M = { name = "Music", bundleID = "com.apple.Music" },
