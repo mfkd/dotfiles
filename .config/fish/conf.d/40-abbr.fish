@@ -9,3 +9,5 @@ abbr -a v nvim
 abbr -a vi nvim
 abbr -a vim nvim
 abbr -a dot dotfiles
+abbr -a irc iphone_release_countdown
+abbr -a h hunk
