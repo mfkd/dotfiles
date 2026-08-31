@@ -6,9 +6,6 @@ if not command -sq fzf
     return
 end
 
-set --erase FZF_CTRL_T_COMMAND
-set --erase FZF_ALT_C_COMMAND
-
 set --global --unexport FZF_DEFAULT_OPTS_BASE "\
 --height=40% \
 --layout=reverse \
