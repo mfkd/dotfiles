@@ -21,7 +21,7 @@ function __set_fzf_theme --argument mode
             return 1
     end
 
-    set -gx FZF_THEME_OPTS "$theme_opts"
+    set --global --unexport FZF_THEME_OPTS "$theme_opts"
 
     if set -q FZF_DEFAULT_OPTS_BASE[1]
         set -gx FZF_DEFAULT_OPTS (string join -- ' ' "$FZF_DEFAULT_OPTS_BASE" "$FZF_THEME_OPTS")

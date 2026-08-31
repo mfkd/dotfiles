@@ -21,14 +21,14 @@ function __apply_theme --argument mode
             set delta_feature +catppuccin-dark
             set bat_theme "Catppuccin Mocha"
             set eza_config_dir "$HOME/.config/eza/dark"
-            set k9s_skin "catppuccin-mocha"
+            set k9s_skin catppuccin-mocha
             set lazygit_theme "$lazygit_config_root/dark/theme.yml"
             set starship_config "$HOME/.config/starship-dark.toml"
         case light
             set delta_feature +catppuccin-light
             set bat_theme "Catppuccin Latte"
             set eza_config_dir "$HOME/.config/eza/light"
-            set k9s_skin "catppuccin-latte"
+            set k9s_skin catppuccin-latte
             set lazygit_theme "$lazygit_config_root/light/theme.yml"
             set starship_config "$HOME/.config/starship-light.toml"
         case "*"

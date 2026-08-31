@@ -87,7 +87,7 @@ function iphone_release_countdown --description "Show the predicted next iPhone 
             if test $use_color -eq 1
                 set_color "$accent_hex"
             end
-            printf '1'
+            printf 1
             if test $use_color -eq 1
                 set_color normal
             end

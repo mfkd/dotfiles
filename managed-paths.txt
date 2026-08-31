@@ -11,6 +11,8 @@
 .config/eza/dark/theme.yml
 .config/eza/light/catppuccin-latte-mauve.yml
 .config/eza/light/theme.yml
+.config/fish/completions/uv.fish
+.config/fish/completions/uvx.fish
 .config/fish/conf.d/00-greeting.fish
 .config/fish/conf.d/10-env.fish
 .config/fish/conf.d/20-path.fish
@@ -18,7 +20,6 @@
 .config/fish/conf.d/30-aliases.fish
 .config/fish/conf.d/40-abbr.fish
 .config/fish/conf.d/autopair.fish
-.config/fish/conf.d/uv.env.fish
 .config/fish/config.fish
 .config/fish/functions/__apply_theme.fish
 .config/fish/functions/__ensure_catppuccin_theme.fish

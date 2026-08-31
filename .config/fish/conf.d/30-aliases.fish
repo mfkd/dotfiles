@@ -1,3 +1,5 @@
+status is-interactive; or return
+
 alias by="bat --language yaml"
 alias bathelp="bat --plain --language=help"
 alias cat="bat --style=plain --paging=never"
@@ -5,13 +7,8 @@ alias dotfiles="git -C $HOME/src/projects/dotfiles"
 
 alias ls="eza --icons --all --group-directories-first"
 alias l="eza --icons --long --all --group-directories-first"
-alias ll="eza --icons --long --all --all --group-directories-first --git"
+alias ll="eza --icons --long --all --group-directories-first --git"
 alias lt="eza --icons --tree --git-ignore --level=2 --group-directories-first"
 alias llt="eza --icons --long --tree --git-ignore --level=2 --group-directories-first"
 alias lT="eza --icons --tree --git-ignore --level=4 --group-directories-first"
 alias tree="eza --icons --tree --all --group-directories-first"
-
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."

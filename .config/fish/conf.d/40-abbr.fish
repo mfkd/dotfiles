@@ -1,13 +1,15 @@
-abbr -a cx  codex
-abbr -a c claude
-abbr -a o opencode
-abbr -a g  git
-abbr -a lg lazygit
-abbr -a k  kubectl
-abbr -a d  docker
-abbr -a v nvim
-abbr -a vi nvim
-abbr -a vim nvim
-abbr -a dot dotfiles
-abbr -a irc iphone_release_countdown
-abbr -a h hunk
+status is-interactive; or return
+
+abbr --add --global cx codex
+abbr --add --global c claude
+abbr --add --global o opencode
+abbr --add --global g git
+abbr --add --global lg lazygit
+abbr --add --global k kubectl
+abbr --add --global d docker
+abbr --add --global v nvim
+abbr --add --global vi nvim
+abbr --add --global vim nvim
+abbr --add --global dot dotfiles
+abbr --add --global irc iphone_release_countdown
+abbr --add --global h hunk

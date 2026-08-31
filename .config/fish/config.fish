@@ -1,5 +1,7 @@
 if status is-interactive
-    zoxide init --cmd cd fish | source
+    if command -q zoxide
+        zoxide init --cmd cd fish | source
+    end
 
     __ensure_catppuccin_theme
 
@@ -9,6 +11,8 @@ if status is-interactive
 
     set_theme
 
-    starship init fish | source
-    enable_transience
+    if command -q starship
+        starship init fish | source
+        enable_transience
+    end
 end
