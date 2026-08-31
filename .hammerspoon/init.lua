@@ -28,8 +28,29 @@ local apps = {
 local lastApp = nil
 local previousAppByKey = {}
 
+local function areStartupModifiersReleased()
+	local modifiers = hs.eventtap.checkKeyboardModifiers()
+
+	return not modifiers.ctrl and not modifiers.alt and not modifiers.cmd and not modifiers.shift
+end
+
+local function afterStartupModifiersReleased(fn)
+	if areStartupModifiersReleased() then
+		fn()
+		return
+	end
+
+	local timer = nil
+	timer = hs.timer.doEvery(0.02, function()
+		if areStartupModifiersReleased() then
+			timer:stop()
+			fn()
+		end
+	end)
+end
+
 local function bindAppLauncher(key, app)
-	hs.hotkey.bind(hyper, key, function()
+	local function launchOrToggleApp()
 		local frontmost = hs.application.frontmostApplication()
 
 		if frontmost and frontmost:bundleID() == app.bundleID then
@@ -48,6 +69,12 @@ local function bindAppLauncher(key, app)
 		end
 
 		hs.application.launchOrFocusByBundleID(app.bundleID)
+	end
+
+	-- Delay app launch/focus until startup modifiers are released so apps do
+	-- not see held Shift/Option/Command/Control during launch.
+	hs.hotkey.bind(hyper, key, function() end, function()
+		afterStartupModifiersReleased(launchOrToggleApp)
 	end)
 end
 
