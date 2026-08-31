@@ -68,6 +68,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Plugin management
+vim.api.nvim_create_user_command('PackUpdate', function()
+  vim.pack.update()
+end, { desc = 'Update Neovim plugins' })
+
 local function run_build(name, cmd, cwd)
   local result = vim.system(cmd, { cwd = cwd }):wait()
   if result.code ~= 0 then
