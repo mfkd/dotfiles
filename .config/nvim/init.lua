@@ -8,6 +8,7 @@ vim.g.have_nerd_font = true
 vim.o.number = true
 vim.o.mouse = 'a'
 vim.o.showmode = false
+vim.opt.shortmess:append 'I' -- Hide the startup intro.
 vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
