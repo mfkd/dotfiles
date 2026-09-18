@@ -8,7 +8,9 @@ command = /opt/homebrew/bin/fish --login --interactive
 copy-on-select = clipboard
 
 # macOS
-macos-titlebar-style = tabs
+# Preferred tabs title bar style is not working on macOS 27.
+# Restore this setting once an update fixes it.
+# macos-titlebar-style = tabs
 macos-option-as-alt = left
 
 # Keybindings
