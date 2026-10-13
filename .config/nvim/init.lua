@@ -183,7 +183,7 @@ require('gitsigns').setup {
     end, { desc = 'git [b]lame line' })
     map('n', '<leader>hd', gitsigns.diffthis, { desc = 'git [d]iff against index' })
     map('n', '<leader>hD', function()
-      gitsigns.diffthis '@'
+      gitsigns.diffthis '~'
     end, { desc = 'git [D]iff against last commit' })
     map('n', '<leader>hQ', function()
       gitsigns.setqflist 'all'
@@ -193,7 +193,7 @@ require('gitsigns').setup {
     map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
     map('n', '<leader>tw', gitsigns.toggle_word_diff, { desc = '[T]oggle git intra-line [w]ord diff' })
 
-    map({ 'o', 'x' }, 'ih', gitsigns.select_hunk)
+    map({ 'o', 'x' }, 'ih', gitsigns.select_hunk, { desc = 'text object [i]nside [h]unk' })
   end,
 }
 
@@ -486,6 +486,11 @@ require('nvim-treesitter').install(parsers)
 ---@param buf integer
 ---@param language string
 local function treesitter_try_attach(buf, language)
+  -- The buffer may have been deleted while its parser was installing.
+  if not vim.api.nvim_buf_is_valid(buf) then
+    return
+  end
+
   if not vim.treesitter.language.add(language) then
     return
   end
