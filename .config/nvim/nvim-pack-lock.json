@@ -19,7 +19,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "fff": {
-      "rev": "e3f694a2e4f82bb755418e8d305dcff779c59c27",
+      "rev": "d978416f77aec3f9928d56e00c9e56ba39ca1fda",
       "src": "https://github.com/dmtrKovalenko/fff"
     },
     "fidget.nvim": {
@@ -27,7 +27,7 @@
       "src": "https://github.com/j-hui/fidget.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "070a5d7b985546cc57e1fc61e5bc507fecac6045",
+      "rev": "fd780920613e541cbdfac41bf711583ed49f9249",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "guess-indent.nvim": {
@@ -35,7 +35,7 @@
       "src": "https://github.com/NMAC427/guess-indent.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "137bd0feba2c1885545b6934d36f5e5aa6adb486",
+      "rev": "00b5473cca4db5b410ff4bae724e3b6e21f2687f",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason-tool-installer.nvim": {
@@ -47,15 +47,15 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "561751e839b99a4baca36b9d963166b66d2536a6",
+      "rev": "8831fa150fa26492cfe135801fa498132f1491d2",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "nvim-lspconfig": {
-      "rev": "ffd261c09c3dabd0bf1a438f47a8ae3b22f3c3ff",
+      "rev": "ac062d0d01c019c0dbdb798968f3e5d8b35c3853",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "f603a2f4da48728f80257fb5fbb90145fd1dc173",
+      "rev": "1a4f47b03dfe92d28de7d5654c67327ef008c9e6",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
