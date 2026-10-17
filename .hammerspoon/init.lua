@@ -22,32 +22,81 @@ local apps = {
 	W = { name = "WhatsApp", bundleID = "net.whatsapp.WhatsApp" },
 }
 
--- Tracks the last focused app before any hotkey fired, used as a fallback
--- when previousAppByKey[key] is nil (i.e. the target app was opened manually,
--- not via a hotkey).
-local lastApp = nil
+local log = hs.logger.new("config", "warning")
+local bindingsOK = true
+
+local function reportFailure(message)
+	log.e(message)
+	hs.alert.show(message)
+end
+
+local function bindHotkey(key, action, callback)
+	if not hs.hotkey.bind(hyper, key, callback) then
+		bindingsOK = false
+		reportFailure("Could not register Hyper+" .. key .. " for " .. action)
+	end
+end
+
+-- Track focus changes from both hotkeys and manual app switching.
+local focusedApp = hs.application.frontmostApplication()
+local lastFocusedApp = nil
 local previousAppByKey = {}
 
+local function recordActivation(app)
+	if not app or not app:isRunning() then
+		return
+	end
+
+	-- Watcher callbacks can supply a new object for the same process.
+	if not focusedApp or focusedApp:pid() ~= app:pid() then
+		lastFocusedApp = focusedApp
+		focusedApp = app
+	end
+end
+
+local appWatcher = hs.application.watcher.new(function(_, event, app)
+	if event == hs.application.watcher.activated then
+		recordActivation(app)
+	end
+end):start()
+
+-- This closure retains the watcher after init.lua finishes and stops it on reload.
+hs.shutdownCallback = function()
+	appWatcher:stop()
+end
+
+local function canReturnTo(app, targetBundleID)
+	return app and app:isRunning() and app:bundleID() ~= targetBundleID
+end
+
 local function bindAppLauncher(key, app)
-	hs.hotkey.bind(hyper, key, function()
+	bindHotkey(key, app.name, function()
 		local frontmost = hs.application.frontmostApplication()
+		-- Keep history current even if the activation event hasn't arrived yet.
+		recordActivation(frontmost)
 
 		if frontmost and frontmost:bundleID() == app.bundleID then
-			local previous = previousAppByKey[key] or lastApp
+			local previous = previousAppByKey[key]
+			if not canReturnTo(previous, app.bundleID) then
+				previousAppByKey[key] = nil
+				previous = lastFocusedApp
+			end
 
-			if previous and previous:isRunning() then
-				previous:activate()
+			if not canReturnTo(previous, app.bundleID) then
+				reportFailure("No previous app available for " .. app.name)
+			elseif not previous:activate() then
+				reportFailure("Could not activate " .. (previous:name() or "previous app"))
 			end
 
 			return
 		end
 
-		if frontmost then
-			lastApp = frontmost
+		-- Save an origin only when the target launches or focuses successfully.
+		if hs.application.launchOrFocusByBundleID(app.bundleID) then
 			previousAppByKey[key] = frontmost
+		else
+			reportFailure("Could not launch or focus " .. app.name)
 		end
-
-		hs.application.launchOrFocusByBundleID(app.bundleID)
 	end)
 end
 
@@ -92,14 +141,16 @@ local function cycleAudioOutput()
 	if nextOutput.device:setDefaultOutputDevice() then
 		hs.alert.show("Output: " .. nextOutput.name)
 	else
-		hs.alert.show("Could not switch audio output")
+		reportFailure("Could not switch audio output")
 	end
 end
 
 -- Special actions
-if not hs.hotkey.bind(hyper, "D", cycleAudioOutput) then
-	hs.alert.show("Could not register Hyper+D for audio switching")
-end
-hs.hotkey.bind(hyper, "\\", hs.reload)
+bindHotkey("D", "audio switching", cycleAudioOutput)
+bindHotkey("\\", "config reloading", hs.reload)
 
-hs.alert.show("Hammerspoon config loaded")
+if bindingsOK then
+	hs.alert.show("Hammerspoon config loaded")
+else
+	hs.alert.show("Hammerspoon loaded with hotkey errors; see Console")
+end
