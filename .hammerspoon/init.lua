@@ -6,6 +6,7 @@ local hyper = { "ctrl", "alt", "cmd", "shift" }
 local apps = {
 	A = { name = "Activity Monitor", bundleID = "com.apple.ActivityMonitor" },
 	C = { name = "Google Chrome", bundleID = "com.google.Chrome" },
+	E = { name = "Weather", bundleID = "com.apple.weather" },
 	F = { name = "Finder", bundleID = "com.apple.finder" },
 	G = { name = "Ghostty", bundleID = "com.mitchellh.ghostty" },
 	H = { name = "ChatGPT", bundleID = "com.openai.codex" },
