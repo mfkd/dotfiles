@@ -18,6 +18,7 @@ local apps = {
 	P = { name = "Photos", bundleID = "com.apple.Photos" },
 	R = { name = "Reminders", bundleID = "com.apple.reminders" },
 	S = { name = "Spotify", bundleID = "com.spotify.client" },
+	T = { name = "Apple TV", bundleID = "com.apple.TV" },
 	V = { name = "Visual Studio Code", bundleID = "com.microsoft.VSCode" },
 	W = { name = "WhatsApp", bundleID = "net.whatsapp.WhatsApp" },
 }
