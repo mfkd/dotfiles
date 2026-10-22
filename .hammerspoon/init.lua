@@ -11,6 +11,7 @@ local apps = {
 	G = { name = "Ghostty", bundleID = "com.mitchellh.ghostty" },
 	H = { name = "ChatGPT", bundleID = "com.openai.codex" },
 	I = { name = "Preview", bundleID = "com.apple.Preview" },
+	K = { name = "Passwords", bundleID = "com.apple.Passwords" },
 	L = { name = "Claude", bundleID = "com.anthropic.claudefordesktop" },
 	-- M = { name = "Music", bundleID = "com.apple.Music" },
 	M = { name = "Messages", bundleID = "com.apple.MobileSMS" },
