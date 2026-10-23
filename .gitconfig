@@ -15,6 +15,6 @@
 	path = ~/.config/git/delta.gitconfig
 [core]
 	editor = nvim
-	pager = delta
+	pager = hunk pager
 [gpg]
 	format = ssh
