@@ -4,6 +4,7 @@ local hyper = { "ctrl", "alt", "cmd", "shift" }
 -- Bundle IDs avoid mismatches between launch names and runtime app names,
 -- such as "Visual Studio Code.app" reporting itself as "Code".
 local apps = {
+	[","] = { name = "System Settings", bundleID = "com.apple.systempreferences" },
 	A = { name = "Activity Monitor", bundleID = "com.apple.ActivityMonitor" },
 	C = { name = "Google Chrome", bundleID = "com.google.Chrome" },
 	E = { name = "Weather", bundleID = "com.apple.weather" },
