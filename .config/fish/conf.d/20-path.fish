@@ -4,4 +4,5 @@ fish_add_path \
     $HOME/.cargo/bin \
     $HOME/bin \
     /opt/homebrew/bin \
-    /opt/homebrew/sbin
+    /opt/homebrew/sbin \
+    /Applications/Ghostty.app/Contents/MacOS

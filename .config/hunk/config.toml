@@ -1,0 +1,23 @@
+theme = "mocha-native"
+transparent_background = false
+
+# Keep Catppuccin's syntax and diff colors, with its own neutral surface palette.
+[themes.mocha-native]
+base = "catppuccin-mocha"
+label = "Catppuccin Mocha (native surfaces)"
+background = "#1e1e2e"
+panel = "#181825"
+panelAlt = "#11111b"
+border = "#313244"
+noteBackground = "#181825"
+noteTitleBackground = "#11111b"
+
+[themes.latte-native]
+base = "catppuccin-latte"
+label = "Catppuccin Latte (native surfaces)"
+background = "#eff1f5"
+panel = "#e6e9ef"
+panelAlt = "#dce0e8"
+border = "#ccd0da"
+noteBackground = "#e6e9ef"
+noteTitleBackground = "#dce0e8"

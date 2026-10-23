@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+# Translate Fish's theme preference for direct launches and Git's pager alike.
+# Use Homebrew's stable path so upgrades work and this wrapper cannot recurse.
+real_hunk=/opt/homebrew/bin/hunk
+if [[ -z ${HUNK_THEME:-} ]]; then
+    exec "$real_hunk" "$@"
+fi
+
+args=("$@")
+index=0
+fast=0
+# Hunk accepts these bootstrap flags before a command.
+while (( index < ${#args[@]} )); do
+    case "${args[index]}" in
+        --fast) fast=1; ((index += 1)) ;;
+        --experimental|--no-extensions|--extension=*|--disable-extension=*|--enable-extension=*)
+            ((index += 1)) ;;
+        --extension|--disable-extension|--enable-extension) ((index += 2)) ;;
+        *) break ;;
+    esac
+done
+
+case "${args[index]:-}" in
+    open|diff|show|status|log|patch|pager|difftool)
+        ((index += 1)) ;;
+    stash)
+        [[ ${args[index + 1]:-} == show ]] || exec "$real_hunk" "$@"
+        ((index += 2)) ;;
+    markup)
+        [[ ${args[index + 1]:-} == render ]] || exec "$real_hunk" "$@"
+        ((index += 2)) ;;
+    gh)
+        case "${args[index + 1]:-}" in
+            pr|commit|compare) ;;
+            *) exec "$real_hunk" "$@" ;;
+        esac
+        # GitHub commands forward review options after their own -- separator.
+        ((index += 2))
+        while (( index < ${#args[@]} )) && [[ ${args[index]} != -- ]]; do
+            ((index += 1))
+        done
+        if (( index == ${#args[@]} )); then
+            args+=(--)
+        fi
+        ((index += 1)) ;;
+    help|-h|--help|version|-v|--version|session|skill|extension|update|completion|daemon)
+        exec "$real_hunk" "$@" ;;
+    *)
+        # --fast alone, or followed by a target/options, is shorthand for diff.
+        (( fast )) || exec "$real_hunk" "$@"
+        args=("${args[@]:0:index}" diff "${args[@]:index}")
+        ((index += 1)) ;;
+esac
+
+# Explicit theme options win. Tokens after -- are paths, not options.
+for (( option_index=index; option_index < ${#args[@]}; option_index++ )); do
+    case "${args[option_index]}" in
+        --) break ;;
+        --theme|--theme=*) exec "$real_hunk" "$@" ;;
+    esac
+done
+
+exec "$real_hunk" "${args[@]:0:index}" --theme "$HUNK_THEME" "${args[@]:index}"

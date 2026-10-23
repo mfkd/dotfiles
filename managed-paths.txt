@@ -51,6 +51,9 @@
 .zshenv
 .zshrc
 bin/bundleid
+bin/hunk
 bin/latest-go
 bin/latest-kernel
 bin/rgf
+
+.config/hunk/config.toml
