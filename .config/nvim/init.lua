@@ -214,6 +214,9 @@ require('catppuccin').setup {
   styles = {
     comments = {},
   },
+  integrations = {
+    rainbow_delimiters = true,
+  },
 }
 vim.cmd.colorscheme 'catppuccin'
 
@@ -460,6 +463,7 @@ require('blink.cmp').setup {
 
 -- Tree-sitter
 vim.pack.add { { src = gh 'nvim-treesitter/nvim-treesitter', version = 'main' } }
+vim.pack.add { gh 'HiPhish/rainbow-delimiters.nvim' }
 
 local parsers = {
   'bash',
