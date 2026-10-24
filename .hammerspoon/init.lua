@@ -6,6 +6,7 @@ local hyper = { "ctrl", "alt", "cmd", "shift" }
 local apps = {
 	[","] = { name = "System Settings", bundleID = "com.apple.systempreferences" },
 	A = { name = "Activity Monitor", bundleID = "com.apple.ActivityMonitor" },
+	B = { name = "Safari", bundleID = "com.apple.Safari" },
 	C = { name = "Google Chrome", bundleID = "com.google.Chrome" },
 	E = { name = "Weather", bundleID = "com.apple.weather" },
 	F = { name = "Finder", bundleID = "com.apple.finder" },
