@@ -28,6 +28,7 @@ local apps = {
 	U = { name = "Calendar", bundleID = "com.apple.iCal" },
 	V = { name = "Visual Studio Code", bundleID = "com.microsoft.VSCode" },
 	W = { name = "WhatsApp", bundleID = "net.whatsapp.WhatsApp" },
+	Z = { name = "Zoom", bundleID = "us.zoom.xos" },
 }
 
 local log = hs.logger.new("config", "warning")
