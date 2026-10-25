@@ -29,6 +29,24 @@ These files are intentionally untracked and may vary by machine:
 
 Git, Zsh, and shell profile entrypoints load these files only when present.
 
+## Hammerspoon
+
+Hyper is Control + Option + Command + Shift. Hyper+X requests a graceful quit
+of all regular Dock apps, including hidden apps and apps on other Spaces. Finder,
+Hammerspoon, menu-bar apps, and background utilities stay running. Apps may prompt
+to save changes or refuse to quit; the action never force-quits them.
+
+Add bundle IDs to `quitExclusions` in `.hammerspoon/init.lua` to keep other apps
+running. Hyper+Q continues to launch or toggle FaceTime.
+
+The implementation uses Hammerspoon's documented
+[`runningApplications()`](https://www.hammerspoon.org/docs/hs.application.html#runningApplications),
+[`kind()`](https://www.hammerspoon.org/docs/hs.application.html#kind), and
+[`kill()`](https://www.hammerspoon.org/docs/hs.application.html#kill) APIs. Its scope
+follows the same policy as Bunch's
+[Quit Everything command](https://bunchapp.co/docs/bunch-files/commands/quit-everything/):
+Dock apps with an exclusion list, leaving Finder and background utilities running.
+
 ## Notes
 
 - Secrets, tokens, caches, and host state are excluded by default.
