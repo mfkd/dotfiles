@@ -13,3 +13,4 @@ abbr --add vim nvim
 abbr --add dot dotfiles
 abbr --add irc iphone_release_countdown
 abbr --add h hunk
+abbr --add t terraform
