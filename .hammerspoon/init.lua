@@ -21,6 +21,7 @@ local apps = {
 	N = { name = "Notes", bundleID = "com.apple.Notes" },
 	O = { name = "Obsidian", bundleID = "md.obsidian" },
 	P = { name = "Photos", bundleID = "com.apple.Photos" },
+	Q = { name = "FaceTime", bundleID = "com.apple.FaceTime" },
 	R = { name = "Reminders", bundleID = "com.apple.reminders" },
 	S = { name = "Spotify", bundleID = "com.spotify.client" },
 	T = { name = "Apple TV", bundleID = "com.apple.TV" },
