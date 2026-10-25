@@ -153,8 +153,24 @@ local function cycleAudioOutput()
 	end
 end
 
+-- Quit regular Dock apps, leaving background utilities and these apps running.
+local quitExclusions = {
+	["com.apple.finder"] = true,
+	["org.hammerspoon.Hammerspoon"] = true,
+}
+
+local function quitAllRegularApps()
+	for _, app in ipairs(hs.application.runningApplications()) do
+		if app:kind() == 1 and not quitExclusions[app:bundleID()] then
+			-- Requests a graceful quit; apps can prompt to save or refuse to quit.
+			app:kill()
+		end
+	end
+end
+
 -- Special actions
 bindHotkey("D", "audio switching", cycleAudioOutput)
+bindHotkey("Q", "quitting all regular apps", quitAllRegularApps)
 bindHotkey("\\", "config reloading", hs.reload)
 
 if bindingsOK then
