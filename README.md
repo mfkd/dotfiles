@@ -31,13 +31,13 @@ Git, Zsh, and shell profile entrypoints load these files only when present.
 
 ## Hammerspoon
 
-Hyper is Control + Option + Command + Shift. Hyper+X requests a graceful quit
+Hyper is Control + Option + Command + Shift. Hyper+Q requests a graceful quit
 of all regular Dock apps, including hidden apps and apps on other Spaces. Finder,
 Hammerspoon, menu-bar apps, and background utilities stay running. Apps may prompt
 to save changes or refuse to quit; the action never force-quits them.
 
 Add bundle IDs to `quitExclusions` in `.hammerspoon/init.lua` to keep other apps
-running. Hyper+Q continues to launch or toggle FaceTime.
+running. Hyper+X launches or toggles FaceTime.
 
 The implementation uses Hammerspoon's documented
 [`runningApplications()`](https://www.hammerspoon.org/docs/hs.application.html#runningApplications),

@@ -170,7 +170,7 @@ end
 
 -- Special actions
 bindHotkey("D", "audio switching", cycleAudioOutput)
-bindHotkey("X", "quitting all regular apps", quitAllRegularApps)
+bindHotkey("Q", "quitting all regular apps", quitAllRegularApps)
 bindHotkey("\\", "config reloading", hs.reload)
 
 if bindingsOK then
