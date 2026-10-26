@@ -28,6 +28,7 @@ local apps = {
 	U = { name = "Calendar", bundleID = "com.apple.iCal" },
 	V = { name = "Visual Studio Code", bundleID = "com.microsoft.VSCode" },
 	W = { name = "WhatsApp", bundleID = "net.whatsapp.WhatsApp" },
+	Y = { name = "Mail", bundleID = "com.apple.mail" },
 	Z = { name = "Zoom", bundleID = "us.zoom.xos" },
 }
 
