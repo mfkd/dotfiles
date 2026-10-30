@@ -527,4 +527,12 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+-- Markdown preview
+vim.pack.add { gh 'MeanderingProgrammer/render-markdown.nvim' }
+require('render-markdown').setup {}
+
+vim.keymap.set('n', '<leader>tm', '<cmd>RenderMarkdown toggle<CR>', {
+  desc = '[T]oggle rendered [M]arkdown',
+})
+
 -- vim: ts=2 sts=2 sw=2 et
