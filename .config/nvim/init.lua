@@ -5,6 +5,11 @@ vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 
 -- Options
+-- Use VS Code-style defaults; guess-indent adapts to existing files.
+vim.o.expandtab = true
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.softtabstop = 4
 vim.o.number = true
 vim.o.mouse = 'a'
 vim.o.showmode = false
