@@ -155,7 +155,41 @@ local function cycleAudioOutput()
 	end
 end
 
+-- Adapted from MiroWindowsManager's _nextFullScreenStep size cycle:
+-- https://github.com/Hammerspoon/Spoons/blob/master/Source/MiroWindowsManager.spoon/init.lua
+-- Use screen fractions instead of a global grid, cycling between 100% and 70%.
+local function toggleWindowSize()
+	local win = hs.window.focusedWindow()
+	if not win or not win:isStandard() or win:isFullScreen() then
+		return
+	end
+
+	local display = win:screen()
+	if not display then
+		return
+	end
+	local current = display:toUnitRect(win:frame())
+	local sizes = { 1, 0.70 }
+	local nextSize = sizes[1]
+	local tolerance = 0.01 -- Allow small app-imposed differences in window size.
+
+	for i, size in ipairs(sizes) do
+		local margin = (1 - size) / 2
+		if math.abs(current.w - size) <= tolerance
+			and math.abs(current.h - size) <= tolerance
+			and math.abs(current.x - margin) <= tolerance
+			and math.abs(current.y - margin) <= tolerance then
+			nextSize = sizes[i % #sizes + 1]
+			break
+		end
+	end
+
+	local margin = (1 - nextSize) / 2
+	win:moveToUnit({ x = margin, y = margin, w = nextSize, h = nextSize }, 0)
+end
+
 -- Special actions
+bindHotkey("return", "window size toggling", toggleWindowSize)
 bindHotkey("D", "audio switching", cycleAudioOutput)
 bindHotkey("\\", "config reloading", hs.reload)
 
