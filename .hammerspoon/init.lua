@@ -34,6 +34,7 @@ local apps = {
 
 local log = hs.logger.new("config", "warning")
 local bindingsOK = true
+local hotkeyChoices = {}
 
 local function reportFailure(message)
 	log.e(message)
@@ -44,7 +45,17 @@ local function bindHotkey(key, action, callback)
 	if not hs.hotkey.bind(hyper, key, callback) then
 		bindingsOK = false
 		reportFailure("Could not register Hyper+" .. key .. " for " .. action)
+		return
 	end
+	table.insert(hotkeyChoices, { text = action, subText = "Hyper + " .. key })
+end
+
+local hotkeyChooser = hs.chooser.new(function() end)
+	:placeholderText("Search keyboard bindings")
+	:searchSubText(true)
+
+local function showHotkeys()
+	hotkeyChooser:query(""):show()
 end
 
 -- Track focus changes from both hotkeys and manual app switching.
@@ -189,9 +200,15 @@ local function toggleWindowSize()
 end
 
 -- Special actions
-bindHotkey("return", "window size toggling", toggleWindowSize)
-bindHotkey("D", "audio switching", cycleAudioOutput)
-bindHotkey("\\", "config reloading", hs.reload)
+bindHotkey("return", "Toggle window size", toggleWindowSize)
+bindHotkey("D", "Switch audio output", cycleAudioOutput)
+bindHotkey("\\", "Reload Hammerspoon config", hs.reload)
+bindHotkey("/", "Show keyboard bindings", showHotkeys)
+
+table.sort(hotkeyChoices, function(a, b)
+	return a.text < b.text
+end)
+hotkeyChooser:choices(hotkeyChoices)
 
 if bindingsOK then
 	hs.alert.show("Hammerspoon config loaded")
